@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Licensed / walled inputs must NEVER be committed.
+# The canonical inputs live outside this repo; these patterns are a structural
+# backstop so a stray local copy cannot be committed by accident.
+*.RRF
+*.rrf
+rrf/
+RxNorm_full*/
+Core_MEDRT_*.xml
+*MEDRT*.xml
+clinical_knowledge.sqlite
+.cache/
+umls*/
+UMLS*/
+
+# Locally-built walled overlay artifacts (SNOMED etc.). The overlay build
+# scripts and docs are committed; their OUTPUT rows are never committed.
+overlay/build/
+overlay/**/*.jsonl
+
+# Build scratch / determinism-check working dirs
+tmp-build/
+.determinism/
+*.tmp
+
+# OS
+.DS_Store
