@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [feat/v0-payload, main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Unit + integration tests
+        run: node --test
+
+      - name: Schemas match their generator
+        run: |
+          node scripts/gen-schemas.mjs
+          git diff --exit-code schema/
+
+      - name: Core validators (schema + open-allowlist wall + determinism/integrity)
+        run: node scripts/validate-all.mjs
+
+      - name: Sampled code-existence (RxNav, LOINC, ICD-10-CM)
+        run: node scripts/validate/validate-code-existence.mjs --sample 12
