@@ -1,0 +1,1759 @@
+[
+  {
+    "loincCode": "10334-1",
+    "loincName": "Cancer Ag 125 [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "C56.9",
+    "conditionName": "Malignant neoplasm of unspecified ovary",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "10334-1",
+    "loincName": "Cancer Ag 125 [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "N80.0",
+    "conditionName": "Endometriosis of uterus",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "10835-7",
+    "loincName": "Lipoprotein (a) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "10835-7",
+    "loincName": "Lipoprotein (a) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I63.9",
+    "conditionName": "Cerebral infarction, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "10839-9",
+    "loincName": "Troponin I.cardiac [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I21.9",
+    "conditionName": "Acute myocardial infarction, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "10839-9",
+    "loincName": "Troponin I.cardiac [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I50.9",
+    "conditionName": "Heart failure, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "11572-5",
+    "loincName": "Rheumatoid factor [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "M06.9",
+    "conditionName": "Rheumatoid arthritis, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "11572-5",
+    "loincName": "Rheumatoid factor [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "M35.01",
+    "conditionName": "Sjogren syndrome with keratoconjunctivitis",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "13458-5",
+    "loincName": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.1",
+    "conditionName": "Pure hyperglyceridemia",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "13458-5",
+    "loincName": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.5",
+    "conditionName": "Hyperlipidemia, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "13945-1",
+    "loincName": "Erythrocytes [#/area] in Urine sediment by Microscopy high power field",
+    "conditionIcd10": "C67.9",
+    "conditionName": "Malignant neoplasm of bladder, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "13945-1",
+    "loincName": "Erythrocytes [#/area] in Urine sediment by Microscopy high power field",
+    "conditionIcd10": "N20.0",
+    "conditionName": "Calculus of kidney",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "13945-1",
+    "loincName": "Erythrocytes [#/area] in Urine sediment by Microscopy high power field",
+    "conditionIcd10": "R31.9",
+    "conditionName": "Hematuria, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "13965-9",
+    "loincName": "Homocysteine [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "D51.9",
+    "conditionName": "Vitamin B12 deficiency anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "13965-9",
+    "loincName": "Homocysteine [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "14959-1",
+    "loincName": "Microalbumin/Creatinine [Mass Ratio] in Urine",
+    "conditionIcd10": "E11.65",
+    "conditionName": "Type 2 diabetes mellitus with hyperglycemia",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "14959-1",
+    "loincName": "Microalbumin/Creatinine [Mass Ratio] in Urine",
+    "conditionIcd10": "I10",
+    "conditionName": "Essential (primary) hypertension",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "14959-1",
+    "loincName": "Microalbumin/Creatinine [Mass Ratio] in Urine",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "16128-1",
+    "loincName": "Hepatitis C virus Ab [Presence] in Serum or Plasma",
+    "conditionIcd10": "B17.1",
+    "conditionName": "Acute hepatitis C",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "16128-1",
+    "loincName": "Hepatitis C virus Ab [Presence] in Serum or Plasma",
+    "conditionIcd10": "B18.2",
+    "conditionName": "Chronic viral hepatitis C",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1742-6",
+    "loincName": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "B18.1",
+    "conditionName": "Chronic viral hepatitis B without delta-agent",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1742-6",
+    "loincName": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "B18.2",
+    "conditionName": "Chronic viral hepatitis C",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1742-6",
+    "loincName": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K75.9",
+    "conditionName": "Inflammatory liver disease, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "1742-6",
+    "loincName": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K76.0",
+    "conditionName": "Fatty (change of) liver, not elsewhere classified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1751-7",
+    "loincName": "Albumin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E46",
+    "conditionName": "Unspecified protein-calorie malnutrition",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1751-7",
+    "loincName": "Albumin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K74.6",
+    "conditionName": "Other and unspecified cirrhosis of liver",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1751-7",
+    "loincName": "Albumin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N04",
+    "conditionName": "Nephrotic syndrome",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "17849-1",
+    "loincName": "Reticulocytes/100 erythrocytes in Blood by Automated count",
+    "conditionIcd10": "D59.9",
+    "conditionName": "Acquired hemolytic anemia, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "17849-1",
+    "loincName": "Reticulocytes/100 erythrocytes in Blood by Automated count",
+    "conditionIcd10": "D64.9",
+    "conditionName": "Anemia, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "17861-6",
+    "loincName": "Calcium [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E21.0",
+    "conditionName": "Primary hyperparathyroidism",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "17861-6",
+    "loincName": "Calcium [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.51",
+    "conditionName": "Hypocalcemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "17861-6",
+    "loincName": "Calcium [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.52",
+    "conditionName": "Hypercalcemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "17861-6",
+    "loincName": "Calcium [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "M81.0",
+    "conditionName": "Age-related osteoporosis without current pathological fracture",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1798-8",
+    "loincName": "Amylase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K85.9",
+    "conditionName": "Acute pancreatitis, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "1798-8",
+    "loincName": "Amylase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K86.1",
+    "conditionName": "Other chronic pancreatitis",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1834-1",
+    "loincName": "Alpha-1-Fetoprotein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "C22.0",
+    "conditionName": "Liver cell carcinoma",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1834-1",
+    "loincName": "Alpha-1-Fetoprotein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K74.6",
+    "conditionName": "Other and unspecified cirrhosis of liver",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1884-6",
+    "loincName": "Apolipoprotein B [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.0",
+    "conditionName": "Pure hypercholesterolemia",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1884-6",
+    "loincName": "Apolipoprotein B [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "19080-1",
+    "loincName": "Choriogonadotropin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "O00.9",
+    "conditionName": "Ectopic pregnancy, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "19080-1",
+    "loincName": "Choriogonadotropin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "Z33.1",
+    "conditionName": "Pregnancy state, incidental",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "19123-9",
+    "loincName": "Magnesium [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "19123-9",
+    "loincName": "Magnesium [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.42",
+    "conditionName": "Hypomagnesemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "19123-9",
+    "loincName": "Magnesium [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I49.9",
+    "conditionName": "Cardiac arrhythmia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1920-8",
+    "loincName": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "B18.2",
+    "conditionName": "Chronic viral hepatitis C",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1920-8",
+    "loincName": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K70.1",
+    "conditionName": "Alcoholic hepatitis",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1920-8",
+    "loincName": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K75.9",
+    "conditionName": "Inflammatory liver disease, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "1920-8",
+    "loincName": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K76.0",
+    "conditionName": "Fatty (change of) liver, not elsewhere classified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1968-7",
+    "loincName": "Bilirubin.direct [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K74.6",
+    "conditionName": "Other and unspecified cirrhosis of liver",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1968-7",
+    "loincName": "Bilirubin.direct [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K83.1",
+    "conditionName": "Obstruction of bile duct",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "1975-2",
+    "loincName": "Bilirubin.total [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D59.9",
+    "conditionName": "Acquired hemolytic anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1975-2",
+    "loincName": "Bilirubin.total [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K76.0",
+    "conditionName": "Fatty (change of) liver, not elsewhere classified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1975-2",
+    "loincName": "Bilirubin.total [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K83.1",
+    "conditionName": "Obstruction of bile duct",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1975-2",
+    "loincName": "Bilirubin.total [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "P59.9",
+    "conditionName": "Neonatal jaundice, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "1986-9",
+    "loincName": "C peptide [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E10",
+    "conditionName": "Type 1 diabetes mellitus",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "1986-9",
+    "loincName": "C peptide [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1988-5",
+    "loincName": "C reactive protein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1988-5",
+    "loincName": "C reactive protein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "M06.9",
+    "conditionName": "Rheumatoid arthritis, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1988-5",
+    "loincName": "C reactive protein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "R65.10",
+    "conditionName": "Systemic inflammatory response syndrome of non-infectious origin without acute organ dysfunction",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "1989-3",
+    "loincName": "Vitamin D, 25-Hydroxy [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E55.9",
+    "conditionName": "Vitamin D deficiency, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "1989-3",
+    "loincName": "Vitamin D, 25-Hydroxy [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.52",
+    "conditionName": "Hypercalcemia",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "1989-3",
+    "loincName": "Vitamin D, 25-Hydroxy [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "M81.0",
+    "conditionName": "Age-related osteoporosis without current pathological fracture",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2028-9",
+    "loincName": "Carbon dioxide, total [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.2",
+    "conditionName": "Acidosis",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2028-9",
+    "loincName": "Carbon dioxide, total [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.3",
+    "conditionName": "Alkalosis",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2028-9",
+    "loincName": "Carbon dioxide, total [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2039-6",
+    "loincName": "Carcinoembryonic Ag [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "C18.9",
+    "conditionName": "Malignant neoplasm of colon, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2039-6",
+    "loincName": "Carcinoembryonic Ag [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "C34.90",
+    "conditionName": "Malignant neoplasm of unspecified part of unspecified bronchus or lung",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2075-0",
+    "loincName": "Chloride [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E86.0",
+    "conditionName": "Dehydration",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2075-0",
+    "loincName": "Chloride [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.8",
+    "conditionName": "Other disorders of electrolyte and fluid balance",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2085-9",
+    "loincName": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.5",
+    "conditionName": "Hyperlipidemia, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2085-9",
+    "loincName": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.6",
+    "conditionName": "Lipoprotein deficiency",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2085-9",
+    "loincName": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2089-1",
+    "loincName": "Cholesterol in LDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.0",
+    "conditionName": "Pure hypercholesterolemia",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2089-1",
+    "loincName": "Cholesterol in LDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2089-1",
+    "loincName": "Cholesterol in LDL [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I63.9",
+    "conditionName": "Cerebral infarction, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2093-3",
+    "loincName": "Cholesterol [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.0",
+    "conditionName": "Pure hypercholesterolemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2093-3",
+    "loincName": "Cholesterol [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.5",
+    "conditionName": "Hyperlipidemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2093-3",
+    "loincName": "Cholesterol [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2132-9",
+    "loincName": "Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D51.9",
+    "conditionName": "Vitamin B12 deficiency anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2132-9",
+    "loincName": "Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E53.8",
+    "conditionName": "Deficiency of other specified B group vitamins",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2132-9",
+    "loincName": "Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "G63",
+    "conditionName": "Polyneuropathy in diseases classified elsewhere",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2143-6",
+    "loincName": "Cortisol [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E24.9",
+    "conditionName": "Cushing syndrome, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2143-6",
+    "loincName": "Cortisol [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E27.1",
+    "conditionName": "Primary adrenocortical insufficiency",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2160-0",
+    "loincName": "Creatinine [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N17",
+    "conditionName": "Acute kidney failure",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2160-0",
+    "loincName": "Creatinine [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2160-0",
+    "loincName": "Creatinine [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N19",
+    "conditionName": "Unspecified kidney failure",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2161-8",
+    "loincName": "Creatinine [Mass/volume] in Urine",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2243-4",
+    "loincName": "Estradiol (E2) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E28.39",
+    "conditionName": "Other primary ovarian failure",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2243-4",
+    "loincName": "Estradiol (E2) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N95.1",
+    "conditionName": "Menopausal and female climacteric states",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2276-4",
+    "loincName": "Ferritin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2276-4",
+    "loincName": "Ferritin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D63.1",
+    "conditionName": "Anemia in chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2276-4",
+    "loincName": "Ferritin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.10",
+    "conditionName": "Hemochromatosis, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2284-8",
+    "loincName": "Folate [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D52.9",
+    "conditionName": "Folate deficiency anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2284-8",
+    "loincName": "Folate [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D53.1",
+    "conditionName": "Other megaloblastic anemias, not elsewhere classified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2324-2",
+    "loincName": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K70.30",
+    "conditionName": "Alcoholic cirrhosis of liver without ascites",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2324-2",
+    "loincName": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K76.0",
+    "conditionName": "Fatty (change of) liver, not elsewhere classified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2324-2",
+    "loincName": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K83.1",
+    "conditionName": "Obstruction of bile duct",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2345-7",
+    "loincName": "Glucose [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E10",
+    "conditionName": "Type 1 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2345-7",
+    "loincName": "Glucose [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2345-7",
+    "loincName": "Glucose [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E13",
+    "conditionName": "Other specified diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2345-7",
+    "loincName": "Glucose [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E16.2",
+    "conditionName": "Hypoglycemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2345-7",
+    "loincName": "Glucose [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "R73.03",
+    "conditionName": "Prediabetes",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2350-7",
+    "loincName": "Glucose [Mass/volume] in Urine by Test strip",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2350-7",
+    "loincName": "Glucose [Mass/volume] in Urine by Test strip",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2484-4",
+    "loincName": "Insulin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2484-4",
+    "loincName": "Insulin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "E16.1",
+    "conditionName": "Other hypoglycemia",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2498-4",
+    "loincName": "Iron [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2498-4",
+    "loincName": "Iron [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.10",
+    "conditionName": "Hemochromatosis, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2500-7",
+    "loincName": "Iron binding capacity [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2500-7",
+    "loincName": "Iron binding capacity [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.10",
+    "conditionName": "Hemochromatosis, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2502-3",
+    "loincName": "Iron saturation [Mass Fraction] in Serum or Plasma",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2502-3",
+    "loincName": "Iron saturation [Mass Fraction] in Serum or Plasma",
+    "conditionIcd10": "E83.10",
+    "conditionName": "Hemochromatosis, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2532-0",
+    "loincName": "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "C85.90",
+    "conditionName": "Non-Hodgkin lymphoma, unspecified, unspecified site",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2532-0",
+    "loincName": "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "D59.9",
+    "conditionName": "Acquired hemolytic anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2571-8",
+    "loincName": "Triglyceride [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.1",
+    "conditionName": "Pure hyperglyceridemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2571-8",
+    "loincName": "Triglyceride [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E78.5",
+    "conditionName": "Hyperlipidemia, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2571-8",
+    "loincName": "Triglyceride [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K85.9",
+    "conditionName": "Acute pancreatitis, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2731-8",
+    "loincName": "Parathyrin.intact [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E20.9",
+    "conditionName": "Hypoparathyroidism, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2731-8",
+    "loincName": "Parathyrin.intact [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E21.0",
+    "conditionName": "Primary hyperparathyroidism",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2731-8",
+    "loincName": "Parathyrin.intact [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2756-5",
+    "loincName": "pH of Urine by Test strip",
+    "conditionIcd10": "E87.2",
+    "conditionName": "Acidosis",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2756-5",
+    "loincName": "pH of Urine by Test strip",
+    "conditionIcd10": "N20.0",
+    "conditionName": "Calculus of kidney",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2777-1",
+    "loincName": "Phosphate [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E83.39",
+    "conditionName": "Other disorders of phosphorus metabolism",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2777-1",
+    "loincName": "Phosphate [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2823-3",
+    "loincName": "Potassium [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.5",
+    "conditionName": "Hyperkalemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2823-3",
+    "loincName": "Potassium [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.6",
+    "conditionName": "Hypokalemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2823-3",
+    "loincName": "Potassium [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "I49.9",
+    "conditionName": "Cardiac arrhythmia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2823-3",
+    "loincName": "Potassium [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2842-3",
+    "loincName": "Prolactin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D35.2",
+    "conditionName": "Benign neoplasm of pituitary gland",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2842-3",
+    "loincName": "Prolactin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E22.1",
+    "conditionName": "Hyperprolactinemia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2857-1",
+    "loincName": "Prostate specific Ag [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "C61",
+    "conditionName": "Malignant neoplasm of prostate",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2857-1",
+    "loincName": "Prostate specific Ag [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N40.0",
+    "conditionName": "Benign prostatic hyperplasia without lower urinary tract symptoms",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2885-2",
+    "loincName": "Protein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "C90.0",
+    "conditionName": "Multiple myeloma",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2885-2",
+    "loincName": "Protein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E46",
+    "conditionName": "Unspecified protein-calorie malnutrition",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2885-2",
+    "loincName": "Protein [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K70.3",
+    "conditionName": "Alcoholic cirrhosis of liver",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2888-6",
+    "loincName": "Protein [Mass/volume] in Urine by Test strip",
+    "conditionIcd10": "N04",
+    "conditionName": "Nephrotic syndrome",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2888-6",
+    "loincName": "Protein [Mass/volume] in Urine by Test strip",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2888-6",
+    "loincName": "Protein [Mass/volume] in Urine by Test strip",
+    "conditionIcd10": "O14.9",
+    "conditionName": "Unspecified pre-eclampsia",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2951-2",
+    "loincName": "Sodium [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.0",
+    "conditionName": "Hyperosmolality and hypernatremia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2951-2",
+    "loincName": "Sodium [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.1",
+    "conditionName": "Hypo-osmolality and hyponatremia",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2951-2",
+    "loincName": "Sodium [Moles/volume] in Serum or Plasma",
+    "conditionIcd10": "E87.8",
+    "conditionName": "Other disorders of electrolyte and fluid balance",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "2965-2",
+    "loincName": "Specific gravity of Urine by Test strip",
+    "conditionIcd10": "E23.2",
+    "conditionName": "Diabetes insipidus",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2965-2",
+    "loincName": "Specific gravity of Urine by Test strip",
+    "conditionIcd10": "E86.0",
+    "conditionName": "Dehydration",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "2986-8",
+    "loincName": "Testosterone [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E28.1",
+    "conditionName": "Androgen excess",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "2986-8",
+    "loincName": "Testosterone [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E29.1",
+    "conditionName": "Testicular hypofunction",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "3016-3",
+    "loincName": "Thyrotropin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "E03.9",
+    "conditionName": "Hypothyroidism, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "3016-3",
+    "loincName": "Thyrotropin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "E05.90",
+    "conditionName": "Thyrotoxicosis, unspecified without thyrotoxic crisis or storm",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "3016-3",
+    "loincName": "Thyrotropin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "E06.3",
+    "conditionName": "Autoimmune thyroiditis",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "3024-7",
+    "loincName": "Thyroxine (T4) free [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E03.9",
+    "conditionName": "Hypothyroidism, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3024-7",
+    "loincName": "Thyroxine (T4) free [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E05.90",
+    "conditionName": "Thyrotoxicosis, unspecified without thyrotoxic crisis or storm",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3026-2",
+    "loincName": "Thyroxine (T4) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E03.9",
+    "conditionName": "Hypothyroidism, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3026-2",
+    "loincName": "Thyroxine (T4) [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E05.90",
+    "conditionName": "Thyrotoxicosis, unspecified without thyrotoxic crisis or storm",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3040-3",
+    "loincName": "Lipase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K85.9",
+    "conditionName": "Acute pancreatitis, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "3040-3",
+    "loincName": "Lipase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K86.1",
+    "conditionName": "Other chronic pancreatitis",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3051-0",
+    "loincName": "Triiodothyronine (T3) free [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E03.9",
+    "conditionName": "Hypothyroidism, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3051-0",
+    "loincName": "Triiodothyronine (T3) free [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E05.90",
+    "conditionName": "Thyrotoxicosis, unspecified without thyrotoxic crisis or storm",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "30522-7",
+    "loincName": "C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method",
+    "conditionIcd10": "E78.5",
+    "conditionName": "Hyperlipidemia, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "30522-7",
+    "loincName": "C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method",
+    "conditionIcd10": "I25.10",
+    "conditionName": "Atherosclerotic heart disease of native coronary artery",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "3084-1",
+    "loincName": "Urate [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "M10.9",
+    "conditionName": "Gout, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "3084-1",
+    "loincName": "Urate [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3084-1",
+    "loincName": "Urate [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N20.0",
+    "conditionName": "Calculus of kidney",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "3094-0",
+    "loincName": "Urea nitrogen [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E86.0",
+    "conditionName": "Dehydration",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "3094-0",
+    "loincName": "Urea nitrogen [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N17",
+    "conditionName": "Acute kidney failure",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "3094-0",
+    "loincName": "Urea nitrogen [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3097-3",
+    "loincName": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma",
+    "conditionIcd10": "E86.0",
+    "conditionName": "Dehydration",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "3097-3",
+    "loincName": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma",
+    "conditionIcd10": "K92.2",
+    "conditionName": "Gastrointestinal hemorrhage, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "3173-2",
+    "loincName": "aPTT in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "D68.0",
+    "conditionName": "Von Willebrand disease",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "3173-2",
+    "loincName": "aPTT in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "D68.9",
+    "conditionName": "Coagulation defect, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "3173-2",
+    "loincName": "aPTT in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "Z79.01",
+    "conditionName": "Long term (current) use of anticoagulants",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3255-7",
+    "loincName": "Fibrinogen [Mass/volume] in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "D65",
+    "conditionName": "Disseminated intravascular coagulation",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "3255-7",
+    "loincName": "Fibrinogen [Mass/volume] in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "D68.9",
+    "conditionName": "Coagulation defect, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "33762-6",
+    "loincName": "Natriuretic peptide.B prohormone N-Terminal [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I50.20",
+    "conditionName": "Unspecified systolic (congestive) heart failure",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "33762-6",
+    "loincName": "Natriuretic peptide.B prohormone N-Terminal [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "I50.9",
+    "conditionName": "Heart failure, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "33863-2",
+    "loincName": "Cystatin C [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N17",
+    "conditionName": "Acute kidney failure",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "33863-2",
+    "loincName": "Cystatin C [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "33914-3",
+    "loincName": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma",
+    "conditionIcd10": "N17",
+    "conditionName": "Acute kidney failure",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "33914-3",
+    "loincName": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma",
+    "conditionIcd10": "N18",
+    "conditionName": "Chronic kidney disease",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "33959-8",
+    "loincName": "Procalcitonin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "A41.9",
+    "conditionName": "Sepsis, unspecified organism",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "33959-8",
+    "loincName": "Procalcitonin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "A49.9",
+    "conditionName": "Bacterial infection, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "42637-9",
+    "loincName": "Natriuretic peptide B [Mass/volume] in Blood",
+    "conditionIcd10": "I50.20",
+    "conditionName": "Unspecified systolic (congestive) heart failure",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "42637-9",
+    "loincName": "Natriuretic peptide B [Mass/volume] in Blood",
+    "conditionIcd10": "I50.9",
+    "conditionName": "Heart failure, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "4537-7",
+    "loincName": "Erythrocyte sedimentation rate by Westergren method",
+    "conditionIcd10": "M06.9",
+    "conditionName": "Rheumatoid arthritis, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "4537-7",
+    "loincName": "Erythrocyte sedimentation rate by Westergren method",
+    "conditionIcd10": "M31.6",
+    "conditionName": "Other giant cell arteritis",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "4537-7",
+    "loincName": "Erythrocyte sedimentation rate by Westergren method",
+    "conditionIcd10": "M35.3",
+    "conditionName": "Polymyalgia rheumatica",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "4542-7",
+    "loincName": "Haptoglobin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "D59.9",
+    "conditionName": "Acquired hemolytic anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "4542-7",
+    "loincName": "Haptoglobin [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "K74.6",
+    "conditionName": "Other and unspecified cirrhosis of liver",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "4544-3",
+    "loincName": "Hematocrit [Volume Fraction] of Blood by Automated count",
+    "conditionIcd10": "D64.9",
+    "conditionName": "Anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "4544-3",
+    "loincName": "Hematocrit [Volume Fraction] of Blood by Automated count",
+    "conditionIcd10": "D75.1",
+    "conditionName": "Secondary polycythemia",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "4544-3",
+    "loincName": "Hematocrit [Volume Fraction] of Blood by Automated count",
+    "conditionIcd10": "E86.0",
+    "conditionName": "Dehydration",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "4548-4",
+    "loincName": "Hemoglobin A1c/Hemoglobin.total in Blood",
+    "conditionIcd10": "E10",
+    "conditionName": "Type 1 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "4548-4",
+    "loincName": "Hemoglobin A1c/Hemoglobin.total in Blood",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "4548-4",
+    "loincName": "Hemoglobin A1c/Hemoglobin.total in Blood",
+    "conditionIcd10": "E13",
+    "conditionName": "Other specified diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "4548-4",
+    "loincName": "Hemoglobin A1c/Hemoglobin.total in Blood",
+    "conditionIcd10": "R73.03",
+    "conditionName": "Prediabetes",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "4549-2",
+    "loincName": "Fructosamine [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E10",
+    "conditionName": "Type 1 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "4549-2",
+    "loincName": "Fructosamine [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "4576-5",
+    "loincName": "Hemoglobin pattern [interpretation] in Blood",
+    "conditionIcd10": "D56.9",
+    "conditionName": "Thalassemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "4576-5",
+    "loincName": "Hemoglobin pattern [interpretation] in Blood",
+    "conditionIcd10": "D57.1",
+    "conditionName": "Sickle-cell disease without crisis",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "4625-0",
+    "loincName": "Hemoglobin S/Hemoglobin.total in Blood",
+    "conditionIcd10": "D57.1",
+    "conditionName": "Sickle-cell disease without crisis",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "48065-7",
+    "loincName": "Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma",
+    "conditionIcd10": "D65",
+    "conditionName": "Disseminated intravascular coagulation",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "48065-7",
+    "loincName": "Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma",
+    "conditionIcd10": "I26.99",
+    "conditionName": "Other pulmonary embolism without acute cor pulmonale",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "48065-7",
+    "loincName": "Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma",
+    "conditionIcd10": "I82.90",
+    "conditionName": "Acute embolism and thrombosis of unspecified vein",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5196-1",
+    "loincName": "Hepatitis B virus surface Ag [Presence] in Serum or Plasma by Immunoassay",
+    "conditionIcd10": "B16.9",
+    "conditionName": "Acute hepatitis B without delta-agent and without hepatic coma",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "5196-1",
+    "loincName": "Hepatitis B virus surface Ag [Presence] in Serum or Plasma by Immunoassay",
+    "conditionIcd10": "B18.1",
+    "conditionName": "Chronic viral hepatitis B without delta-agent",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "56888-1",
+    "loincName": "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay",
+    "conditionIcd10": "B20",
+    "conditionName": "Human immunodeficiency virus [HIV] disease",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5799-2",
+    "loincName": "Leukocyte esterase [Presence] in Urine by Test strip",
+    "conditionIcd10": "N10",
+    "conditionName": "Acute pyelonephritis",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5799-2",
+    "loincName": "Leukocyte esterase [Presence] in Urine by Test strip",
+    "conditionIcd10": "N39.0",
+    "conditionName": "Urinary tract infection, site not specified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5802-4",
+    "loincName": "Nitrite [Presence] in Urine by Test strip",
+    "conditionIcd10": "N39.0",
+    "conditionName": "Urinary tract infection, site not specified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5821-4",
+    "loincName": "Leukocytes [#/area] in Urine sediment by Microscopy high power field",
+    "conditionIcd10": "N10",
+    "conditionName": "Acute pyelonephritis",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5821-4",
+    "loincName": "Leukocytes [#/area] in Urine sediment by Microscopy high power field",
+    "conditionIcd10": "N39.0",
+    "conditionName": "Urinary tract infection, site not specified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5902-2",
+    "loincName": "Prothrombin time (PT) in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "D68.9",
+    "conditionName": "Coagulation defect, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "5902-2",
+    "loincName": "Prothrombin time (PT) in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "K74.6",
+    "conditionName": "Other and unspecified cirrhosis of liver",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "5902-2",
+    "loincName": "Prothrombin time (PT) in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "Z79.01",
+    "conditionName": "Long term (current) use of anticoagulants",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "5905-5",
+    "loincName": "Monocytes/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "A49.9",
+    "conditionName": "Bacterial infection, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "5905-5",
+    "loincName": "Monocytes/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "C93.1",
+    "conditionName": "Chronic monocytic leukemia",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "6301-6",
+    "loincName": "INR in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "I26.99",
+    "conditionName": "Other pulmonary embolism without acute cor pulmonale",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "6301-6",
+    "loincName": "INR in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "I82.90",
+    "conditionName": "Acute embolism and thrombosis of unspecified vein",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "6301-6",
+    "loincName": "INR in Platelet poor plasma by Coagulation assay",
+    "conditionIcd10": "Z79.01",
+    "conditionName": "Long term (current) use of anticoagulants",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "6690-2",
+    "loincName": "Leukocytes [#/volume] in Blood by Automated count",
+    "conditionIcd10": "A49.9",
+    "conditionName": "Bacterial infection, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "6690-2",
+    "loincName": "Leukocytes [#/volume] in Blood by Automated count",
+    "conditionIcd10": "C91.1",
+    "conditionName": "Chronic lymphocytic leukemia of B-cell type",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "6690-2",
+    "loincName": "Leukocytes [#/volume] in Blood by Automated count",
+    "conditionIcd10": "D70.9",
+    "conditionName": "Neutropenia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "6690-2",
+    "loincName": "Leukocytes [#/volume] in Blood by Automated count",
+    "conditionIcd10": "D72.829",
+    "conditionName": "Elevated white blood cell count, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "6768-6",
+    "loincName": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K74.6",
+    "conditionName": "Other and unspecified cirrhosis of liver",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "6768-6",
+    "loincName": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "K83.1",
+    "conditionName": "Obstruction of bile duct",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "6768-6",
+    "loincName": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma",
+    "conditionIcd10": "M88.9",
+    "conditionName": "Paget disease of bone, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "713-8",
+    "loincName": "Eosinophils/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "B82.9",
+    "conditionName": "Intestinal parasitism, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "713-8",
+    "loincName": "Eosinophils/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "J45.909",
+    "conditionName": "Unspecified asthma, uncomplicated",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "713-8",
+    "loincName": "Eosinophils/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "L20.9",
+    "conditionName": "Atopic dermatitis, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "718-7",
+    "loincName": "Hemoglobin [Mass/volume] in Blood",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "718-7",
+    "loincName": "Hemoglobin [Mass/volume] in Blood",
+    "conditionIcd10": "D64.9",
+    "conditionName": "Anemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "718-7",
+    "loincName": "Hemoglobin [Mass/volume] in Blood",
+    "conditionIcd10": "D75.1",
+    "conditionName": "Secondary polycythemia",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "736-9",
+    "loincName": "Lymphocytes/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "B34.9",
+    "conditionName": "Viral infection, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "736-9",
+    "loincName": "Lymphocytes/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "C91.1",
+    "conditionName": "Chronic lymphocytic leukemia of B-cell type",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "770-8",
+    "loincName": "Neutrophils/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "A49.9",
+    "conditionName": "Bacterial infection, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "770-8",
+    "loincName": "Neutrophils/100 leukocytes in Blood by Automated count",
+    "conditionIcd10": "D70.9",
+    "conditionName": "Neutropenia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "777-3",
+    "loincName": "Platelets [#/volume] in Blood by Automated count",
+    "conditionIcd10": "D69.3",
+    "conditionName": "Immune thrombocytopenic purpura",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "777-3",
+    "loincName": "Platelets [#/volume] in Blood by Automated count",
+    "conditionIcd10": "D69.6",
+    "conditionName": "Thrombocytopenia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "777-3",
+    "loincName": "Platelets [#/volume] in Blood by Automated count",
+    "conditionIcd10": "D75.839",
+    "conditionName": "Thrombocytosis, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "785-6",
+    "loincName": "MCH [Entitic mass] by Automated count",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "785-6",
+    "loincName": "MCH [Entitic mass] by Automated count",
+    "conditionIcd10": "D56.9",
+    "conditionName": "Thalassemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "786-4",
+    "loincName": "MCHC [Mass/volume] by Automated count",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "786-4",
+    "loincName": "MCHC [Mass/volume] by Automated count",
+    "conditionIcd10": "D58.0",
+    "conditionName": "Hereditary spherocytosis",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "787-2",
+    "loincName": "MCV [Entitic volume] by Automated count",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "787-2",
+    "loincName": "MCV [Entitic volume] by Automated count",
+    "conditionIcd10": "D51.9",
+    "conditionName": "Vitamin B12 deficiency anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "787-2",
+    "loincName": "MCV [Entitic volume] by Automated count",
+    "conditionIcd10": "D53.1",
+    "conditionName": "Other megaloblastic anemias, not elsewhere classified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "788-0",
+    "loincName": "Erythrocyte distribution width [Ratio] by Automated count",
+    "conditionIcd10": "D50.9",
+    "conditionName": "Iron deficiency anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "788-0",
+    "loincName": "Erythrocyte distribution width [Ratio] by Automated count",
+    "conditionIcd10": "D64.9",
+    "conditionName": "Anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "789-8",
+    "loincName": "Erythrocytes [#/volume] in Blood by Automated count",
+    "conditionIcd10": "D64.9",
+    "conditionName": "Anemia, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "789-8",
+    "loincName": "Erythrocytes [#/volume] in Blood by Automated count",
+    "conditionIcd10": "D75.1",
+    "conditionName": "Secondary polycythemia",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "8061-4",
+    "loincName": "Antinuclear Ab [Units/volume] in Serum",
+    "conditionIcd10": "M32.9",
+    "conditionName": "Systemic lupus erythematosus, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "8061-4",
+    "loincName": "Antinuclear Ab [Units/volume] in Serum",
+    "conditionIcd10": "M35.9",
+    "conditionName": "Systemic involvement of connective tissue, unspecified",
+    "relationship": "screens_for"
+  },
+  {
+    "loincCode": "882-1",
+    "loincName": "ABO and Rh group [Type] in Blood",
+    "conditionIcd10": "P55.1",
+    "conditionName": "ABO isoimmunization of newborn",
+    "relationship": "screens_for"
+  }
+]

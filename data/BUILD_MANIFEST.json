@@ -1,0 +1,54 @@
+{
+  "_comment": "Integrity + determinism reference. sha256 is over the committed JSONL bytes. ciRebuildable pipelines are rebuilt-and-diffed in CI; others are checksum-verified in CI and fully rebuilt locally and in the scheduled regeneration workflow.",
+  "sourceVersions": {
+    "_comment": "Pinned source release versions. Mirrors the VOCAB_VERSIONS discipline: every emitted row carries the version of the release it was built from. Bumping a version here and re-running the pipeline is what the scheduled regeneration workflow does.",
+    "checkup-curation": "2026-02",
+    "med-rt": "2026.01.05",
+    "rxnorm-prescribable": "2026-01-05",
+    "cdc-cvx": "2026-07-24"
+  },
+  "files": {
+    "lab-condition.jsonl": {
+      "rows": 251,
+      "sha256": "4b70489ec4feb45cb0f691620b58e713e6c1915df8b6033cadf9b0409bf29543",
+      "pipeline": "checkup-curated",
+      "ciRebuildable": true
+    },
+    "condition-synonym.jsonl": {
+      "rows": 254,
+      "sha256": "17cc1df96994ee0c36055d67a98c0eaf8777c9d4f5d7ed486a98f64ae99ddc97",
+      "pipeline": "checkup-curated",
+      "ciRebuildable": true
+    },
+    "condition-progression.jsonl": {
+      "rows": 126,
+      "sha256": "669df2c01c878c6a44e0f99b23c8c32bf379b9e76c05099f164213b79d398a33",
+      "pipeline": "checkup-curated",
+      "ciRebuildable": true
+    },
+    "drug-condition.jsonl": {
+      "rows": 18111,
+      "sha256": "2e9db5d65052796c101ba0d0daa7d27457da9f070c41b94140d72bed0e0fdc50",
+      "pipeline": "drug-condition-medrt",
+      "ciRebuildable": false
+    },
+    "brand-generic.jsonl": {
+      "rows": 6220,
+      "sha256": "881d8a0d0bb7f1348e4ff03a569d22ad4a4a27d6fbca05c14e7a275423bca639",
+      "pipeline": "rxnorm-prescribable",
+      "ciRebuildable": false
+    },
+    "ingredient-rollup.jsonl": {
+      "rows": 28309,
+      "sha256": "a7007690f32e5a137f70698a49dfb97707370806cb2ed03839a84f7aabcd3a5c",
+      "pipeline": "rxnorm-prescribable",
+      "ciRebuildable": false
+    },
+    "cvx-disease.jsonl": {
+      "rows": 80,
+      "sha256": "83d33488b3aa7a4e9e3cf63a034466e6520e7e1ebc064dbd084c16a4b5faf253",
+      "pipeline": "cvx-disease",
+      "ciRebuildable": true
+    }
+  }
+}

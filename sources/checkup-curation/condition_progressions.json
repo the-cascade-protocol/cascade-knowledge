@@ -1,0 +1,1010 @@
+[
+  {
+    "sourceIcd10": "A69.20",
+    "sourceName": "Lyme Disease",
+    "targetIcd10": "I42.9",
+    "targetName": "Lyme Carditis (Cardiomyopathy)",
+    "relationship": "complication_of",
+    "evidence": "possible"
+  },
+  {
+    "sourceIcd10": "A69.20",
+    "sourceName": "Lyme Disease",
+    "targetIcd10": "M25.50",
+    "targetName": "Joint Pain (Arthralgia)",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "A69.20",
+    "sourceName": "Lyme Disease",
+    "targetIcd10": "R53.82",
+    "targetName": "Chronic Fatigue Syndrome",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "B18.1",
+    "sourceName": "Chronic Hepatitis B",
+    "targetIcd10": "C22.0",
+    "targetName": "Hepatocellular Carcinoma",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B18.1",
+    "sourceName": "Chronic Hepatitis B",
+    "targetIcd10": "K74.60",
+    "targetName": "Hepatic Cirrhosis",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B18.2",
+    "sourceName": "Chronic Hepatitis C",
+    "targetIcd10": "C22.0",
+    "targetName": "Hepatocellular Carcinoma",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B18.2",
+    "sourceName": "Chronic Hepatitis C",
+    "targetIcd10": "K74.60",
+    "targetName": "Hepatic Cirrhosis",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B20",
+    "sourceName": "HIV Disease",
+    "targetIcd10": "B37.1",
+    "targetName": "Esophageal Candidiasis",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B20",
+    "sourceName": "HIV Disease",
+    "targetIcd10": "B59",
+    "targetName": "Pneumocystis Pneumonia",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B20",
+    "sourceName": "HIV Disease",
+    "targetIcd10": "C46.9",
+    "targetName": "Kaposi Sarcoma",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B96.81",
+    "sourceName": "Helicobacter Pylori Infection",
+    "targetIcd10": "C16.9",
+    "targetName": "Gastric Cancer",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B96.81",
+    "sourceName": "Helicobacter Pylori Infection",
+    "targetIcd10": "K25.9",
+    "targetName": "Peptic Ulcer Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "B97.7",
+    "sourceName": "Human Papillomavirus (HPV)",
+    "targetIcd10": "C53.9",
+    "targetName": "Cervical Cancer",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "D05.90",
+    "sourceName": "Ductal Carcinoma In Situ (DCIS)",
+    "targetIcd10": "C50.919",
+    "targetName": "Invasive Breast Cancer",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "D22.9",
+    "sourceName": "Dysplastic Nevus",
+    "targetIcd10": "C43.9",
+    "targetName": "Malignant Melanoma",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "D47.2",
+    "sourceName": "Monoclonal Gammopathy of Undetermined Significance",
+    "targetIcd10": "C90.00",
+    "targetName": "Multiple Myeloma",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E03.9",
+    "sourceName": "Hypothyroidism",
+    "targetIcd10": "E78.5",
+    "targetName": "Dyslipidemia",
+    "relationship": "complication_of",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E03.9",
+    "sourceName": "Hypothyroidism",
+    "targetIcd10": "F33.1",
+    "targetName": "Major Depressive Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E03.9",
+    "sourceName": "Hypothyroidism",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E05.00",
+    "sourceName": "Graves' Disease",
+    "targetIcd10": "E05.90",
+    "targetName": "Hyperthyroidism",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E05.90",
+    "sourceName": "Hyperthyroidism",
+    "targetIcd10": "I48.91",
+    "targetName": "Atrial Fibrillation",
+    "relationship": "complication_of",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E05.90",
+    "sourceName": "Hyperthyroidism",
+    "targetIcd10": "M81.0",
+    "targetName": "Osteoporosis",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E06.3",
+    "sourceName": "Hashimoto's Thyroiditis",
+    "targetIcd10": "E03.9",
+    "targetName": "Hypothyroidism",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E10",
+    "sourceName": "Type 1 Diabetes Mellitus",
+    "targetIcd10": "E03.9",
+    "targetName": "Hypothyroidism (Hashimoto comorbidity)",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E10",
+    "sourceName": "Type 1 Diabetes Mellitus",
+    "targetIcd10": "K90.0",
+    "targetName": "Celiac Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E11",
+    "sourceName": "Type 2 Diabetes Mellitus",
+    "targetIcd10": "E11.22",
+    "targetName": "Type 2 Diabetes with Diabetic Chronic Kidney Disease",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E11",
+    "sourceName": "Type 2 Diabetes Mellitus",
+    "targetIcd10": "E11.319",
+    "targetName": "Type 2 Diabetes with Diabetic Retinopathy",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E11",
+    "sourceName": "Type 2 Diabetes Mellitus",
+    "targetIcd10": "E11.40",
+    "targetName": "Type 2 Diabetes with Diabetic Neuropathy",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E11",
+    "sourceName": "Type 2 Diabetes Mellitus",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E11",
+    "sourceName": "Type 2 Diabetes Mellitus",
+    "targetIcd10": "I50.9",
+    "targetName": "Heart Failure, Unspecified",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E24.9",
+    "sourceName": "Cushing's Syndrome",
+    "targetIcd10": "E11",
+    "targetName": "Type 2 Diabetes Mellitus",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E24.9",
+    "sourceName": "Cushing's Syndrome",
+    "targetIcd10": "M81.0",
+    "targetName": "Osteoporosis",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E28.2",
+    "sourceName": "Polycystic Ovary Syndrome",
+    "targetIcd10": "E11",
+    "targetName": "Type 2 Diabetes Mellitus",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E28.2",
+    "sourceName": "Polycystic Ovary Syndrome",
+    "targetIcd10": "N97.0",
+    "targetName": "Female Infertility (Anovulatory)",
+    "relationship": "complication_of",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E66.0",
+    "sourceName": "Morbid Obesity",
+    "targetIcd10": "E11",
+    "targetName": "Type 2 Diabetes Mellitus",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E66.0",
+    "sourceName": "Morbid Obesity",
+    "targetIcd10": "G47.33",
+    "targetName": "Obstructive Sleep Apnea",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E66.0",
+    "sourceName": "Morbid Obesity",
+    "targetIcd10": "I10",
+    "targetName": "Essential Hypertension",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E66.0",
+    "sourceName": "Morbid Obesity",
+    "targetIcd10": "K21.0",
+    "targetName": "Gastroesophageal Reflux Disease with Esophagitis",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E66.0",
+    "sourceName": "Morbid Obesity",
+    "targetIcd10": "K76.0",
+    "targetName": "Non-Alcoholic Fatty Liver Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E66.0",
+    "sourceName": "Morbid Obesity",
+    "targetIcd10": "M17.0",
+    "targetName": "Primary Osteoarthritis of Knee",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E66.0",
+    "sourceName": "Morbid Obesity",
+    "targetIcd10": "N18.9",
+    "targetName": "Chronic Kidney Disease, Unspecified",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "E78.5",
+    "sourceName": "Dyslipidemia",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E78.5",
+    "sourceName": "Dyslipidemia",
+    "targetIcd10": "I63.9",
+    "targetName": "Cerebral Infarction (Stroke)",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E88.81",
+    "sourceName": "Metabolic Syndrome",
+    "targetIcd10": "E11",
+    "targetName": "Type 2 Diabetes Mellitus",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E88.81",
+    "sourceName": "Metabolic Syndrome",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "E88.81",
+    "sourceName": "Metabolic Syndrome",
+    "targetIcd10": "I63.9",
+    "targetName": "Cerebral Infarction (Stroke)",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F17.210",
+    "sourceName": "Nicotine Dependence (Cigarettes)",
+    "targetIcd10": "C34.90",
+    "targetName": "Lung Cancer",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "F17.210",
+    "sourceName": "Nicotine Dependence (Cigarettes)",
+    "targetIcd10": "C67.9",
+    "targetName": "Bladder Cancer",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F17.210",
+    "sourceName": "Nicotine Dependence (Cigarettes)",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "F17.210",
+    "sourceName": "Nicotine Dependence (Cigarettes)",
+    "targetIcd10": "J44.1",
+    "targetName": "Chronic Obstructive Pulmonary Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "F31.9",
+    "sourceName": "Bipolar Disorder",
+    "targetIcd10": "F19.20",
+    "targetName": "Substance Use Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "F31.9",
+    "sourceName": "Bipolar Disorder",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F33.1",
+    "sourceName": "Major Depressive Disorder, Recurrent, Moderate",
+    "targetIcd10": "F10.20",
+    "targetName": "Alcohol Use Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F33.1",
+    "sourceName": "Major Depressive Disorder, Recurrent, Moderate",
+    "targetIcd10": "F33.2",
+    "targetName": "Major Depressive Disorder, Recurrent, Severe",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F33.2",
+    "sourceName": "Major Depressive Disorder, Recurrent, Severe",
+    "targetIcd10": "T14.91",
+    "targetName": "Suicide Attempt",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "F41.1",
+    "sourceName": "Generalized Anxiety Disorder",
+    "targetIcd10": "F10.20",
+    "targetName": "Alcohol Use Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F41.1",
+    "sourceName": "Generalized Anxiety Disorder",
+    "targetIcd10": "F33.1",
+    "targetName": "Major Depressive Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F43.10",
+    "sourceName": "Post-Traumatic Stress Disorder",
+    "targetIcd10": "F10.20",
+    "targetName": "Alcohol Use Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "F43.10",
+    "sourceName": "Post-Traumatic Stress Disorder",
+    "targetIcd10": "F19.20",
+    "targetName": "Other Substance Use Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "F43.10",
+    "sourceName": "Post-Traumatic Stress Disorder",
+    "targetIcd10": "F33.1",
+    "targetName": "Major Depressive Disorder",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "G20",
+    "sourceName": "Parkinson's Disease",
+    "targetIcd10": "F03.90",
+    "targetName": "Dementia",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "G20",
+    "sourceName": "Parkinson's Disease",
+    "targetIcd10": "F33.1",
+    "targetName": "Major Depressive Disorder",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "G31.84",
+    "sourceName": "Mild Cognitive Impairment",
+    "targetIcd10": "F03.90",
+    "targetName": "Unspecified Dementia",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "G31.84",
+    "sourceName": "Mild Cognitive Impairment",
+    "targetIcd10": "G30.9",
+    "targetName": "Alzheimer's Disease",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "G35",
+    "sourceName": "Multiple Sclerosis",
+    "targetIcd10": "F33.1",
+    "targetName": "Major Depressive Disorder",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "G35",
+    "sourceName": "Multiple Sclerosis",
+    "targetIcd10": "N31.9",
+    "targetName": "Neurogenic Bladder",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "G40.909",
+    "sourceName": "Epilepsy",
+    "targetIcd10": "F33.1",
+    "targetName": "Major Depressive Disorder",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "G40.909",
+    "sourceName": "Epilepsy",
+    "targetIcd10": "G40.911",
+    "targetName": "Status Epilepticus",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "G43.909",
+    "sourceName": "Migraine",
+    "targetIcd10": "I63.9",
+    "targetName": "Cerebral Infarction (Stroke)",
+    "relationship": "risk_factor_for",
+    "evidence": "possible"
+  },
+  {
+    "sourceIcd10": "G47.33",
+    "sourceName": "Obstructive Sleep Apnea",
+    "targetIcd10": "I10",
+    "targetName": "Essential Hypertension",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "G47.33",
+    "sourceName": "Obstructive Sleep Apnea",
+    "targetIcd10": "I27.0",
+    "targetName": "Pulmonary Hypertension",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "G47.33",
+    "sourceName": "Obstructive Sleep Apnea",
+    "targetIcd10": "I48.91",
+    "targetName": "Atrial Fibrillation",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "I10",
+    "sourceName": "Essential Hypertension",
+    "targetIcd10": "H35.039",
+    "targetName": "Hypertensive Retinopathy",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "I10",
+    "sourceName": "Essential Hypertension",
+    "targetIcd10": "I11.0",
+    "targetName": "Hypertensive Heart Disease with Heart Failure",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I10",
+    "sourceName": "Essential Hypertension",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I10",
+    "sourceName": "Essential Hypertension",
+    "targetIcd10": "I50.9",
+    "targetName": "Heart Failure, Unspecified",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I10",
+    "sourceName": "Essential Hypertension",
+    "targetIcd10": "I63.9",
+    "targetName": "Cerebral Infarction (Stroke)",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I10",
+    "sourceName": "Essential Hypertension",
+    "targetIcd10": "I71.4",
+    "targetName": "Abdominal Aortic Aneurysm",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "I10",
+    "sourceName": "Essential Hypertension",
+    "targetIcd10": "N18.9",
+    "targetName": "Chronic Kidney Disease, Unspecified",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I25.10",
+    "sourceName": "Coronary Artery Disease",
+    "targetIcd10": "I21.9",
+    "targetName": "Acute Myocardial Infarction",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I25.10",
+    "sourceName": "Coronary Artery Disease",
+    "targetIcd10": "I25.5",
+    "targetName": "Ischemic Cardiomyopathy",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "I25.10",
+    "sourceName": "Coronary Artery Disease",
+    "targetIcd10": "I50.9",
+    "targetName": "Heart Failure, Unspecified",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I48.91",
+    "sourceName": "Atrial Fibrillation",
+    "targetIcd10": "I50.9",
+    "targetName": "Heart Failure, Unspecified",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I48.91",
+    "sourceName": "Atrial Fibrillation",
+    "targetIcd10": "I63.9",
+    "targetName": "Cerebral Infarction (Stroke)",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I48.91",
+    "sourceName": "Atrial Fibrillation",
+    "targetIcd10": "I74.9",
+    "targetName": "Arterial Embolism and Thrombosis",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I50.9",
+    "sourceName": "Heart Failure, Unspecified",
+    "targetIcd10": "I48.91",
+    "targetName": "Atrial Fibrillation",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "I50.9",
+    "sourceName": "Heart Failure, Unspecified",
+    "targetIcd10": "N18.9",
+    "targetName": "Chronic Kidney Disease, Unspecified",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "I82.409",
+    "sourceName": "Deep Vein Thrombosis",
+    "targetIcd10": "I26.99",
+    "targetName": "Pulmonary Embolism",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "I82.409",
+    "sourceName": "Deep Vein Thrombosis",
+    "targetIcd10": "I87.009",
+    "targetName": "Post-Thrombotic Syndrome",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "J02.0",
+    "sourceName": "Streptococcal Pharyngitis",
+    "targetIcd10": "I01.9",
+    "targetName": "Acute Rheumatic Heart Disease",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "J44.1",
+    "sourceName": "Chronic Obstructive Pulmonary Disease",
+    "targetIcd10": "I27.0",
+    "targetName": "Pulmonary Hypertension",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "J44.1",
+    "sourceName": "Chronic Obstructive Pulmonary Disease",
+    "targetIcd10": "I50.9",
+    "targetName": "Heart Failure, Unspecified",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "J44.1",
+    "sourceName": "Chronic Obstructive Pulmonary Disease",
+    "targetIcd10": "J96.10",
+    "targetName": "Chronic Respiratory Failure",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "J45.20",
+    "sourceName": "Mild Persistent Asthma",
+    "targetIcd10": "J44.1",
+    "targetName": "Chronic Obstructive Pulmonary Disease with Acute Exacerbation",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K21.0",
+    "sourceName": "Gastroesophageal Reflux Disease",
+    "targetIcd10": "K22.70",
+    "targetName": "Barrett's Esophagus",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "K22.70",
+    "sourceName": "Barrett's Esophagus",
+    "targetIcd10": "C15.9",
+    "targetName": "Esophageal Cancer",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "K50.90",
+    "sourceName": "Crohn's Disease",
+    "targetIcd10": "C18.9",
+    "targetName": "Colorectal Cancer",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K50.90",
+    "sourceName": "Crohn's Disease",
+    "targetIcd10": "K50.014",
+    "targetName": "Crohn's Disease with Intestinal Obstruction",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K50.90",
+    "sourceName": "Crohn's Disease",
+    "targetIcd10": "K60.3",
+    "targetName": "Anal Fistula",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K51.90",
+    "sourceName": "Ulcerative Colitis",
+    "targetIcd10": "C18.9",
+    "targetName": "Colorectal Cancer",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "K51.90",
+    "sourceName": "Ulcerative Colitis",
+    "targetIcd10": "K51.014",
+    "targetName": "Ulcerative Colitis with Intestinal Obstruction",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K63.5",
+    "sourceName": "Colorectal Polyp",
+    "targetIcd10": "C18.9",
+    "targetName": "Colorectal Cancer",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "K74.60",
+    "sourceName": "Hepatic Cirrhosis",
+    "targetIcd10": "C22.0",
+    "targetName": "Hepatocellular Carcinoma",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "K74.60",
+    "sourceName": "Hepatic Cirrhosis",
+    "targetIcd10": "K76.7",
+    "targetName": "Hepatorenal Syndrome",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K75.81",
+    "sourceName": "Non-Alcoholic Steatohepatitis (NASH)",
+    "targetIcd10": "K74.60",
+    "targetName": "Hepatic Fibrosis and Cirrhosis",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "K76.0",
+    "sourceName": "Non-Alcoholic Fatty Liver Disease",
+    "targetIcd10": "K75.81",
+    "targetName": "Non-Alcoholic Steatohepatitis (NASH)",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "K86.1",
+    "sourceName": "Chronic Pancreatitis",
+    "targetIcd10": "C25.9",
+    "targetName": "Pancreatic Cancer",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K86.1",
+    "sourceName": "Chronic Pancreatitis",
+    "targetIcd10": "E11",
+    "targetName": "Type 2 Diabetes Mellitus (Pancreatogenic)",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K90.0",
+    "sourceName": "Celiac Disease",
+    "targetIcd10": "D50.9",
+    "targetName": "Iron Deficiency Anemia",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K90.0",
+    "sourceName": "Celiac Disease",
+    "targetIcd10": "E55.0",
+    "targetName": "Vitamin D Deficiency with Rickets",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "K90.0",
+    "sourceName": "Celiac Disease",
+    "targetIcd10": "M81.0",
+    "targetName": "Osteoporosis",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "L57.0",
+    "sourceName": "Actinic Keratosis",
+    "targetIcd10": "C44.90",
+    "targetName": "Non-Melanoma Skin Cancer",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "M05.79",
+    "sourceName": "Rheumatoid Arthritis",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "M05.79",
+    "sourceName": "Rheumatoid Arthritis",
+    "targetIcd10": "J84.10",
+    "targetName": "Interstitial Lung Disease",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "M05.79",
+    "sourceName": "Rheumatoid Arthritis",
+    "targetIcd10": "M19.90",
+    "targetName": "Joint Destruction (Osteoarthritis)",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "M32.9",
+    "sourceName": "Systemic Lupus Erythematosus",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "M32.9",
+    "sourceName": "Systemic Lupus Erythematosus",
+    "targetIcd10": "M32.11",
+    "targetName": "Lupus Endocarditis",
+    "relationship": "complication_of",
+    "evidence": "possible"
+  },
+  {
+    "sourceIcd10": "M32.9",
+    "sourceName": "Systemic Lupus Erythematosus",
+    "targetIcd10": "M32.14",
+    "targetName": "Lupus Nephritis",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "N18.9",
+    "sourceName": "Chronic Kidney Disease, Unspecified",
+    "targetIcd10": "I25.10",
+    "targetName": "Coronary Artery Disease",
+    "relationship": "risk_factor_for",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "N18.9",
+    "sourceName": "Chronic Kidney Disease, Unspecified",
+    "targetIcd10": "N18.6",
+    "targetName": "End-Stage Renal Disease",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "N87.1",
+    "sourceName": "Moderate Cervical Dysplasia (CIN II)",
+    "targetIcd10": "C53.9",
+    "targetName": "Cervical Cancer",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "R73.03",
+    "sourceName": "Prediabetes",
+    "targetIcd10": "E11",
+    "targetName": "Type 2 Diabetes Mellitus",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  },
+  {
+    "sourceIcd10": "R73.03",
+    "sourceName": "Prediabetes",
+    "targetIcd10": "E78.5",
+    "targetName": "Dyslipidemia",
+    "relationship": "risk_factor_for",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "U07.1",
+    "sourceName": "COVID-19",
+    "targetIcd10": "J84.10",
+    "targetName": "Pulmonary Fibrosis",
+    "relationship": "complication_of",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "U07.1",
+    "sourceName": "COVID-19",
+    "targetIcd10": "R53.82",
+    "targetName": "Chronic Fatigue Syndrome",
+    "relationship": "may_progress_to",
+    "evidence": "common"
+  },
+  {
+    "sourceIcd10": "U07.1",
+    "sourceName": "COVID-19",
+    "targetIcd10": "U09.9",
+    "targetName": "Post-COVID-19 Condition (Long COVID)",
+    "relationship": "may_progress_to",
+    "evidence": "established"
+  }
+]

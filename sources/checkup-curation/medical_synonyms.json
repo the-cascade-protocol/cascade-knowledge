@@ -1,0 +1,1526 @@
+[
+  {
+    "canonicalTerm": "acne vulgaris",
+    "synonym": "acne",
+    "codeSystem": "ICD10",
+    "code": "L70.0"
+  },
+  {
+    "canonicalTerm": "acne vulgaris",
+    "synonym": "breakouts",
+    "codeSystem": "ICD10",
+    "code": "L70.0"
+  },
+  {
+    "canonicalTerm": "acne vulgaris",
+    "synonym": "pimples",
+    "codeSystem": "ICD10",
+    "code": "L70.0"
+  },
+  {
+    "canonicalTerm": "allergic rhinitis",
+    "synonym": "allergies",
+    "codeSystem": "ICD10",
+    "code": "J30.1"
+  },
+  {
+    "canonicalTerm": "allergic rhinitis",
+    "synonym": "hay fever",
+    "codeSystem": "ICD10",
+    "code": "J30.1"
+  },
+  {
+    "canonicalTerm": "allergic rhinitis",
+    "synonym": "nasal allergies",
+    "codeSystem": "ICD10",
+    "code": "J30.1"
+  },
+  {
+    "canonicalTerm": "allergic rhinitis",
+    "synonym": "seasonal allergies",
+    "codeSystem": "ICD10",
+    "code": "J30.1"
+  },
+  {
+    "canonicalTerm": "alzheimer's disease",
+    "synonym": "alzheimer's",
+    "codeSystem": "ICD10",
+    "code": "G30.9"
+  },
+  {
+    "canonicalTerm": "alzheimer's disease",
+    "synonym": "alzheimers",
+    "codeSystem": "ICD10",
+    "code": "G30.9"
+  },
+  {
+    "canonicalTerm": "alzheimer's disease",
+    "synonym": "memory loss disease",
+    "codeSystem": "ICD10",
+    "code": "G30.9"
+  },
+  {
+    "canonicalTerm": "anemia",
+    "synonym": "anaemia",
+    "codeSystem": "ICD10",
+    "code": "D64.9"
+  },
+  {
+    "canonicalTerm": "anemia",
+    "synonym": "low blood count",
+    "codeSystem": "ICD10",
+    "code": "D64.9"
+  },
+  {
+    "canonicalTerm": "anemia",
+    "synonym": "low hemoglobin",
+    "codeSystem": "ICD10",
+    "code": "D64.9"
+  },
+  {
+    "canonicalTerm": "angina pectoris",
+    "synonym": "angina",
+    "codeSystem": "ICD10",
+    "code": "I20.9"
+  },
+  {
+    "canonicalTerm": "angina pectoris",
+    "synonym": "chest pain",
+    "codeSystem": "ICD10",
+    "code": "I20.9"
+  },
+  {
+    "canonicalTerm": "asthma",
+    "synonym": "bronchial asthma",
+    "codeSystem": "ICD10",
+    "code": "J45.909"
+  },
+  {
+    "canonicalTerm": "asthma",
+    "synonym": "reactive airway disease",
+    "codeSystem": "ICD10",
+    "code": "J45.909"
+  },
+  {
+    "canonicalTerm": "asthma",
+    "synonym": "wheezing",
+    "codeSystem": "ICD10",
+    "code": "J45.909"
+  },
+  {
+    "canonicalTerm": "atopic dermatitis",
+    "synonym": "dermatitis",
+    "codeSystem": "ICD10",
+    "code": "L30.9"
+  },
+  {
+    "canonicalTerm": "atopic dermatitis",
+    "synonym": "eczema",
+    "codeSystem": "ICD10",
+    "code": "L30.9"
+  },
+  {
+    "canonicalTerm": "atopic dermatitis",
+    "synonym": "skin rash",
+    "codeSystem": "ICD10",
+    "code": "L30.9"
+  },
+  {
+    "canonicalTerm": "atrial fibrillation",
+    "synonym": "a-fib",
+    "codeSystem": "ICD10",
+    "code": "I48.91"
+  },
+  {
+    "canonicalTerm": "atrial fibrillation",
+    "synonym": "afib",
+    "codeSystem": "ICD10",
+    "code": "I48.91"
+  },
+  {
+    "canonicalTerm": "atrial fibrillation",
+    "synonym": "irregular heart rhythm",
+    "codeSystem": "ICD10",
+    "code": "I48.91"
+  },
+  {
+    "canonicalTerm": "atrial fibrillation",
+    "synonym": "irregular heartbeat",
+    "codeSystem": "ICD10",
+    "code": "I48.91"
+  },
+  {
+    "canonicalTerm": "attention deficit hyperactivity disorder",
+    "synonym": "add",
+    "codeSystem": "ICD10",
+    "code": "F90.9"
+  },
+  {
+    "canonicalTerm": "attention deficit hyperactivity disorder",
+    "synonym": "adhd",
+    "codeSystem": "ICD10",
+    "code": "F90.9"
+  },
+  {
+    "canonicalTerm": "attention deficit hyperactivity disorder",
+    "synonym": "attention deficit",
+    "codeSystem": "ICD10",
+    "code": "F90.9"
+  },
+  {
+    "canonicalTerm": "attention deficit hyperactivity disorder",
+    "synonym": "hyperactivity",
+    "codeSystem": "ICD10",
+    "code": "F90.9"
+  },
+  {
+    "canonicalTerm": "benign prostatic hyperplasia",
+    "synonym": "bph",
+    "codeSystem": "ICD10",
+    "code": "N40.0"
+  },
+  {
+    "canonicalTerm": "benign prostatic hyperplasia",
+    "synonym": "enlarged prostate",
+    "codeSystem": "ICD10",
+    "code": "N40.0"
+  },
+  {
+    "canonicalTerm": "bipolar disorder",
+    "synonym": "bipolar",
+    "codeSystem": "ICD10",
+    "code": "F31.9"
+  },
+  {
+    "canonicalTerm": "bipolar disorder",
+    "synonym": "manic depression",
+    "codeSystem": "ICD10",
+    "code": "F31.9"
+  },
+  {
+    "canonicalTerm": "bipolar disorder",
+    "synonym": "manic depressive",
+    "codeSystem": "ICD10",
+    "code": "F31.9"
+  },
+  {
+    "canonicalTerm": "breast cancer",
+    "synonym": "breast ca",
+    "codeSystem": "ICD10",
+    "code": "C50.919"
+  },
+  {
+    "canonicalTerm": "breast cancer",
+    "synonym": "breast carcinoma",
+    "codeSystem": "ICD10",
+    "code": "C50.919"
+  },
+  {
+    "canonicalTerm": "breast cancer",
+    "synonym": "breast tumor",
+    "codeSystem": "ICD10",
+    "code": "C50.919"
+  },
+  {
+    "canonicalTerm": "carpal tunnel syndrome",
+    "synonym": "carpal tunnel",
+    "codeSystem": "ICD10",
+    "code": "G56.00"
+  },
+  {
+    "canonicalTerm": "carpal tunnel syndrome",
+    "synonym": "wrist numbness",
+    "codeSystem": "ICD10",
+    "code": "G56.00"
+  },
+  {
+    "canonicalTerm": "cataract",
+    "synonym": "cataracts",
+    "codeSystem": "ICD10",
+    "code": "H26.9"
+  },
+  {
+    "canonicalTerm": "cataract",
+    "synonym": "cloudy vision",
+    "codeSystem": "ICD10",
+    "code": "H26.9"
+  },
+  {
+    "canonicalTerm": "celiac disease",
+    "synonym": "celiac",
+    "codeSystem": "ICD10",
+    "code": "K90.0"
+  },
+  {
+    "canonicalTerm": "celiac disease",
+    "synonym": "coeliac disease",
+    "codeSystem": "ICD10",
+    "code": "K90.0"
+  },
+  {
+    "canonicalTerm": "celiac disease",
+    "synonym": "gluten allergy",
+    "codeSystem": "ICD10",
+    "code": "K90.0"
+  },
+  {
+    "canonicalTerm": "celiac disease",
+    "synonym": "gluten intolerance",
+    "codeSystem": "ICD10",
+    "code": "K90.0"
+  },
+  {
+    "canonicalTerm": "cholelithiasis",
+    "synonym": "gallbladder stones",
+    "codeSystem": "ICD10",
+    "code": "K80.20"
+  },
+  {
+    "canonicalTerm": "cholelithiasis",
+    "synonym": "gallstones",
+    "codeSystem": "ICD10",
+    "code": "K80.20"
+  },
+  {
+    "canonicalTerm": "chronic fatigue syndrome",
+    "synonym": "cfs",
+    "codeSystem": "ICD10",
+    "code": "R53.82"
+  },
+  {
+    "canonicalTerm": "chronic fatigue syndrome",
+    "synonym": "chronic tiredness",
+    "codeSystem": "ICD10",
+    "code": "R53.82"
+  },
+  {
+    "canonicalTerm": "chronic fatigue syndrome",
+    "synonym": "me/cfs",
+    "codeSystem": "ICD10",
+    "code": "R53.82"
+  },
+  {
+    "canonicalTerm": "chronic fatigue syndrome",
+    "synonym": "myalgic encephalomyelitis",
+    "codeSystem": "ICD10",
+    "code": "R53.82"
+  },
+  {
+    "canonicalTerm": "chronic kidney disease",
+    "synonym": "ckd",
+    "codeSystem": "ICD10",
+    "code": "N18.9"
+  },
+  {
+    "canonicalTerm": "chronic kidney disease",
+    "synonym": "kidney disease",
+    "codeSystem": "ICD10",
+    "code": "N18.9"
+  },
+  {
+    "canonicalTerm": "chronic kidney disease",
+    "synonym": "kidney failure",
+    "codeSystem": "ICD10",
+    "code": "N18.9"
+  },
+  {
+    "canonicalTerm": "chronic kidney disease",
+    "synonym": "renal failure",
+    "codeSystem": "ICD10",
+    "code": "N18.9"
+  },
+  {
+    "canonicalTerm": "chronic obstructive pulmonary disease",
+    "synonym": "bad lungs",
+    "codeSystem": "ICD10",
+    "code": "J44.1"
+  },
+  {
+    "canonicalTerm": "chronic obstructive pulmonary disease",
+    "synonym": "chronic bronchitis",
+    "codeSystem": "ICD10",
+    "code": "J44.1"
+  },
+  {
+    "canonicalTerm": "chronic obstructive pulmonary disease",
+    "synonym": "copd",
+    "codeSystem": "ICD10",
+    "code": "J44.1"
+  },
+  {
+    "canonicalTerm": "chronic obstructive pulmonary disease",
+    "synonym": "emphysema",
+    "codeSystem": "ICD10",
+    "code": "J44.1"
+  },
+  {
+    "canonicalTerm": "colorectal cancer",
+    "synonym": "bowel cancer",
+    "codeSystem": "ICD10",
+    "code": "C18.9"
+  },
+  {
+    "canonicalTerm": "colorectal cancer",
+    "synonym": "colon cancer",
+    "codeSystem": "ICD10",
+    "code": "C18.9"
+  },
+  {
+    "canonicalTerm": "colorectal cancer",
+    "synonym": "rectal cancer",
+    "codeSystem": "ICD10",
+    "code": "C18.9"
+  },
+  {
+    "canonicalTerm": "congestive heart failure",
+    "synonym": "chf",
+    "codeSystem": "ICD10",
+    "code": "I50.9"
+  },
+  {
+    "canonicalTerm": "congestive heart failure",
+    "synonym": "fluid on the heart",
+    "codeSystem": "ICD10",
+    "code": "I50.9"
+  },
+  {
+    "canonicalTerm": "congestive heart failure",
+    "synonym": "heart failure",
+    "codeSystem": "ICD10",
+    "code": "I50.9"
+  },
+  {
+    "canonicalTerm": "congestive heart failure",
+    "synonym": "weak heart",
+    "codeSystem": "ICD10",
+    "code": "I50.9"
+  },
+  {
+    "canonicalTerm": "coronary artery disease",
+    "synonym": "blocked arteries",
+    "codeSystem": "ICD10",
+    "code": "I25.10"
+  },
+  {
+    "canonicalTerm": "coronary artery disease",
+    "synonym": "cad",
+    "codeSystem": "ICD10",
+    "code": "I25.10"
+  },
+  {
+    "canonicalTerm": "coronary artery disease",
+    "synonym": "clogged arteries",
+    "codeSystem": "ICD10",
+    "code": "I25.10"
+  },
+  {
+    "canonicalTerm": "coronary artery disease",
+    "synonym": "coronary heart disease",
+    "codeSystem": "ICD10",
+    "code": "I25.10"
+  },
+  {
+    "canonicalTerm": "coronary artery disease",
+    "synonym": "heart disease",
+    "codeSystem": "ICD10",
+    "code": "I25.10"
+  },
+  {
+    "canonicalTerm": "covid-19",
+    "synonym": "coronavirus",
+    "codeSystem": "ICD10",
+    "code": "U07.1"
+  },
+  {
+    "canonicalTerm": "covid-19",
+    "synonym": "covid",
+    "codeSystem": "ICD10",
+    "code": "U07.1"
+  },
+  {
+    "canonicalTerm": "covid-19",
+    "synonym": "sars-cov-2",
+    "codeSystem": "ICD10",
+    "code": "U07.1"
+  },
+  {
+    "canonicalTerm": "covid-19",
+    "synonym": "the rona",
+    "codeSystem": "ICD10",
+    "code": "U07.1"
+  },
+  {
+    "canonicalTerm": "crohn's disease",
+    "synonym": "crohn's",
+    "codeSystem": "ICD10",
+    "code": "K50.90"
+  },
+  {
+    "canonicalTerm": "crohn's disease",
+    "synonym": "crohns",
+    "codeSystem": "ICD10",
+    "code": "K50.90"
+  },
+  {
+    "canonicalTerm": "crohn's disease",
+    "synonym": "inflammatory bowel disease",
+    "codeSystem": "ICD10",
+    "code": "K50.90"
+  },
+  {
+    "canonicalTerm": "deep vein thrombosis",
+    "synonym": "blood clot in leg",
+    "codeSystem": "ICD10",
+    "code": "I82.40"
+  },
+  {
+    "canonicalTerm": "deep vein thrombosis",
+    "synonym": "blood clot",
+    "codeSystem": "ICD10",
+    "code": "I82.40"
+  },
+  {
+    "canonicalTerm": "deep vein thrombosis",
+    "synonym": "dvt",
+    "codeSystem": "ICD10",
+    "code": "I82.40"
+  },
+  {
+    "canonicalTerm": "dementia",
+    "synonym": "cognitive decline",
+    "codeSystem": "ICD10",
+    "code": "F03.90"
+  },
+  {
+    "canonicalTerm": "dementia",
+    "synonym": "memory loss",
+    "codeSystem": "ICD10",
+    "code": "F03.90"
+  },
+  {
+    "canonicalTerm": "dementia",
+    "synonym": "senility",
+    "codeSystem": "ICD10",
+    "code": "F03.90"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 1",
+    "synonym": "dm1",
+    "codeSystem": "ICD10",
+    "code": "E10"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 1",
+    "synonym": "insulin-dependent diabetes",
+    "codeSystem": "ICD10",
+    "code": "E10"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 1",
+    "synonym": "juvenile diabetes",
+    "codeSystem": "ICD10",
+    "code": "E10"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 1",
+    "synonym": "t1dm",
+    "codeSystem": "ICD10",
+    "code": "E10"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 1",
+    "synonym": "type 1 diabetes",
+    "codeSystem": "ICD10",
+    "code": "E10"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "adult-onset diabetes",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "dm",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "dm2",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "high blood sugar",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "sugar diabetes",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "sugar",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "t2dm",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "diabetes mellitus type 2",
+    "synonym": "type 2 diabetes",
+    "codeSystem": "ICD10",
+    "code": "E11"
+  },
+  {
+    "canonicalTerm": "endometriosis",
+    "synonym": "endo",
+    "codeSystem": "ICD10",
+    "code": "N80.9"
+  },
+  {
+    "canonicalTerm": "endometriosis",
+    "synonym": "painful periods",
+    "codeSystem": "ICD10",
+    "code": "N80.9"
+  },
+  {
+    "canonicalTerm": "epilepsy",
+    "synonym": "convulsions",
+    "codeSystem": "ICD10",
+    "code": "G40.909"
+  },
+  {
+    "canonicalTerm": "epilepsy",
+    "synonym": "fits",
+    "codeSystem": "ICD10",
+    "code": "G40.909"
+  },
+  {
+    "canonicalTerm": "epilepsy",
+    "synonym": "seizure disorder",
+    "codeSystem": "ICD10",
+    "code": "G40.909"
+  },
+  {
+    "canonicalTerm": "epilepsy",
+    "synonym": "seizures",
+    "codeSystem": "ICD10",
+    "code": "G40.909"
+  },
+  {
+    "canonicalTerm": "erectile dysfunction",
+    "synonym": "ed",
+    "codeSystem": "ICD10",
+    "code": "N52.9"
+  },
+  {
+    "canonicalTerm": "erectile dysfunction",
+    "synonym": "impotence",
+    "codeSystem": "ICD10",
+    "code": "N52.9"
+  },
+  {
+    "canonicalTerm": "essential hypertension",
+    "synonym": "elevated blood pressure",
+    "codeSystem": "ICD10",
+    "code": "I10"
+  },
+  {
+    "canonicalTerm": "essential hypertension",
+    "synonym": "high blood pressure",
+    "codeSystem": "ICD10",
+    "code": "I10"
+  },
+  {
+    "canonicalTerm": "essential hypertension",
+    "synonym": "high bp",
+    "codeSystem": "ICD10",
+    "code": "I10"
+  },
+  {
+    "canonicalTerm": "essential hypertension",
+    "synonym": "htn",
+    "codeSystem": "ICD10",
+    "code": "I10"
+  },
+  {
+    "canonicalTerm": "fibromyalgia",
+    "synonym": "chronic pain syndrome",
+    "codeSystem": "ICD10",
+    "code": "M79.7"
+  },
+  {
+    "canonicalTerm": "fibromyalgia",
+    "synonym": "fibro",
+    "codeSystem": "ICD10",
+    "code": "M79.7"
+  },
+  {
+    "canonicalTerm": "fibromyalgia",
+    "synonym": "widespread pain",
+    "codeSystem": "ICD10",
+    "code": "M79.7"
+  },
+  {
+    "canonicalTerm": "gastroesophageal reflux disease",
+    "synonym": "acid reflux",
+    "codeSystem": "ICD10",
+    "code": "K21.0"
+  },
+  {
+    "canonicalTerm": "gastroesophageal reflux disease",
+    "synonym": "gerd",
+    "codeSystem": "ICD10",
+    "code": "K21.0"
+  },
+  {
+    "canonicalTerm": "gastroesophageal reflux disease",
+    "synonym": "heartburn",
+    "codeSystem": "ICD10",
+    "code": "K21.0"
+  },
+  {
+    "canonicalTerm": "gastroesophageal reflux disease",
+    "synonym": "reflux",
+    "codeSystem": "ICD10",
+    "code": "K21.0"
+  },
+  {
+    "canonicalTerm": "generalized anxiety disorder",
+    "synonym": "anxiety",
+    "codeSystem": "ICD10",
+    "code": "F41.1"
+  },
+  {
+    "canonicalTerm": "generalized anxiety disorder",
+    "synonym": "chronic anxiety",
+    "codeSystem": "ICD10",
+    "code": "F41.1"
+  },
+  {
+    "canonicalTerm": "generalized anxiety disorder",
+    "synonym": "gad",
+    "codeSystem": "ICD10",
+    "code": "F41.1"
+  },
+  {
+    "canonicalTerm": "generalized anxiety disorder",
+    "synonym": "nervousness",
+    "codeSystem": "ICD10",
+    "code": "F41.1"
+  },
+  {
+    "canonicalTerm": "glaucoma",
+    "synonym": "eye pressure",
+    "codeSystem": "ICD10",
+    "code": "H40.9"
+  },
+  {
+    "canonicalTerm": "glaucoma",
+    "synonym": "high eye pressure",
+    "codeSystem": "ICD10",
+    "code": "H40.9"
+  },
+  {
+    "canonicalTerm": "gout",
+    "synonym": "gouty arthritis",
+    "codeSystem": "ICD10",
+    "code": "M10.9"
+  },
+  {
+    "canonicalTerm": "gout",
+    "synonym": "high uric acid",
+    "codeSystem": "ICD10",
+    "code": "M10.9"
+  },
+  {
+    "canonicalTerm": "gout",
+    "synonym": "uric acid",
+    "codeSystem": "ICD10",
+    "code": "M10.9"
+  },
+  {
+    "canonicalTerm": "hashimoto's thyroiditis",
+    "synonym": "autoimmune thyroiditis",
+    "codeSystem": "ICD10",
+    "code": "E06.3"
+  },
+  {
+    "canonicalTerm": "hashimoto's thyroiditis",
+    "synonym": "hashimoto's",
+    "codeSystem": "ICD10",
+    "code": "E06.3"
+  },
+  {
+    "canonicalTerm": "hashimoto's thyroiditis",
+    "synonym": "hashimotos",
+    "codeSystem": "ICD10",
+    "code": "E06.3"
+  },
+  {
+    "canonicalTerm": "hepatitis b",
+    "synonym": "hbv",
+    "codeSystem": "ICD10",
+    "code": "B18.1"
+  },
+  {
+    "canonicalTerm": "hepatitis b",
+    "synonym": "hep b",
+    "codeSystem": "ICD10",
+    "code": "B18.1"
+  },
+  {
+    "canonicalTerm": "hepatitis c",
+    "synonym": "hcv",
+    "codeSystem": "ICD10",
+    "code": "B18.2"
+  },
+  {
+    "canonicalTerm": "hepatitis c",
+    "synonym": "hep c",
+    "codeSystem": "ICD10",
+    "code": "B18.2"
+  },
+  {
+    "canonicalTerm": "herpes zoster",
+    "synonym": "shingles",
+    "codeSystem": "ICD10",
+    "code": "B02.9"
+  },
+  {
+    "canonicalTerm": "herpes zoster",
+    "synonym": "zoster",
+    "codeSystem": "ICD10",
+    "code": "B02.9"
+  },
+  {
+    "canonicalTerm": "human immunodeficiency virus",
+    "synonym": "aids",
+    "codeSystem": "ICD10",
+    "code": "B20"
+  },
+  {
+    "canonicalTerm": "human immunodeficiency virus",
+    "synonym": "hiv",
+    "codeSystem": "ICD10",
+    "code": "B20"
+  },
+  {
+    "canonicalTerm": "human immunodeficiency virus",
+    "synonym": "hiv/aids",
+    "codeSystem": "ICD10",
+    "code": "B20"
+  },
+  {
+    "canonicalTerm": "hyperlipidemia",
+    "synonym": "cholesterol",
+    "codeSystem": "ICD10",
+    "code": "E78.5"
+  },
+  {
+    "canonicalTerm": "hyperlipidemia",
+    "synonym": "elevated lipids",
+    "codeSystem": "ICD10",
+    "code": "E78.5"
+  },
+  {
+    "canonicalTerm": "hyperlipidemia",
+    "synonym": "high cholesterol",
+    "codeSystem": "ICD10",
+    "code": "E78.5"
+  },
+  {
+    "canonicalTerm": "hyperlipidemia",
+    "synonym": "high triglycerides",
+    "codeSystem": "ICD10",
+    "code": "E78.5"
+  },
+  {
+    "canonicalTerm": "hypertension",
+    "synonym": "high blood pressure",
+    "codeSystem": "ICD10",
+    "code": "I10"
+  },
+  {
+    "canonicalTerm": "hypertension",
+    "synonym": "htn",
+    "codeSystem": "ICD10",
+    "code": "I10"
+  },
+  {
+    "canonicalTerm": "hyperthyroidism",
+    "synonym": "graves disease",
+    "codeSystem": "ICD10",
+    "code": "E05.90"
+  },
+  {
+    "canonicalTerm": "hyperthyroidism",
+    "synonym": "high thyroid",
+    "codeSystem": "ICD10",
+    "code": "E05.90"
+  },
+  {
+    "canonicalTerm": "hyperthyroidism",
+    "synonym": "overactive thyroid",
+    "codeSystem": "ICD10",
+    "code": "E05.90"
+  },
+  {
+    "canonicalTerm": "hypothyroidism",
+    "synonym": "hashimoto's",
+    "codeSystem": "ICD10",
+    "code": "E03.9"
+  },
+  {
+    "canonicalTerm": "hypothyroidism",
+    "synonym": "hashimotos",
+    "codeSystem": "ICD10",
+    "code": "E03.9"
+  },
+  {
+    "canonicalTerm": "hypothyroidism",
+    "synonym": "hypothyroid",
+    "codeSystem": "ICD10",
+    "code": "E03.9"
+  },
+  {
+    "canonicalTerm": "hypothyroidism",
+    "synonym": "low thyroid",
+    "codeSystem": "ICD10",
+    "code": "E03.9"
+  },
+  {
+    "canonicalTerm": "hypothyroidism",
+    "synonym": "thyroid disease",
+    "codeSystem": "ICD10",
+    "code": "E03.9"
+  },
+  {
+    "canonicalTerm": "hypothyroidism",
+    "synonym": "underactive thyroid",
+    "codeSystem": "ICD10",
+    "code": "E03.9"
+  },
+  {
+    "canonicalTerm": "insomnia",
+    "synonym": "can't sleep",
+    "codeSystem": "ICD10",
+    "code": "G47.00"
+  },
+  {
+    "canonicalTerm": "insomnia",
+    "synonym": "sleeplessness",
+    "codeSystem": "ICD10",
+    "code": "G47.00"
+  },
+  {
+    "canonicalTerm": "insomnia",
+    "synonym": "trouble sleeping",
+    "codeSystem": "ICD10",
+    "code": "G47.00"
+  },
+  {
+    "canonicalTerm": "iron deficiency anemia",
+    "synonym": "iron deficiency",
+    "codeSystem": "ICD10",
+    "code": "D50.9"
+  },
+  {
+    "canonicalTerm": "iron deficiency anemia",
+    "synonym": "low iron",
+    "codeSystem": "ICD10",
+    "code": "D50.9"
+  },
+  {
+    "canonicalTerm": "irritable bowel syndrome",
+    "synonym": "ibs",
+    "codeSystem": "ICD10",
+    "code": "K58.9"
+  },
+  {
+    "canonicalTerm": "irritable bowel syndrome",
+    "synonym": "nervous stomach",
+    "codeSystem": "ICD10",
+    "code": "K58.9"
+  },
+  {
+    "canonicalTerm": "irritable bowel syndrome",
+    "synonym": "spastic colon",
+    "codeSystem": "ICD10",
+    "code": "K58.9"
+  },
+  {
+    "canonicalTerm": "leukemia",
+    "synonym": "blood cancer",
+    "codeSystem": "ICD10",
+    "code": "C95.90"
+  },
+  {
+    "canonicalTerm": "leukemia",
+    "synonym": "leukaemia",
+    "codeSystem": "ICD10",
+    "code": "C95.90"
+  },
+  {
+    "canonicalTerm": "low back pain",
+    "synonym": "back pain",
+    "codeSystem": "ICD10",
+    "code": "M54.5"
+  },
+  {
+    "canonicalTerm": "low back pain",
+    "synonym": "lower back pain",
+    "codeSystem": "ICD10",
+    "code": "M54.5"
+  },
+  {
+    "canonicalTerm": "low back pain",
+    "synonym": "lumbago",
+    "codeSystem": "ICD10",
+    "code": "M54.5"
+  },
+  {
+    "canonicalTerm": "lung cancer",
+    "synonym": "lung ca",
+    "codeSystem": "ICD10",
+    "code": "C34.90"
+  },
+  {
+    "canonicalTerm": "lung cancer",
+    "synonym": "lung carcinoma",
+    "codeSystem": "ICD10",
+    "code": "C34.90"
+  },
+  {
+    "canonicalTerm": "lyme disease",
+    "synonym": "lyme",
+    "codeSystem": "ICD10",
+    "code": "A69.20"
+  },
+  {
+    "canonicalTerm": "lyme disease",
+    "synonym": "tick disease",
+    "codeSystem": "ICD10",
+    "code": "A69.20"
+  },
+  {
+    "canonicalTerm": "major depressive disorder",
+    "synonym": "clinical depression",
+    "codeSystem": "ICD10",
+    "code": "F32.9"
+  },
+  {
+    "canonicalTerm": "major depressive disorder",
+    "synonym": "depression",
+    "codeSystem": "ICD10",
+    "code": "F32.9"
+  },
+  {
+    "canonicalTerm": "major depressive disorder",
+    "synonym": "feeling depressed",
+    "codeSystem": "ICD10",
+    "code": "F32.9"
+  },
+  {
+    "canonicalTerm": "major depressive disorder",
+    "synonym": "mdd",
+    "codeSystem": "ICD10",
+    "code": "F32.9"
+  },
+  {
+    "canonicalTerm": "melanoma",
+    "synonym": "mole cancer",
+    "codeSystem": "ICD10",
+    "code": "C43.9"
+  },
+  {
+    "canonicalTerm": "melanoma",
+    "synonym": "skin cancer",
+    "codeSystem": "ICD10",
+    "code": "C43.9"
+  },
+  {
+    "canonicalTerm": "migraine",
+    "synonym": "migraines",
+    "codeSystem": "ICD10",
+    "code": "G43.909"
+  },
+  {
+    "canonicalTerm": "migraine",
+    "synonym": "severe headache",
+    "codeSystem": "ICD10",
+    "code": "G43.909"
+  },
+  {
+    "canonicalTerm": "migraine",
+    "synonym": "sick headache",
+    "codeSystem": "ICD10",
+    "code": "G43.909"
+  },
+  {
+    "canonicalTerm": "multiple sclerosis",
+    "synonym": "demyelinating disease",
+    "codeSystem": "ICD10",
+    "code": "G35"
+  },
+  {
+    "canonicalTerm": "multiple sclerosis",
+    "synonym": "ms",
+    "codeSystem": "ICD10",
+    "code": "G35"
+  },
+  {
+    "canonicalTerm": "myocardial infarction",
+    "synonym": "heart attack",
+    "codeSystem": "ICD10",
+    "code": "I21.9"
+  },
+  {
+    "canonicalTerm": "myocardial infarction",
+    "synonym": "mi",
+    "codeSystem": "ICD10",
+    "code": "I21.9"
+  },
+  {
+    "canonicalTerm": "nephrolithiasis",
+    "synonym": "kidney stone",
+    "codeSystem": "ICD10",
+    "code": "N20.0"
+  },
+  {
+    "canonicalTerm": "nephrolithiasis",
+    "synonym": "kidney stones",
+    "codeSystem": "ICD10",
+    "code": "N20.0"
+  },
+  {
+    "canonicalTerm": "nephrolithiasis",
+    "synonym": "renal stones",
+    "codeSystem": "ICD10",
+    "code": "N20.0"
+  },
+  {
+    "canonicalTerm": "obesity",
+    "synonym": "morbid obesity",
+    "codeSystem": "ICD10",
+    "code": "E66.9"
+  },
+  {
+    "canonicalTerm": "obesity",
+    "synonym": "overweight",
+    "codeSystem": "ICD10",
+    "code": "E66.9"
+  },
+  {
+    "canonicalTerm": "obesity",
+    "synonym": "weight problem",
+    "codeSystem": "ICD10",
+    "code": "E66.9"
+  },
+  {
+    "canonicalTerm": "obstructive sleep apnea",
+    "synonym": "osa",
+    "codeSystem": "ICD10",
+    "code": "G47.33"
+  },
+  {
+    "canonicalTerm": "obstructive sleep apnea",
+    "synonym": "sleep apnea",
+    "codeSystem": "ICD10",
+    "code": "G47.33"
+  },
+  {
+    "canonicalTerm": "obstructive sleep apnea",
+    "synonym": "snoring disorder",
+    "codeSystem": "ICD10",
+    "code": "G47.33"
+  },
+  {
+    "canonicalTerm": "osteoarthritis",
+    "synonym": "arthritis",
+    "codeSystem": "ICD10",
+    "code": "M19.90"
+  },
+  {
+    "canonicalTerm": "osteoarthritis",
+    "synonym": "degenerative joint disease",
+    "codeSystem": "ICD10",
+    "code": "M19.90"
+  },
+  {
+    "canonicalTerm": "osteoarthritis",
+    "synonym": "joint pain",
+    "codeSystem": "ICD10",
+    "code": "M19.90"
+  },
+  {
+    "canonicalTerm": "osteoarthritis",
+    "synonym": "wear and tear arthritis",
+    "codeSystem": "ICD10",
+    "code": "M19.90"
+  },
+  {
+    "canonicalTerm": "osteoporosis",
+    "synonym": "bone loss",
+    "codeSystem": "ICD10",
+    "code": "M81.0"
+  },
+  {
+    "canonicalTerm": "osteoporosis",
+    "synonym": "brittle bones",
+    "codeSystem": "ICD10",
+    "code": "M81.0"
+  },
+  {
+    "canonicalTerm": "osteoporosis",
+    "synonym": "thin bones",
+    "codeSystem": "ICD10",
+    "code": "M81.0"
+  },
+  {
+    "canonicalTerm": "panic disorder",
+    "synonym": "anxiety attacks",
+    "codeSystem": "ICD10",
+    "code": "F41.0"
+  },
+  {
+    "canonicalTerm": "panic disorder",
+    "synonym": "panic attacks",
+    "codeSystem": "ICD10",
+    "code": "F41.0"
+  },
+  {
+    "canonicalTerm": "parkinson's disease",
+    "synonym": "parkinson's",
+    "codeSystem": "ICD10",
+    "code": "G20"
+  },
+  {
+    "canonicalTerm": "parkinson's disease",
+    "synonym": "parkinsons",
+    "codeSystem": "ICD10",
+    "code": "G20"
+  },
+  {
+    "canonicalTerm": "parkinson's disease",
+    "synonym": "tremor disease",
+    "codeSystem": "ICD10",
+    "code": "G20"
+  },
+  {
+    "canonicalTerm": "peptic ulcer disease",
+    "synonym": "gastric ulcer",
+    "codeSystem": "ICD10",
+    "code": "K27.9"
+  },
+  {
+    "canonicalTerm": "peptic ulcer disease",
+    "synonym": "stomach ulcer",
+    "codeSystem": "ICD10",
+    "code": "K27.9"
+  },
+  {
+    "canonicalTerm": "peptic ulcer disease",
+    "synonym": "ulcer",
+    "codeSystem": "ICD10",
+    "code": "K27.9"
+  },
+  {
+    "canonicalTerm": "peripheral artery disease",
+    "synonym": "pad",
+    "codeSystem": "ICD10",
+    "code": "I73.9"
+  },
+  {
+    "canonicalTerm": "peripheral artery disease",
+    "synonym": "poor circulation",
+    "codeSystem": "ICD10",
+    "code": "I73.9"
+  },
+  {
+    "canonicalTerm": "pneumonia",
+    "synonym": "lung infection",
+    "codeSystem": "ICD10",
+    "code": "J18.9"
+  },
+  {
+    "canonicalTerm": "pneumonia",
+    "synonym": "walking pneumonia",
+    "codeSystem": "ICD10",
+    "code": "J18.9"
+  },
+  {
+    "canonicalTerm": "polycystic ovary syndrome",
+    "synonym": "pcos",
+    "codeSystem": "ICD10",
+    "code": "E28.2"
+  },
+  {
+    "canonicalTerm": "polycystic ovary syndrome",
+    "synonym": "polycystic ovaries",
+    "codeSystem": "ICD10",
+    "code": "E28.2"
+  },
+  {
+    "canonicalTerm": "post-traumatic stress disorder",
+    "synonym": "post traumatic stress",
+    "codeSystem": "ICD10",
+    "code": "F43.10"
+  },
+  {
+    "canonicalTerm": "post-traumatic stress disorder",
+    "synonym": "ptsd",
+    "codeSystem": "ICD10",
+    "code": "F43.10"
+  },
+  {
+    "canonicalTerm": "post-traumatic stress disorder",
+    "synonym": "trauma disorder",
+    "codeSystem": "ICD10",
+    "code": "F43.10"
+  },
+  {
+    "canonicalTerm": "postural orthostatic tachycardia syndrome",
+    "synonym": "dysautonomia",
+    "codeSystem": "ICD10",
+    "code": "I49.8"
+  },
+  {
+    "canonicalTerm": "postural orthostatic tachycardia syndrome",
+    "synonym": "orthostatic intolerance",
+    "codeSystem": "ICD10",
+    "code": "I49.8"
+  },
+  {
+    "canonicalTerm": "postural orthostatic tachycardia syndrome",
+    "synonym": "pots syndrome",
+    "codeSystem": "ICD10",
+    "code": "I49.8"
+  },
+  {
+    "canonicalTerm": "postural orthostatic tachycardia syndrome",
+    "synonym": "pots",
+    "codeSystem": "ICD10",
+    "code": "I49.8"
+  },
+  {
+    "canonicalTerm": "pre-diabetes",
+    "synonym": "borderline diabetes",
+    "codeSystem": "ICD10",
+    "code": "R73.03"
+  },
+  {
+    "canonicalTerm": "pre-diabetes",
+    "synonym": "impaired fasting glucose",
+    "codeSystem": "ICD10",
+    "code": "R73.03"
+  },
+  {
+    "canonicalTerm": "pre-diabetes",
+    "synonym": "impaired glucose tolerance",
+    "codeSystem": "ICD10",
+    "code": "R73.03"
+  },
+  {
+    "canonicalTerm": "pre-diabetes",
+    "synonym": "prediabetes",
+    "codeSystem": "ICD10",
+    "code": "R73.03"
+  },
+  {
+    "canonicalTerm": "prostate cancer",
+    "synonym": "prostate ca",
+    "codeSystem": "ICD10",
+    "code": "C61"
+  },
+  {
+    "canonicalTerm": "prostate cancer",
+    "synonym": "prostate tumor",
+    "codeSystem": "ICD10",
+    "code": "C61"
+  },
+  {
+    "canonicalTerm": "psoriasis",
+    "synonym": "scaly skin",
+    "codeSystem": "ICD10",
+    "code": "L40.9"
+  },
+  {
+    "canonicalTerm": "psoriasis",
+    "synonym": "skin plaques",
+    "codeSystem": "ICD10",
+    "code": "L40.9"
+  },
+  {
+    "canonicalTerm": "pulmonary embolism",
+    "synonym": "blood clot in lung",
+    "codeSystem": "ICD10",
+    "code": "I26.99"
+  },
+  {
+    "canonicalTerm": "pulmonary embolism",
+    "synonym": "pe",
+    "codeSystem": "ICD10",
+    "code": "I26.99"
+  },
+  {
+    "canonicalTerm": "rheumatoid arthritis",
+    "synonym": "autoimmune arthritis",
+    "codeSystem": "ICD10",
+    "code": "M06.9"
+  },
+  {
+    "canonicalTerm": "rheumatoid arthritis",
+    "synonym": "inflammatory arthritis",
+    "codeSystem": "ICD10",
+    "code": "M06.9"
+  },
+  {
+    "canonicalTerm": "rheumatoid arthritis",
+    "synonym": "ra",
+    "codeSystem": "ICD10",
+    "code": "M06.9"
+  },
+  {
+    "canonicalTerm": "streptococcal pharyngitis",
+    "synonym": "strep throat",
+    "codeSystem": "ICD10",
+    "code": "J02.0"
+  },
+  {
+    "canonicalTerm": "streptococcal pharyngitis",
+    "synonym": "strep",
+    "codeSystem": "ICD10",
+    "code": "J02.0"
+  },
+  {
+    "canonicalTerm": "stroke",
+    "synonym": "brain attack",
+    "codeSystem": "ICD10",
+    "code": "I63.9"
+  },
+  {
+    "canonicalTerm": "stroke",
+    "synonym": "cerebrovascular accident",
+    "codeSystem": "ICD10",
+    "code": "I63.9"
+  },
+  {
+    "canonicalTerm": "stroke",
+    "synonym": "cva",
+    "codeSystem": "ICD10",
+    "code": "I63.9"
+  },
+  {
+    "canonicalTerm": "systemic lupus erythematosus",
+    "synonym": "lupus",
+    "codeSystem": "ICD10",
+    "code": "M32.9"
+  },
+  {
+    "canonicalTerm": "systemic lupus erythematosus",
+    "synonym": "sle",
+    "codeSystem": "ICD10",
+    "code": "M32.9"
+  },
+  {
+    "canonicalTerm": "tinnitus",
+    "synonym": "ear ringing",
+    "codeSystem": "ICD10",
+    "code": "H93.19"
+  },
+  {
+    "canonicalTerm": "tinnitus",
+    "synonym": "ringing in ears",
+    "codeSystem": "ICD10",
+    "code": "H93.19"
+  },
+  {
+    "canonicalTerm": "ulcerative colitis",
+    "synonym": "bloody diarrhea",
+    "codeSystem": "ICD10",
+    "code": "K51.90"
+  },
+  {
+    "canonicalTerm": "ulcerative colitis",
+    "synonym": "colitis",
+    "codeSystem": "ICD10",
+    "code": "K51.90"
+  },
+  {
+    "canonicalTerm": "ulcerative colitis",
+    "synonym": "uc",
+    "codeSystem": "ICD10",
+    "code": "K51.90"
+  },
+  {
+    "canonicalTerm": "urinary tract infection",
+    "synonym": "bladder infection",
+    "codeSystem": "ICD10",
+    "code": "N39.0"
+  },
+  {
+    "canonicalTerm": "urinary tract infection",
+    "synonym": "uti",
+    "codeSystem": "ICD10",
+    "code": "N39.0"
+  },
+  {
+    "canonicalTerm": "urinary tract infection",
+    "synonym": "water infection",
+    "codeSystem": "ICD10",
+    "code": "N39.0"
+  },
+  {
+    "canonicalTerm": "urticaria",
+    "synonym": "hives",
+    "codeSystem": "ICD10",
+    "code": "L50.9"
+  },
+  {
+    "canonicalTerm": "urticaria",
+    "synonym": "welts",
+    "codeSystem": "ICD10",
+    "code": "L50.9"
+  },
+  {
+    "canonicalTerm": "vertigo",
+    "synonym": "dizziness",
+    "codeSystem": "ICD10",
+    "code": "R42"
+  },
+  {
+    "canonicalTerm": "vertigo",
+    "synonym": "room spinning",
+    "codeSystem": "ICD10",
+    "code": "R42"
+  },
+  {
+    "canonicalTerm": "vitamin d deficiency",
+    "synonym": "low d",
+    "codeSystem": "ICD10",
+    "code": "E55.9"
+  },
+  {
+    "canonicalTerm": "vitamin d deficiency",
+    "synonym": "low vitamin d",
+    "codeSystem": "ICD10",
+    "code": "E55.9"
+  },
+  {
+    "canonicalTerm": "vitamin d deficiency",
+    "synonym": "vitamin d insufficiency",
+    "codeSystem": "ICD10",
+    "code": "E55.9"
+  }
+]
