@@ -14,7 +14,10 @@ import { dirname, join } from "node:path";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 export const REPO_ROOT = join(HERE, "..", "..");
-export const DATA_DIR = join(REPO_ROOT, "data");
+// DATA_DIR is overridable so the determinism validator can rebuild into a temp
+// directory (via a subprocess with $KNOWLEDGE_DATA_DIR set) without touching the
+// committed data/ files.
+export const DATA_DIR = process.env.KNOWLEDGE_DATA_DIR || join(REPO_ROOT, "data");
 export const SCHEMA_DIR = join(REPO_ROOT, "schema");
 export const SOURCES_DIR = join(REPO_ROOT, "sources");
 export const OVERLAY_DIR = join(REPO_ROOT, "overlay");
