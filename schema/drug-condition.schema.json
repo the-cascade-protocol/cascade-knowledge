@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ns.cascadeprotocol.org/knowledge/v0/drug-condition.schema.json",
+  "title": "Drug may treat / may prevent a condition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "predicate",
+    "object",
+    "provenance"
+  ],
+  "properties": {
+    "subject": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "RXNORM",
+                "MED-RT"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "predicate": {
+      "enum": [
+        "may_treat",
+        "may_prevent"
+      ]
+    },
+    "object": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "MESH",
+                "MED-RT"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "$ref": "defs.schema.json#/$defs/provenance"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ns.cascadeprotocol.org/knowledge/v0/cvx-disease.schema.json",
+  "title": "Vaccine (CVX) prevents a disease",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "predicate",
+    "object",
+    "provenance"
+  ],
+  "properties": {
+    "subject": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "CVX"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "predicate": {
+      "enum": [
+        "prevents"
+      ]
+    },
+    "object": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "ICD-10-CM"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "$ref": "defs.schema.json#/$defs/provenance"
+    }
+  }
+}
