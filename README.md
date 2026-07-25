@@ -103,9 +103,9 @@ their review horizon (candidate quarterly, established annually).
 
 ## License
 
-Proposed: code under Apache-2.0 (`LICENSE`), data under CC-BY-4.0 (`LICENSE-DATA`),
-both pending ratification. Required third-party attribution notices (LOINC and
-others) are in `LICENSE-NOTICES.md`.
+Code is licensed under Apache-2.0 (`LICENSE`); data under `data/` is licensed
+under CC-BY-4.0 (`LICENSE-DATA`). Required third-party attribution notices
+(LOINC and others) are in `LICENSE-NOTICES.md`.
 
 ## Status
 
