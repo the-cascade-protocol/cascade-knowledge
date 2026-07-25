@@ -25,5 +25,9 @@ tmp-build/
 .determinism/
 *.tmp
 
+# Test fixtures use fabricated codes (9-prefixed RXCUIs, fake LOINC/ICD-10) and
+# MUST be committed, despite the *.RRF / *MEDRT*.xml licensed-input backstops above.
+!test/fixtures/**
+
 # OS
 .DS_Store

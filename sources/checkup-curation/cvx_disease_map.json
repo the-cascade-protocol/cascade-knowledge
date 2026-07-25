@@ -1,0 +1,482 @@
+[
+  {
+    "cvxCode": "03",
+    "vaccineName": "MMR",
+    "diseaseIcd10": "B05",
+    "diseaseName": "Measles"
+  },
+  {
+    "cvxCode": "03",
+    "vaccineName": "MMR",
+    "diseaseIcd10": "B06",
+    "diseaseName": "Rubella"
+  },
+  {
+    "cvxCode": "03",
+    "vaccineName": "MMR",
+    "diseaseIcd10": "B26",
+    "diseaseName": "Mumps"
+  },
+  {
+    "cvxCode": "08",
+    "vaccineName": "Hepatitis B, pediatric/adolescent",
+    "diseaseIcd10": "B16",
+    "diseaseName": "Acute hepatitis B"
+  },
+  {
+    "cvxCode": "08",
+    "vaccineName": "Hepatitis B, pediatric/adolescent",
+    "diseaseIcd10": "B18.1",
+    "diseaseName": "Chronic viral hepatitis B without delta-agent"
+  },
+  {
+    "cvxCode": "09",
+    "vaccineName": "Td (adult)",
+    "diseaseIcd10": "A35",
+    "diseaseName": "Other tetanus"
+  },
+  {
+    "cvxCode": "09",
+    "vaccineName": "Td (adult)",
+    "diseaseIcd10": "A36",
+    "diseaseName": "Diphtheria"
+  },
+  {
+    "cvxCode": "10",
+    "vaccineName": "IPV (inactivated poliovirus)",
+    "diseaseIcd10": "A80",
+    "diseaseName": "Acute poliomyelitis"
+  },
+  {
+    "cvxCode": "104",
+    "vaccineName": "Hepatitis A-Hepatitis B (Twinrix)",
+    "diseaseIcd10": "B15",
+    "diseaseName": "Acute hepatitis A"
+  },
+  {
+    "cvxCode": "104",
+    "vaccineName": "Hepatitis A-Hepatitis B (Twinrix)",
+    "diseaseIcd10": "B16",
+    "diseaseName": "Acute hepatitis B"
+  },
+  {
+    "cvxCode": "113",
+    "vaccineName": "Td, preservative free",
+    "diseaseIcd10": "A35",
+    "diseaseName": "Other tetanus"
+  },
+  {
+    "cvxCode": "113",
+    "vaccineName": "Td, preservative free",
+    "diseaseIcd10": "A36",
+    "diseaseName": "Diphtheria"
+  },
+  {
+    "cvxCode": "114",
+    "vaccineName": "Japanese Encephalitis (Ixiaro)",
+    "diseaseIcd10": "A83.0",
+    "diseaseName": "Japanese encephalitis"
+  },
+  {
+    "cvxCode": "115",
+    "vaccineName": "Tdap",
+    "diseaseIcd10": "A35",
+    "diseaseName": "Other tetanus"
+  },
+  {
+    "cvxCode": "115",
+    "vaccineName": "Tdap",
+    "diseaseIcd10": "A36",
+    "diseaseName": "Diphtheria"
+  },
+  {
+    "cvxCode": "115",
+    "vaccineName": "Tdap",
+    "diseaseIcd10": "A37",
+    "diseaseName": "Whooping cough (Pertussis)"
+  },
+  {
+    "cvxCode": "116",
+    "vaccineName": "Rotavirus, pentavalent (RotaTeq)",
+    "diseaseIcd10": "A08.0",
+    "diseaseName": "Rotaviral enteritis"
+  },
+  {
+    "cvxCode": "119",
+    "vaccineName": "Rotavirus, monovalent (Rotarix)",
+    "diseaseIcd10": "A08.0",
+    "diseaseName": "Rotaviral enteritis"
+  },
+  {
+    "cvxCode": "121",
+    "vaccineName": "Zoster live (Zostavax)",
+    "diseaseIcd10": "B02",
+    "diseaseName": "Zoster (Herpes zoster / Shingles)"
+  },
+  {
+    "cvxCode": "121",
+    "vaccineName": "Zoster live (Zostavax)",
+    "diseaseIcd10": "G53",
+    "diseaseName": "Postherpetic neuralgia"
+  },
+  {
+    "cvxCode": "133",
+    "vaccineName": "Pneumococcal conjugate PCV13",
+    "diseaseIcd10": "G00.1",
+    "diseaseName": "Pneumococcal meningitis"
+  },
+  {
+    "cvxCode": "133",
+    "vaccineName": "Pneumococcal conjugate PCV13",
+    "diseaseIcd10": "J13",
+    "diseaseName": "Pneumonia due to Streptococcus pneumoniae"
+  },
+  {
+    "cvxCode": "137",
+    "vaccineName": "HPV quadrivalent (Gardasil)",
+    "diseaseIcd10": "A63.0",
+    "diseaseName": "Anogenital (venereal) warts"
+  },
+  {
+    "cvxCode": "137",
+    "vaccineName": "HPV quadrivalent (Gardasil)",
+    "diseaseIcd10": "C53",
+    "diseaseName": "Malignant neoplasm of cervix uteri"
+  },
+  {
+    "cvxCode": "147",
+    "vaccineName": "Meningococcal conjugate (MenACWY)",
+    "diseaseIcd10": "A39.0",
+    "diseaseName": "Meningococcal meningitis"
+  },
+  {
+    "cvxCode": "147",
+    "vaccineName": "Meningococcal conjugate (MenACWY)",
+    "diseaseIcd10": "A39.2",
+    "diseaseName": "Acute meningococcemia"
+  },
+  {
+    "cvxCode": "162",
+    "vaccineName": "Meningococcal B (Trumenba)",
+    "diseaseIcd10": "A39.0",
+    "diseaseName": "Meningococcal meningitis"
+  },
+  {
+    "cvxCode": "162",
+    "vaccineName": "Meningococcal B (Trumenba)",
+    "diseaseIcd10": "A39.2",
+    "diseaseName": "Acute meningococcemia"
+  },
+  {
+    "cvxCode": "164",
+    "vaccineName": "Meningococcal B (Bexsero)",
+    "diseaseIcd10": "A39.0",
+    "diseaseName": "Meningococcal meningitis"
+  },
+  {
+    "cvxCode": "164",
+    "vaccineName": "Meningococcal B (Bexsero)",
+    "diseaseIcd10": "A39.2",
+    "diseaseName": "Acute meningococcemia"
+  },
+  {
+    "cvxCode": "165",
+    "vaccineName": "HPV 9-valent (Gardasil 9)",
+    "diseaseIcd10": "A63.0",
+    "diseaseName": "Anogenital (venereal) warts"
+  },
+  {
+    "cvxCode": "165",
+    "vaccineName": "HPV 9-valent (Gardasil 9)",
+    "diseaseIcd10": "C10",
+    "diseaseName": "Malignant neoplasm of oropharynx"
+  },
+  {
+    "cvxCode": "165",
+    "vaccineName": "HPV 9-valent (Gardasil 9)",
+    "diseaseIcd10": "C21",
+    "diseaseName": "Malignant neoplasm of anus and anal canal"
+  },
+  {
+    "cvxCode": "165",
+    "vaccineName": "HPV 9-valent (Gardasil 9)",
+    "diseaseIcd10": "C53",
+    "diseaseName": "Malignant neoplasm of cervix uteri"
+  },
+  {
+    "cvxCode": "18",
+    "vaccineName": "Rabies vaccine",
+    "diseaseIcd10": "A82",
+    "diseaseName": "Rabies"
+  },
+  {
+    "cvxCode": "185",
+    "vaccineName": "Influenza, recombinant, quadrivalent",
+    "diseaseIcd10": "J09",
+    "diseaseName": "Influenza due to identified influenza virus"
+  },
+  {
+    "cvxCode": "185",
+    "vaccineName": "Influenza, recombinant, quadrivalent",
+    "diseaseIcd10": "J10",
+    "diseaseName": "Influenza due to other identified influenza virus"
+  },
+  {
+    "cvxCode": "185",
+    "vaccineName": "Influenza, recombinant, quadrivalent",
+    "diseaseIcd10": "J11",
+    "diseaseName": "Influenza due to unidentified influenza virus"
+  },
+  {
+    "cvxCode": "187",
+    "vaccineName": "Zoster recombinant (Shingrix)",
+    "diseaseIcd10": "B02",
+    "diseaseName": "Zoster (Herpes zoster / Shingles)"
+  },
+  {
+    "cvxCode": "187",
+    "vaccineName": "Zoster recombinant (Shingrix)",
+    "diseaseIcd10": "G53",
+    "diseaseName": "Postherpetic neuralgia"
+  },
+  {
+    "cvxCode": "189",
+    "vaccineName": "Hepatitis B, adjuvanted (Heplisav-B)",
+    "diseaseIcd10": "B16",
+    "diseaseName": "Acute hepatitis B"
+  },
+  {
+    "cvxCode": "189",
+    "vaccineName": "Hepatitis B, adjuvanted (Heplisav-B)",
+    "diseaseIcd10": "B18.1",
+    "diseaseName": "Chronic viral hepatitis B without delta-agent"
+  },
+  {
+    "cvxCode": "197",
+    "vaccineName": "Influenza, inactivated, quadrivalent",
+    "diseaseIcd10": "J09",
+    "diseaseName": "Influenza due to identified influenza virus"
+  },
+  {
+    "cvxCode": "197",
+    "vaccineName": "Influenza, inactivated, quadrivalent",
+    "diseaseIcd10": "J10",
+    "diseaseName": "Influenza due to other identified influenza virus"
+  },
+  {
+    "cvxCode": "197",
+    "vaccineName": "Influenza, inactivated, quadrivalent",
+    "diseaseIcd10": "J11",
+    "diseaseName": "Influenza due to unidentified influenza virus"
+  },
+  {
+    "cvxCode": "20",
+    "vaccineName": "DTaP",
+    "diseaseIcd10": "A35",
+    "diseaseName": "Other tetanus"
+  },
+  {
+    "cvxCode": "20",
+    "vaccineName": "DTaP",
+    "diseaseIcd10": "A36",
+    "diseaseName": "Diphtheria"
+  },
+  {
+    "cvxCode": "20",
+    "vaccineName": "DTaP",
+    "diseaseIcd10": "A37",
+    "diseaseName": "Whooping cough (Pertussis)"
+  },
+  {
+    "cvxCode": "205",
+    "vaccineName": "Influenza, high-dose, quadrivalent",
+    "diseaseIcd10": "J09",
+    "diseaseName": "Influenza due to identified influenza virus"
+  },
+  {
+    "cvxCode": "205",
+    "vaccineName": "Influenza, high-dose, quadrivalent",
+    "diseaseIcd10": "J10",
+    "diseaseName": "Influenza due to other identified influenza virus"
+  },
+  {
+    "cvxCode": "205",
+    "vaccineName": "Influenza, high-dose, quadrivalent",
+    "diseaseIcd10": "J11",
+    "diseaseName": "Influenza due to unidentified influenza virus"
+  },
+  {
+    "cvxCode": "207",
+    "vaccineName": "Moderna COVID-19 Vaccine",
+    "diseaseIcd10": "U07.1",
+    "diseaseName": "COVID-19"
+  },
+  {
+    "cvxCode": "208",
+    "vaccineName": "Pfizer-BioNTech COVID-19 Vaccine",
+    "diseaseIcd10": "U07.1",
+    "diseaseName": "COVID-19"
+  },
+  {
+    "cvxCode": "21",
+    "vaccineName": "Varicella",
+    "diseaseIcd10": "B01",
+    "diseaseName": "Varicella (Chickenpox)"
+  },
+  {
+    "cvxCode": "211",
+    "vaccineName": "Novavax COVID-19 Vaccine",
+    "diseaseIcd10": "U07.1",
+    "diseaseName": "COVID-19"
+  },
+  {
+    "cvxCode": "212",
+    "vaccineName": "Janssen COVID-19 Vaccine",
+    "diseaseIcd10": "U07.1",
+    "diseaseName": "COVID-19"
+  },
+  {
+    "cvxCode": "215",
+    "vaccineName": "Pneumococcal conjugate PCV20",
+    "diseaseIcd10": "G00.1",
+    "diseaseName": "Pneumococcal meningitis"
+  },
+  {
+    "cvxCode": "215",
+    "vaccineName": "Pneumococcal conjugate PCV20",
+    "diseaseIcd10": "J13",
+    "diseaseName": "Pneumonia due to Streptococcus pneumoniae"
+  },
+  {
+    "cvxCode": "25",
+    "vaccineName": "Typhoid vaccine",
+    "diseaseIcd10": "A01.0",
+    "diseaseName": "Typhoid fever"
+  },
+  {
+    "cvxCode": "305",
+    "vaccineName": "RSV, bivalent (Abrysvo)",
+    "diseaseIcd10": "J12.1",
+    "diseaseName": "Respiratory syncytial virus pneumonia"
+  },
+  {
+    "cvxCode": "305",
+    "vaccineName": "RSV, bivalent (Abrysvo)",
+    "diseaseIcd10": "J21.0",
+    "diseaseName": "Acute bronchiolitis due to RSV"
+  },
+  {
+    "cvxCode": "306",
+    "vaccineName": "RSV, adjuvanted (Arexvy)",
+    "diseaseIcd10": "J12.1",
+    "diseaseName": "Respiratory syncytial virus pneumonia"
+  },
+  {
+    "cvxCode": "306",
+    "vaccineName": "RSV, adjuvanted (Arexvy)",
+    "diseaseIcd10": "J21.0",
+    "diseaseName": "Acute bronchiolitis due to RSV"
+  },
+  {
+    "cvxCode": "33",
+    "vaccineName": "Pneumococcal polysaccharide PPV23",
+    "diseaseIcd10": "G00.1",
+    "diseaseName": "Pneumococcal meningitis"
+  },
+  {
+    "cvxCode": "33",
+    "vaccineName": "Pneumococcal polysaccharide PPV23",
+    "diseaseIcd10": "J13",
+    "diseaseName": "Pneumonia due to Streptococcus pneumoniae"
+  },
+  {
+    "cvxCode": "37",
+    "vaccineName": "Yellow fever vaccine",
+    "diseaseIcd10": "A95",
+    "diseaseName": "Yellow fever"
+  },
+  {
+    "cvxCode": "43",
+    "vaccineName": "Hepatitis B, dialysis",
+    "diseaseIcd10": "B16",
+    "diseaseName": "Acute hepatitis B"
+  },
+  {
+    "cvxCode": "43",
+    "vaccineName": "Hepatitis B, dialysis",
+    "diseaseIcd10": "B18.1",
+    "diseaseName": "Chronic viral hepatitis B without delta-agent"
+  },
+  {
+    "cvxCode": "44",
+    "vaccineName": "Hepatitis B, adult dosage",
+    "diseaseIcd10": "B16",
+    "diseaseName": "Acute hepatitis B"
+  },
+  {
+    "cvxCode": "44",
+    "vaccineName": "Hepatitis B, adult dosage",
+    "diseaseIcd10": "B18.1",
+    "diseaseName": "Chronic viral hepatitis B without delta-agent"
+  },
+  {
+    "cvxCode": "48",
+    "vaccineName": "Hib (ActHIB)",
+    "diseaseIcd10": "A49.2",
+    "diseaseName": "Hemophilus influenzae infection, unspecified site"
+  },
+  {
+    "cvxCode": "48",
+    "vaccineName": "Hib (ActHIB)",
+    "diseaseIcd10": "G00.0",
+    "diseaseName": "Hemophilus meningitis"
+  },
+  {
+    "cvxCode": "48",
+    "vaccineName": "Hib (ActHIB)",
+    "diseaseIcd10": "J14",
+    "diseaseName": "Pneumonia due to Hemophilus influenzae"
+  },
+  {
+    "cvxCode": "52",
+    "vaccineName": "Hepatitis A, adult dosage",
+    "diseaseIcd10": "B15",
+    "diseaseName": "Acute hepatitis A"
+  },
+  {
+    "cvxCode": "62",
+    "vaccineName": "HPV bivalent (Cervarix)",
+    "diseaseIcd10": "C53",
+    "diseaseName": "Malignant neoplasm of cervix uteri"
+  },
+  {
+    "cvxCode": "83",
+    "vaccineName": "Hepatitis A, pediatric dosage",
+    "diseaseIcd10": "B15",
+    "diseaseName": "Acute hepatitis A"
+  },
+  {
+    "cvxCode": "94",
+    "vaccineName": "MMRV",
+    "diseaseIcd10": "B01",
+    "diseaseName": "Varicella (Chickenpox)"
+  },
+  {
+    "cvxCode": "94",
+    "vaccineName": "MMRV",
+    "diseaseIcd10": "B05",
+    "diseaseName": "Measles"
+  },
+  {
+    "cvxCode": "94",
+    "vaccineName": "MMRV",
+    "diseaseIcd10": "B06",
+    "diseaseName": "Rubella"
+  },
+  {
+    "cvxCode": "94",
+    "vaccineName": "MMRV",
+    "diseaseIcd10": "B26",
+    "diseaseName": "Mumps"
+  }
+]

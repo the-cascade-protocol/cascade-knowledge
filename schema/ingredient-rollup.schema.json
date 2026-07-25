@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ns.cascadeprotocol.org/knowledge/v0/ingredient-rollup.schema.json",
+  "title": "Drug product contains an ingredient",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "predicate",
+    "object",
+    "provenance"
+  ],
+  "properties": {
+    "subject": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "RXNORM"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "predicate": {
+      "enum": [
+        "has_ingredient"
+      ]
+    },
+    "object": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "RXNORM"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "$ref": "defs.schema.json#/$defs/provenance"
+    }
+  }
+}

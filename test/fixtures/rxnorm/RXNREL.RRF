@@ -1,0 +1,4 @@
+9000001||CUI|RN|9000010||CUI|has_tradename|R1||RXNORM|||||
+9000001||CUI|RN|9000020||CUI|ingredient_of|R2||RXNORM|||||
+9000001||CUI|RB|9000030||CUI|has_tradename|R3||RXNORM||||Y|
+9000001|A1|AUI|SY|9000020|A3|AUI|has_ingredient|R4||MTHSPL|||||

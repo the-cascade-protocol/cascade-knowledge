@@ -1,0 +1,27 @@
+{
+  "_comment": "Machine-readable open-source allowlist. SOURCES.md is the human-readable companion with per-source license verdicts and citations. The allowlist validator proves every committed row's `source` is listed here and every subject/object code system is open. This is the structural enforcement of the UMLS/SNOMED wall.",
+  "sources": {
+    "checkup-curation": {
+      "label": "Cascade Checkup curated crosswalk tables",
+      "method": "curated",
+      "license": "CC-BY-4.0 (this project's own curation over open code systems)"
+    },
+    "med-rt": {
+      "label": "MED-RT (Medication Reference Terminology), US federal work",
+      "method": "derived",
+      "license": "Public domain (US Government work)"
+    },
+    "rxnorm-prescribable": {
+      "label": "RxNorm Current Prescribable Content subset (NLM)",
+      "method": "derived",
+      "license": "Redistributable; released by NLM without UMLS Metathesaurus restrictions"
+    },
+    "cdc-cvx": {
+      "label": "CDC IIS CVX vaccine code set",
+      "method": "derived",
+      "license": "Public domain (US Government work)"
+    }
+  },
+  "openCodeSystems": ["LOINC", "ICD-10-CM", "RXNORM", "MESH", "MED-RT", "CVX", "text"],
+  "walledCodeSystems": ["SNOMED-CT", "ATC", "CUI", "UMLS", "NDF-RT"]
+}

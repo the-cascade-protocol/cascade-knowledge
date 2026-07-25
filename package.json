@@ -1,0 +1,19 @@
+{
+  "name": "cascade-knowledge",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Open clinical knowledge crosswalk (a Cascade Protocol asset). Data licensed CC-BY-4.0; code licensed Apache-2.0.",
+  "license": "SEE LICENSE (code) AND LICENSE-DATA (data)",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "gen:schemas": "node scripts/gen-schemas.mjs",
+    "build": "node scripts/build-all.mjs",
+    "validate": "node scripts/validate-all.mjs",
+    "validate:codes": "node scripts/validate/validate-code-existence.mjs",
+    "review:sweep": "node scripts/review-sweep.mjs",
+    "test": "node --test"
+  }
+}

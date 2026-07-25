@@ -1,0 +1,2 @@
+03       |MMR|measles, mumps and rubella virus vaccine||Active|False|1999/01/01
+999      |faketest|fabricated test vaccine|test-only fixture|Active|False|2020/01/01

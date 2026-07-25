@@ -1,0 +1,24 @@
+PROPOSED DATA LICENSE (pending ratification, decision D-4.10-6)
+
+The data in this repository (the JSONL files under data/ and the curated seed
+files under sources/checkup-curation/) is proposed to be licensed under the
+Creative Commons Attribution 4.0 International license.
+
+  SPDX-License-Identifier: CC-BY-4.0
+  Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+  Summary:   https://creativecommons.org/licenses/by/4.0/
+
+Under CC-BY-4.0 you may share and adapt the data for any purpose, including
+commercially, provided you give appropriate credit to "The Cascade Protocol
+cascade-knowledge dataset", link to the license, and indicate if changes were
+made.
+
+This is a proposal recorded with the v0 payload. When the maintainer ratifies
+the license decision, the full CC-BY-4.0 legal code will be vendored here
+verbatim.
+
+Attribution obligations for third-party code systems carried in the data (for
+example the required LOINC notice) are IN ADDITION to this license and are
+listed in LICENSE-NOTICES.md.
+
+Copyright (c) 2026 The Cascade Protocol contributors.

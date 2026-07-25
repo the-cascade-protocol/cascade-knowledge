@@ -1,0 +1,14 @@
+PROPOSED CODE LICENSE (pending ratification, decision D-4.10-6)
+
+The scripts, schemas, and other software in this repository are proposed to be
+licensed under the Apache License, Version 2.0.
+
+  SPDX-License-Identifier: Apache-2.0
+  Full text: https://www.apache.org/licenses/LICENSE-2.0
+
+This is a proposal recorded with the v0 payload. When the maintainer ratifies
+the license decision, the full Apache-2.0 legal text will be vendored here
+verbatim. Data files under data/ and the curated seeds under sources/ are
+covered by LICENSE-DATA, not this file.
+
+Copyright (c) 2026 The Cascade Protocol contributors.

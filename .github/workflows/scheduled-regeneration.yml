@@ -1,0 +1,54 @@
+name: Scheduled regeneration
+
+# Monthly: re-pull the open source releases, re-run the Phase-2 build pipelines,
+# and open an automated PR with the diff when the data changed. Nothing self-
+# merges; a maintainer ratifies against the diff.
+on:
+  schedule:
+    - cron: "0 6 1 * *" # 06:00 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Refresh open releases. CVX always; RxNorm prescribable + MED-RT only when
+      # their URLs (and, for RxNorm, a UMLS API key) are configured as secrets.
+      - name: Fetch open source releases
+        env:
+          RXNORM_PRESCRIBE_URL: ${{ secrets.RXNORM_PRESCRIBE_URL }}
+          MEDRT_URL: ${{ secrets.MEDRT_URL }}
+          UMLS_API_KEY: ${{ secrets.UMLS_API_KEY }}
+        run: node scripts/fetch-sources.mjs --update-versions
+
+      - name: Rebuild all pipelines (skips families whose inputs are absent)
+        run: node scripts/build-all.mjs
+
+      - name: Validate the regenerated payload
+        run: |
+          node --test
+          node scripts/validate-all.mjs
+
+      - name: Open a regeneration PR if data changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: automated/regeneration
+          title: "chore(data): scheduled regeneration"
+          commit-message: "chore(data): scheduled regeneration from refreshed open releases"
+          body: |
+            Automated monthly regeneration from refreshed open source releases.
+            Review the diff (rows added / changed / retired) before merging.
+            Nothing self-merges.
+          add-paths: |
+            data/**
+            sources/**

@@ -1,0 +1,46 @@
+name: Scheduled code-liveness audit
+
+# Monthly: revalidate EVERY committed code against the canonical APIs in full
+# mode (throttled) and open an issue when codes are retired, remapped, or gone.
+# This catches rot in curated rows that regeneration cannot touch.
+on:
+  schedule:
+    - cron: "0 7 15 * *" # 07:00 UTC on the 15th of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Full-mode code-existence audit (throttled)
+        id: audit
+        env:
+          CODECHECK_THROTTLE_MS: "250"
+        run: |
+          set +e
+          node scripts/validate/validate-code-existence.mjs --full | tee audit-report.txt
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Open an issue on audit findings
+        if: steps.audit.outputs.exit != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('audit-report.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Code-liveness audit: findings ${new Date().toISOString().slice(0,10)}`,
+              body: "The monthly full-mode audit flagged codes that are missing, retired, or remapped.\n\n```\n" + report.slice(0, 60000) + "\n```",
+            });
