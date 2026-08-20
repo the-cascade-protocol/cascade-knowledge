@@ -8,6 +8,26 @@ the same one a future in-app contribution flow will target.
 > agent-assisted drafting flow) arrive in a later version. For now, contributions
 > are ordinary pull requests reviewed against this contract.
 
+## Before you start
+
+- All open issues: <https://github.com/search?q=org%3Athe-cascade-protocol+is%3Aissue+is%3Aopen>
+- Good first issues: <https://github.com/search?q=org%3Athe-cascade-protocol+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22>
+
+`SOURCES.md` records which sources have been license-triaged and which are still
+open questions. A documented stub there is a contribution waiting to happen.
+
+## Development setup
+
+```bash
+git clone https://github.com/the-cascade-protocol/cascade-knowledge.git
+cd cascade-knowledge
+```
+
+That is the whole setup. Node 22 is the only requirement, and there is no install
+step: this repository has **no dependencies at all**, runtime or dev, and its
+validators run on the Node standard library. No sibling checkout is needed either;
+it depends on no other Cascade repository at test time.
+
 ## The row contract
 
 Every row is one line of JSON in a `data/<family>.jsonl` file and must validate
@@ -60,7 +80,7 @@ each pinning its source release in `sources/SOURCE_VERSIONS.json`. Do not
 hand-edit generated `data/` files; change the pipeline or the committed seed and
 rebuild. Curated rows migrated from seeds live in `sources/checkup-curation/`.
 
-## CI gates (all must pass)
+## What must be green before review
 
 ```bash
 node --test                                                   # unit + integration
@@ -76,7 +96,57 @@ node scripts/validate/validate-code-existence.mjs --sample 12 # codes exist in c
 - **code-existence**: a throttled sample of codes is confirmed against RxNav
   (RxNorm), and the NLM Clinical Table Search Service (LOINC, ICD-10-CM).
 
+## Commit messages
+
+```
+feat(data): <family>: <description>       # new or regenerated rows
+feat(validate): <description>             # validator or gate changes
+fix(ci): <description>                    # pipeline fixes
+docs: <description>                       # SOURCES.md, README, this file
+chore: <description>                      # maintenance, tooling, license texts
+```
+
+## Opening a pull request
+
+1. Branch from `main`.
+2. Run all four commands above and confirm every one passes. The determinism
+   check is the one people skip; a row that does not rebuild byte-for-byte will
+   fail CI even though the data looks right.
+3. Push and open a PR stating, for every row you added: the source, its pinned
+   release, and the evidence tier you assigned.
+4. New and community rows land as `candidate`. Do not open a PR that promotes a
+   row to `established`; promotion is maintainer ratification, and asking for it
+   in the PR body is the right way to raise it.
+5. If a source's license is unclear, do not commit rows and then ask. Open a PR
+   adding a documented stub to `SOURCES.md` with the question instead.
+
 ## What does not belong here
 
-Protocol vocabulary changes (those stay in the `spec/` repo), application code,
-and anything derived from a license-walled source. Data-layer rows only.
+Protocol vocabulary changes (those stay in the `spec` repository), application
+code, and anything derived from a license-walled source. Data-layer rows only.
+
+## Vocabulary changes
+
+This repository is data, not vocabulary. It defines no classes and no
+predicates of its own beyond the family predicates named in the row contract.
+A change that needs a new Cascade class or property starts in
+[`spec`](https://github.com/the-cascade-protocol/spec): read
+[`spec/CONTRIBUTING.md`](https://github.com/the-cascade-protocol/spec/blob/main/CONTRIBUTING.md)
+for the full cross-repo propagation sequence. This repository is not a step in
+that sequence and does not carry a `VOCAB_VERSIONS` file.
+
+## Protocol context
+
+<https://cascadeprotocol.org/llms.txt> is the protocol index: install, quick
+start, data types, MCP server, security model, vocabulary versions, deployment
+sequence. About 95 lines, meant to be read in full.
+
+Do not load `llms-full.txt` from that site. It is roughly 1.3 MB, larger than
+most working contexts, and as of 2026-08-20 its ontology section is known to be
+incomplete. Read the TTL files in `spec` instead.
+
+## Questions?
+
+Open an issue on this repository for questions about the data, a source, or a
+license verdict. For questions about the protocol itself, open a
+[discussion on `spec`](https://github.com/the-cascade-protocol/spec/discussions).
