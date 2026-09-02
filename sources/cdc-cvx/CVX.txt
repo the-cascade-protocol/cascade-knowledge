@@ -24,14 +24,14 @@
 83        |Hep A, ped/adol, 2 dose|hepatitis A vaccine, pediatric/adolescent dosage, 2 dose schedule||Active|False|2010/05/28
 84        |Hep A, ped/adol, 3 dose|hepatitis A vaccine, pediatric/adolescent dosage, 3 dose schedule|This vaccine formulation is inactive and should not be used, except to record historic vaccinations with this formulation.|Inactive|False|2010/05/28
 31        |Hep A, pediatric, unspecified formulation|hepatitis A vaccine, pediatric dosage, unspecified formulation|Do NOT use this code.  If formulation is unknown, use CVX 85.  There is only one formulation of Hep A, peds.|Inactive|False|2010/09/30
-85        |Hep A, unspecified formulation|hepatitis A vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording a HepA vaccination when noted on a vaccination card)|Inactive|False|2010/09/30
+85        |Hep A, unspecified formulation|hepatitis A vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording HepA vaccination noted on a vaccination card).|Inactive|False|2026/07/22
 104       |Hep A-Hep B|hepatitis A and hepatitis B vaccine||Active|False|2010/05/28
 30        |HBIG|hepatitis B immune globulin||Active|True|2020/09/04
 08        |Hep B, adolescent or pediatric|hepatitis B vaccine, pediatric or pediatric/adolescent dosage|This code applies to any standard pediatric formulation of Hepatitis B vaccine. It should not be used for the 2-dose hepatitis B schedule for adolescents (11-15 year olds). Use code 43 for that vaccine.|Active|False|2024/12/16
 42        |Hep B, adolescent/high risk infant|hepatitis B vaccine, adolescent/high risk infant dosage|As of August 27, 1998, Merck ceased distribution of their adolescent/high risk infant hepatitis B vaccine dosage. Code 42 should only be used to record historical records. For current administration of hepatitis B vaccine, pediatric/adolescent dosage, use code 08.|Inactive|False|2010/05/28
 43        |Hep B, adult|hepatitis B vaccine, adult dosage|This code applies to any standard adult dose and schedule. Also use CVX 43 for the FDA approved Recombivax HB 2-dose hepatitis B schedule for adolescents (11-15 year olds) using the adult formulation. |Active|False|2024/12/12
 44        |Hep B, high-dosage, dialysis or IC|Hepatitis B vaccine (Hep B), high-dosage, dialysis or immunocompromised patient|This code is used record patient high dosage vaccine administration for dialysis or immunocompromised patients. For NDCs that are used for both regular vaccine and dialysis/IC high-dosage schedules (e.g. Engerix-B), are mapped to both CVX 43 and CVX 44. CVX code 44 should be utilized to record dialysis/IC dosing.|Active|False|2024/12/13
-45        |Hep B, unspecified formulation|hepatitis B vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording a HepB vaccination when noted on a vaccination card)|Inactive|False|2010/09/30
+45        |Hep B, unspecified formulation|hepatitis B vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording HepB vaccination noted on a vaccination card).|Inactive|False|2026/07/22
 58        |Hep C|hepatitis C vaccine||Never Active|False|2020/09/09
 59        |Hep E|hepatitis E vaccine||Never Active|False|2020/09/09
 60        |herpes simplex 2|herpes simplex virus, type 2 vaccine||Never Active|False|2020/09/09
@@ -50,7 +50,7 @@
 111       |Influenza, live, trivalent, intranasal, PF|Influenza, live, trivalent, intranasal, preservative free|HCP administered, trivalent code reactivated for 2024/2025 season|Active|False|2025/07/15
 15        |influenza, split (incl. purified surface antigen)|influenza virus vaccine, split virus (incl. purified surface antigen)-retired CODE|This code is being retired. It will still be found in older immunization records. It included both preservative free and non-preservative free.|Inactive|False|2010/09/30
 16        |influenza, whole|influenza virus vaccine, whole virus||Inactive|False|2010/05/28
-88        |influenza, unspecified formulation|influenza virus vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording a Influenza vaccination when noted on a vaccination card)|Inactive|False|2010/09/30
+88        |influenza, unspecified formulation|influenza virus vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording influenza vaccination noted on a vaccination card).|Inactive|False|2026/07/22
 123       |influenza, H5N1-1203|influenza virus vaccine, H5N1, A/Vietnam/1203/2004 (national stockpile)||Inactive|False|2010/05/28
 10        |IPV|poliovirus vaccine, inactivated||Active|False|2010/05/28
 02        |OPV, trivalent|trivalent poliovirus vaccine, live, oral|This is the OPV used in the US from June 1963 through Dec 1999 and globally through April 2016|Inactive|False|2025/06/26
@@ -69,7 +69,7 @@
 32        |meningococcal MPSV4|meningococcal polysaccharide vaccine (MPSV4)||Inactive|False|2017/10/27
 103       |meningococcal C conjugate|meningococcal C conjugate vaccine||Inactive|False|2010/05/28
 114       |meningococcal MCV4P|meningococcal polysaccharide (groups A, C, Y and W-135) diphtheria toxoid conjugate vaccine (MCV4P)||Active|False|2010/05/28
-108       |meningococcal ACWY, unspecified formulation|meningococcal ACWY vaccine, unspecified formulation|This CVX is intended for use when one of the meningococcal vaccines containing serogroups A, C, W and Y (conjugate or polysaccaride) was given and the exact formulation was not recorded. It should not be used to record newly administered immunizations. It is not to be used when one of the meningococcal vaccines containing other serogroups was administered.|Inactive|False|2015/12/01
+108       |meningococcal ACWY, unspecified formulation|meningococcal ACWY vaccine, unspecified formulation|Unspecified CVX used to record historic meningococcal vaccine administration for known serogroups A,C,Y and W (W-135) but unknown other formulation characteristics (conjugate, polysaccharide, oligosaccharide). |Inactive|False|2026/07/22
 07        |mumps|mumps virus vaccine||Inactive|False|2015/06/18
 69        |parainfluenza-3|parainfluenza-3 virus vaccine||Inactive|False|2025/01/09
 11        |pertussis|pertussis vaccine||Inactive|False|2010/05/28
@@ -80,7 +80,7 @@
 70        |Q fever|Q fever vaccine||Never Active|False|2020/09/09
 18        |rabies, intramuscular injection|rabies vaccine, for intramuscular injection RETIRED CODE|This CVX code has been retired. It is replace by CVX 175,  or CVX 176. It will continue to be found in historic records.|Inactive|False|2016/10/18
 40        |rabies, intradermal injection|rabies vaccine, for intradermal injection||Inactive|False|2015/06/18
-90        |rabies, unspecified formulation|rabies vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording a rabies vaccination when noted on a vaccination card)|Inactive|False|2010/09/30
+90        |rabies, unspecified formulation|rabies vaccine, unspecified formulation|This CVX code allows reporting of a vaccination when formulation is unknown (for example, when recording rabies vaccination noted on a vaccination card).|Inactive|False|2026/07/22
 72        |rheumatic fever|rheumatic fever vaccine||Never Active|False|2020/09/09
 73        |Rift Valley fever|Rift Valley fever vaccine||Never Active|False|2020/09/09
 34        |RIG|rabies immune globulin||Active|True|2020/09/04
@@ -145,7 +145,7 @@
 144       |influenza, seasonal, intradermal, preservative free|seasonal influenza, intradermal, preservative free|IIV3. No US product available since 2014/2015 flu season|Inactive|False|2022/12/15
 145       |RSV-MAb (new)|respiratory syncytial virus monoclonal antibody (motavizumab), intramuscular||Never Active|True|2020/09/09
 146       |DTaP,IPV,Hib,HepB|Diphtheria and Tetanus Toxoids and Acellular Pertussis Adsorbed, Inactivated Poliovirus, Haemophilus b Conjugate (Meningococcal Protein Conjugate), and Hepatitis B (Recombinant) Vaccine.|This vaccine is different from CVX 132. Code may be used to document non-US vaccines (e.g. Hexamin) of the same component formulation|Active|False|2022/08/10
-147       |meningococcal MCV4, unspecified formulation|Meningococcal, MCV4, unspecified conjugate formulation(groups A, C, Y and W-135)|This CVX should only be used for historical doses of meningococcal conjugate vaccine where the formulation is unknown (oligosaccharide vs polysaccharide). It is not the same as CVX 108, Meningococcal, unspecified formulation. This CVX is for unspecified Meningococcal conjugate vaccines.|Inactive|False|2012/02/08
+147       |meningococcal MCV4, unspecified formulation|Meningococcal, MCV4, unspecified conjugate formulation(groups A, C, Y and W-135)|Unspecified CVX used to record historic meningococcal vaccine administration for known serogroups A,C,Y and W (W-135), known conjugate formulation, but unknown saccharide characteristics (polysaccharide, oligosaccharide). Use less specific CVX code 108 if the serogroups are known to be ACWY but there is doubt about the other formulation characteristics.|Inactive|False|2026/07/23
 148       |Meningococcal C/Y-HIB PRP|Meningococcal Groups C and Y and Haemophilus b Tetanus Toxoid Conjugate Vaccine||Inactive|False|2018/05/11
 149       |Influenza, live, quadrivalent, intranasal|Influenza, live, quadrivalent, intranasal|Quadrivalent code starting 2013/2014 season|Active|False|2024/05/15
 150       |Influenza, split virus, quadrivalent, PF|Influenza, split virus, quadrivalent, injectable, preservative free|Quadrivalent code starting 2013/2014 season|Active|False|2024/05/15
@@ -166,7 +166,7 @@
 164       |meningococcal B, unspecified|meningococcal B, unspecified formulation||Inactive|False|2014/11/03
 165       |HPV9|Human Papillomavirus 9-valent vaccine||Active|False|2014/12/11
 166       |influenza, intradermal, quadrivalent, preservative free|influenza, intradermal, quadrivalent, preservative free, injectable|No US product available since 2017/2018 flu season|Inactive|False|2022/12/15
-167       |meningococcal, unknown serogroups|meningococcal vaccine of unknown formulation and unknown serogroups|This CVX is intended for use when any one of the meningococcal vaccines is recorded and there is no information about which serogroups are protected against. This code should not be used when a newly administered immunization is recorded.|Inactive|False|2015/12/01
+167       |meningococcal, unknown serogroups|meningococcal vaccine of unknown formulation and unknown serogroups|Unspecified CVX used to record historic meningococcal vaccine administration where there is no information regarding the serogroups or formulation characteristics (conjugate, polysaccharide, oligosaccharide).|Inactive|False|2026/07/22
 168       |Influenza, adjuvanted, trivalent, PF|Influenza, adjuvanted, inactivated, trivalent, injectable, preservative free|Trivalent code reactivated for 2024/2025 season|Active|False|2024/05/06
 169       |Hep A, live attenuated|Hep A, live attenuated-IM|This vaccine is not available in the US.|Non-US|False|2016/05/10
 170       |DTAP/IPV/HIB - non-US|non-US diphtheria, tetanus toxoids and acellular pertussis vaccine, Haemophilus influenzae type b conjugate, and poliovirus vaccine, inactivated (DTaP-Hib-IPV)|This CVX was split off from CVX 102, to correctly identify the contents of the vaccine.|Non-US|False|2016/05/20
@@ -286,4 +286,5 @@
 333       |Influenza, live, trivalent, intranasal, self/caregiver admin, PF|Influenza, live, trivalent, intranasal, self or caregiver administered, preservative free|Self or caregiver administered, new starting 2025/2026 season|Active|False|2025/07/15
 334       |COVID-19, mRNA, LNP-S, PF, 10 mcg/0.2 mL|SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 10 mcg/0.2 mL dose|Moderna monovalent new formulation mNEXSPIKE, starting Fall 2025, ages 12 yrs and older, BLA|Active|False|2025/08/28
 337       |Influenza, Southern Hemisphere, high-dose, trivalent, PF|Influenza, Southern Hemisphere, high-dose, split virus, trivalent, 0.5 mL, injectable, preservative free|Code created starting 2026 Southern Hemisphere season|Active|False|2026/04/09
+338       |Influenza, mRNA, trivalent, PF|Influenza, mRNA lipid nanoparticle, trivalent, injectable, 0.38 mL dose, preservative-free|mRNA influenza vaccine FDA approved 08/05/2026 starting with Fall 2026/2027 season|Active|False|2026/08/12
 302       |COVID-19, mRNA, LNP-S, bivalent, PF, 3 mcg/0.2 mL dose|SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, bivalent, preservative free, 3 mcg/0.2 mL dose, tris-sucrose formulation|Original strain + omicron BA.4/BA.5 bivalent Pfizer vaccine (6 mo through 4 yrs), FDA rescinded 09/11/2023|Inactive|False|2023/10/26
