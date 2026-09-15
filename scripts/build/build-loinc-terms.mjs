@@ -20,9 +20,9 @@ import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { writeJsonl, writeTermJsonl } from "../lib/canonical.mjs";
-import { provenance, BUILD_DATE, SOURCE_VERSIONS, CITATIONS } from "../lib/provenance.mjs";
+import { provenance, sourceDate, SOURCE_VERSIONS, CITATIONS } from "../lib/provenance.mjs";
 import { DATA_DIR, TERMS_DIR, INPUTS, requireInput, InputMissingError } from "../lib/paths.mjs";
-import { forEachCsvRecord, readCsvColumns } from "../lib/loinc.mjs";
+import { forEachCsvRecord, assertReleaseVersion } from "../lib/loinc.mjs";
 import { TERM_TABLE_BY_NAME } from "../lib/families.mjs";
 
 const SOURCE = "loinc";
@@ -41,6 +41,31 @@ const DISPLAY_FIELD = "LONG_COMMON_NAME";
 // (inclusion in LOINC is not permission to administer) can be answered.
 const CLASSTYPE_LAB = "1";
 const CLASSTYPE_CLINICAL = "2";
+
+// Section 10(b) of the LOINC license gives two options for third-party content
+// carried inside LOINC: comply with that third party's terms, or delete the
+// content. Complying means reading and accepting each one, and several of the
+// notices on clinical terms are restrictive on their face rather than a bare
+// acknowledgement: Praktikon B.V. permits reproduction "only with written
+// permission", National POLST permits "non-commercial, personal purposes" only
+// and requires a license for commercial or facility use, and the FLACC and rFLACC
+// instruments, the Abbreviated Injury Scale and the Hester Davis Scale each
+// require a license from their owner. Assessing those instrument by instrument
+// is the survey round's job, where the question "inclusion in LOINC is not
+// permission to administer" gets answered once for all of them.
+//
+// So this round takes the delete option for the clinical terms, and keeps the
+// laboratory ones, whose three notices (College of American Pathologists, Dr.
+// Navdeep Tangri's KFRE, and Oncimmune's EarlyCDT) are plain "used with
+// permission" acknowledgements carrying no restriction on redistribution.
+//
+// This is the single predicate that decides it. Reversing the deferral is
+// deleting the `cls === "clinical"` condition; widening it to labs as well is
+// deleting the condition the other way.
+function deferredForExternalCopyright(cls, notice) {
+  if (!notice) return false;
+  return cls === "clinical";
+}
 
 // The Category values in GroupLoincTerms.csv that name a laboratory grouping.
 // Their union is 6,610 of the 7,900 groups that have members. The remaining
@@ -153,6 +178,8 @@ export function run() {
   if (!SOURCE_VERSIONS[SOURCE]) {
     throw new Error(`no pinned version for source "${SOURCE}" in sources/SOURCE_VERSIONS.json`);
   }
+  // Build from the pinned release or not at all.
+  assertReleaseVersion(root, SOURCE_VERSIONS[SOURCE]);
   mkdirSync(DATA_DIR, { recursive: true });
   mkdirSync(TERMS_DIR, { recursive: true });
 
@@ -184,6 +211,7 @@ export function run() {
     labStatus: {},
     clinicalSkippedNotActive: 0,
     noticed: { lab: 0, clinical: 0 },
+    deferredForNotice: {},
   };
 
   forEachCsvRecord(releasePath(root, "loincTable"), (get) => {
@@ -233,6 +261,11 @@ export function run() {
       if (v !== "") loinc[c] = v;
     }
     const notice = get("EXTERNAL_COPYRIGHT_NOTICE");
+    if (deferredForExternalCopyright(cls, notice)) {
+      stats.deferredForNotice[cls] = (stats.deferredForNotice[cls] || 0) + 1;
+      longCommonName.delete(code);
+      return;
+    }
     const row = {
       term: { system: "LOINC", code, display: lcn, displayField: DISPLAY_FIELD },
       loinc,
@@ -361,9 +394,13 @@ function writeTermMeta(name, rows) {
       source: SOURCE,
       sourceVersion: SOURCE_VERSIONS[SOURCE],
       method: "derived",
+      // A direct transcription of the release: the same basis on which lab-panel
+      // is established. Stated at file level because provenance is file level
+      // here, not because a term table is exempt from carrying a tier.
+      evidenceTier: "established",
       citation: CITATIONS[SOURCE],
-      addedDate: BUILD_DATE,
-      reviewedDate: BUILD_DATE,
+      addedDate: sourceDate(SOURCE),
+      reviewedDate: sourceDate(SOURCE),
     },
     rows,
     sha256,

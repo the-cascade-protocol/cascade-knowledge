@@ -19,10 +19,30 @@
 import { readFileSync } from "node:fs";
 import { basename } from "node:path";
 
-// Never opened. See pin 4 of the round brief and Sections 2, 5 and 10 of the
-// LOINC license. LoincAnswerListLink.csv appears twice in the release (once
-// under AccessoryFiles/AnswerFile/ and once inside PanelsAndForms/), which is
-// why the wall matches on basename rather than on a relative path.
+// The wall is an ALLOWLIST, not a denylist. Five files out of the release are
+// readable, and everything else is refused, because a denylist only stops the
+// restricted files someone thought of: the release ships dozens of accessory
+// files and grows more every version, so "not on the deny list" is not evidence
+// that a file is redistributable.
+//
+// These five are the ones whose content this repository has verified it may
+// redistribute under the LOINC license.
+export const ALLOWED_INPUT_BASENAMES = [
+  "Loinc.csv",
+  "ConsumerName.csv",
+  "PanelsAndForms.csv",
+  "Group.csv",
+  "GroupLoincTerms.csv",
+];
+
+// Kept as documentation of WHY specific files are out, and asserted by a test.
+// Every one of these carries SNOMED CT, RadLex or UMLS-gated content, or is
+// part-derived and therefore restricted by Section 5 of the license. The list
+// is explicit because the license's wording and the release's filenames do not
+// line up: the "Ontology File" the license names is a different artifact from
+// the release's DocumentOntology.csv. LoincAnswerListLink.csv appears twice in
+// the release (once under AccessoryFiles/AnswerFile/ and once inside
+// PanelsAndForms/), which is why matching is on basename rather than on a path.
 export const FORBIDDEN_INPUT_BASENAMES = [
   "Part.csv",
   "LoincPartLink_Primary.csv",
@@ -38,32 +58,56 @@ export const FORBIDDEN_INPUT_BASENAMES = [
   "LoincRsnaRadiologyPlaybook.csv",
 ];
 
-const FORBIDDEN_SET = new Set(FORBIDDEN_INPUT_BASENAMES.map((b) => b.toLowerCase()));
+const ALLOWED_SET = new Set(ALLOWED_INPUT_BASENAMES.map((b) => b.toLowerCase()));
 
 export class ForbiddenInputError extends Error {
   constructor(path) {
     super(
-      `refusing to read a forbidden LOINC input: ${basename(path)}. ` +
-        `Part-derived, Answer, Ontology and Radiology Playbook files carry content ` +
-        `that is not openly redistributable; see LICENSE-NOTICES.md.`,
+      `refusing to read a LOINC release file that is not on the allowlist: ${basename(path)}. ` +
+        `Readable files are: ${ALLOWED_INPUT_BASENAMES.join(", ")}. ` +
+        `Everything else in the release is either restricted content (Part-derived, ` +
+        `Answer, Ontology, Radiology Playbook) or has not been license-verified for ` +
+        `redistribution; see LICENSE-NOTICES.md.`,
     );
     this.name = "ForbiddenInputError";
     this.forbiddenInput = true;
   }
 }
 
-// Also refuses any *LinguisticVariant.csv, which the release ships one per
-// language under a name that varies (for example "zhCN10LinguisticVariant.csv").
+export function isAllowedInput(path) {
+  return ALLOWED_SET.has(basename(String(path)).toLowerCase());
+}
+
+// Retained for readability at call sites and in tests.
 export function isForbiddenInput(path) {
-  const b = basename(String(path));
-  const lower = b.toLowerCase();
-  if (FORBIDDEN_SET.has(lower)) return true;
-  return /linguisticvariant\.csv$/i.test(b);
+  return !isAllowedInput(path);
 }
 
 export function assertInputAllowed(path) {
-  if (isForbiddenInput(path)) throw new ForbiddenInputError(path);
+  if (!isAllowedInput(path)) throw new ForbiddenInputError(path);
   return path;
+}
+
+// The release directory must be the release this repository is pinned to.
+// Pointed at a different version, every renamed LOINC term would be reported as
+// a Section 2 "LOINC values are never edited" violation, which is a confusing
+// way to learn that the wrong directory was exported.
+export function assertReleaseVersion(releaseDir, pinnedVersion) {
+  const dir = basename(String(releaseDir).replace(/\/+$/, ""));
+  const m = /(\d+\.\d+)$/.exec(dir);
+  if (!m) {
+    throw new Error(
+      `cannot tell which LOINC release "${dir}" is: expected a directory named like ` +
+        `"Loinc_${pinnedVersion}" so the pinned version can be verified`,
+    );
+  }
+  if (m[1] !== pinnedVersion) {
+    throw new Error(
+      `LOINC release mismatch: $LOINC_RELEASE_DIR is ${m[1]} but sources/SOURCE_VERSIONS.json ` +
+        `pins ${pinnedVersion}. Bump the pin and rebuild, or point at the pinned release.`,
+    );
+  }
+  return m[1];
 }
 
 // Parse one CSV record starting at `i`. Returns [fields, nextIndex] or null at

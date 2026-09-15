@@ -13,6 +13,20 @@ const REPO_ROOT = join(HERE, "..", "..");
 // rebuild produces identical bytes.
 export const BUILD_DATE = "2026-07-24";
 
+// Per-source build dates. A source added after the v0 payload gets its own
+// constant, so its rows do not claim an addedDate from before they existed.
+// Still constants, so a rebuild is still byte-deterministic; the alternative is
+// discovering the wrong date years later and paying for it in a six-figure-line
+// diff. A source absent from this map falls back to BUILD_DATE, which is what
+// keeps every already-committed family byte-identical.
+export const SOURCE_DATES = {
+  loinc: "2026-09-15",
+};
+
+export function sourceDate(source) {
+  return SOURCE_DATES[source] || BUILD_DATE;
+}
+
 export const SOURCE_VERSIONS = JSON.parse(
   readFileSync(join(REPO_ROOT, "sources", "SOURCE_VERSIONS.json"), "utf8"),
 );
@@ -50,7 +64,7 @@ export function provenance(source, { method, evidenceTier, citation, citationKey
     method,
     evidenceTier,
     citation: cite,
-    addedDate: BUILD_DATE,
-    reviewedDate: BUILD_DATE,
+    addedDate: sourceDate(source),
+    reviewedDate: sourceDate(source),
   };
 }

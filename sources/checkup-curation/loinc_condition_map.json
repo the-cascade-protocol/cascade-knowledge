@@ -127,14 +127,14 @@
   },
   {
     "loincCode": "16128-1",
-    "loincName": "Hepatitis C virus Ab [Presence] in Serum or Plasma",
+    "loincName": "Hepatitis C virus Ab [Presence] in Serum",
     "conditionIcd10": "B17.1",
     "conditionName": "Acute hepatitis C",
     "relationship": "screens_for"
   },
   {
     "loincCode": "16128-1",
-    "loincName": "Hepatitis C virus Ab [Presence] in Serum or Plasma",
+    "loincName": "Hepatitis C virus Ab [Presence] in Serum",
     "conditionIcd10": "B18.2",
     "conditionName": "Chronic viral hepatitis C",
     "relationship": "screens_for"

@@ -34,7 +34,8 @@ import { join } from "node:path";
 import { FAMILIES, TERM_TABLES } from "../lib/families.mjs";
 import { readJsonl } from "../lib/canonical.mjs";
 import { DATA_DIR, TERMS_DIR, INPUTS } from "../lib/paths.mjs";
-import { forEachCsvRecord } from "../lib/loinc.mjs";
+import { forEachCsvRecord, assertReleaseVersion } from "../lib/loinc.mjs";
+import { SOURCE_VERSIONS } from "../lib/provenance.mjs";
 
 // A LOINC code is digits, a hyphen, and a single check digit. A LOINC Group id
 // is that with an LG prefix. Part (LP), Answer (LA) and AnswerList (LL)
@@ -66,9 +67,23 @@ export function validateLoincLicense({
   let checked = 0;
 
   const files = termFiles(termsDir);
-  if (files.length === 0) {
-    notes.push("no term tables present: nothing to check");
+  const relationPaths = LOINC_FAMILIES
+    .map((fam) => ({ fam, path: join(dataDir, `${fam}.jsonl`) }))
+    .filter((f) => existsSync(f.path));
+  // Only nothing to check when there is NOTHING to check. Returning early on an
+  // empty terms/ alone would wave through every committed relation row, and
+  // "the term tables are missing" is the exact state in which check 5 matters
+  // most: every LOINC reference in the relation families is then unbacked.
+  if (files.length === 0 && relationPaths.length === 0) {
+    notes.push("no term tables and no LOINC relation families present: nothing to check");
     return { ok: true, checked: 0, notes, errors };
+  }
+  if (files.length === 0) {
+    errors.push(
+      `no term tables under ${termsDir}, but ${relationPaths.map((f) => f.fam).join(" and ")} ` +
+        `are committed: every LOINC code they reference is unbacked, so nothing carries its ` +
+        `display or any notice it needs`,
+    );
   }
 
   // Load every term row once. Keyed by code for checks 3 and 5.
@@ -80,7 +95,17 @@ export function validateLoincLicense({
     rows.forEach((row, i) => {
       const where = `${f.name}.jsonl:${i + 1}`;
       const code = row.term?.code;
-      if (code) terms.set(code, { row, where });
+      if (!code) return;
+      // One row per code, within a table and across them. Without this the map
+      // below keeps only the last row for a duplicated code, and checks 2 and 3
+      // would never look at the other one: a second, wrong row for a code would
+      // be invisible to the byte-equality check.
+      const seen = terms.get(code);
+      if (seen) {
+        errors.push(`${where}: LOINC ${code} is already emitted at ${seen.where} (one row per code)`);
+        return;
+      }
+      terms.set(code, { row, where });
     });
   }
 
@@ -120,9 +145,7 @@ export function validateLoincLicense({
     });
   }
   const relationRows = new Map();
-  for (const fam of LOINC_FAMILIES) {
-    const p = join(dataDir, `${fam}.jsonl`);
-    if (!existsSync(p)) continue;
+  for (const { fam, path: p } of relationPaths) {
     const rows = readJsonl(p);
     relationRows.set(fam, rows);
     rows.forEach((row, i) => {
@@ -179,6 +202,10 @@ export function validateLoincLicense({
     return { ok: errors.length === 0, checked, notes, errors };
   }
 
+  // Check against the PINNED release or not at all: pointed at a different
+  // version, every term LOINC has since renamed reads as a Section 2 violation.
+  assertReleaseVersion(releaseDir, SOURCE_VERSIONS.loinc);
+
   const table = TERM_TABLES[0];
   const sourceColumns = table.loincColumns.filter((c) => c !== "ConsumerName");
   const source = new Map();
@@ -228,9 +255,16 @@ export function validateLoincLicense({
         errors.push(`${where} (${code}): loinc.${c} is "${got}" but the release says "${want}" (LOINC values are never edited)`);
       }
     }
-    // The display itself is a LOINC value and is checked the same way.
+    // The display itself is a LOINC value and is checked the same way. A
+    // displayField naming a column the release does not have is a FAILURE, not a
+    // skipped comparison: an unverifiable display that passes is worse than one
+    // that fails, because it looks checked.
     const wantDisplay = rec[row.term?.displayField];
-    if (wantDisplay !== undefined && row.term?.display !== wantDisplay) {
+    if (wantDisplay === undefined) {
+      errors.push(
+        `${where} (${code}): term.displayField "${row.term?.displayField}" names no column carried from the release, so the display cannot be verified`,
+      );
+    } else if (row.term?.display !== wantDisplay) {
       errors.push(`${where} (${code}): term.display is "${row.term?.display}" but ${row.term?.displayField} in the release is "${wantDisplay}"`);
     }
   }

@@ -54,6 +54,29 @@ Three obligations this repository must keep as LOINC content grows here:
   example), that notice must ship with the row or the content must be deleted.
   Inclusion in LOINC is not permission to administer such an instrument.
 
+Section 10(b) offers those two options, and this repository currently takes
+**both**, depending on the content:
+
+- **Kept, with the notice.** The 8 laboratory terms carrying a notice are
+  shipped in `terms/loinc-lab.jsonl` with that notice reproduced verbatim, and
+  the 154 `lab-panel` rows referencing them are kept. Their three notices
+  (College of American Pathologists, Dr. Navdeep Tangri's KFRE, and Oncimmune's
+  EarlyCDT) are plain "used with permission" acknowledgements that place no
+  restriction on redistribution.
+- **Deleted, pending the survey round.** The 659 ACTIVE clinical terms carrying
+  a notice are **not** shipped. Several of those notices are restrictive on
+  their face rather than a bare acknowledgement: Praktikon B.V. permits
+  reproduction "only with written permission", National POLST permits
+  "non-commercial, personal purposes" only and requires a licence for commercial
+  or facility use, and the FLACC and rFLACC instruments, the Abbreviated Injury
+  Scale and the Hester Davis Scale each require a licence from their owner.
+  Complying with those means assessing each instrument against its owner's
+  terms, which is the survey round's work, where the same question has to be
+  answered for the 6,684 survey terms anyway. Until then this repository takes
+  the delete option rather than shipping content on terms it has not read. The
+  decision is one predicate, `deferredForExternalCopyright`, in
+  `scripts/build/build-loinc-terms.mjs`.
+
 `scripts/validate/validate-loinc-license.mjs` turns all three into assertions
 over the emitted bytes rather than leaving them as promises, and says so on
 stdout when it cannot reach the release to check the last two.

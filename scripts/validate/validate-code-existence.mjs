@@ -125,6 +125,17 @@ export async function validateCodeExistence({ full = false, sampleSize = 12 } = 
   for (const [system, codeSet] of bySystem) {
     const checker = CHECKERS[system];
     if (!checker) {
+      // NOT_CHECKED is the declared list of systems with no canonical API. A
+      // system that is neither checked nor declared is an ERROR rather than a
+      // quiet skip, so adding a new code system cannot silently opt itself out
+      // of code validation.
+      if (!NOT_CHECKED.includes(system)) {
+        errors.push(
+          `${system}: no canonical API wired and not declared in NOT_CHECKED, so its ${codeSet.size} codes are silently unverified`,
+        );
+        summary[system] = `${codeSet.size} distinct codes, UNDECLARED and unchecked`;
+        continue;
+      }
       summary[system] = `${codeSet.size} distinct codes, no canonical API wired (not checked)`;
       continue;
     }

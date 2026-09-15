@@ -106,7 +106,12 @@ export function serializeTermRow(row, loincColumns) {
     ordered.externalCopyrightNotice = row.externalCopyrightNotice;
   }
   ordered.loinc = loinc;
-  ordered.cascade = row.cascade || {};
+  // Sorted now, while it is always empty, so that the first round to populate it
+  // cannot make the bytes depend on insertion order.
+  const cascade = row.cascade || {};
+  const sortedCascade = {};
+  for (const k of Object.keys(cascade).sort()) sortedCascade[k] = cascade[k];
+  ordered.cascade = sortedCascade;
   return JSON.stringify(ordered);
 }
 

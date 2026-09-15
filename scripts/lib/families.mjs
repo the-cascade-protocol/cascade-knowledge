@@ -143,12 +143,13 @@ export const TERM_TABLES = [
     // Which LOINC field term.display was taken from. Section 10(c) of the LOINC
     // license accepts only these four names; the Consumer Name is not among
     // them, which is why it lives in the loinc block and never in display.
-    displayFields: [
-      "LONG_COMMON_NAME",
-      "SHORTNAME",
-      "DisplayName",
-      "FULLY_SPECIFIED_NAME",
-    ],
+    // Only fields that EXIST as columns in Loinc.csv, so the byte-equality check
+    // can actually compare the display against its named source. The license
+    // also accepts the fully specified name, but that is assembled from six
+    // columns rather than carried as one, so a row claiming it could not be
+    // checked and an unverifiable enum value is worse than a missing one. Add it
+    // back the day the builder can emit and verify it.
+    displayFields: ["LONG_COMMON_NAME", "SHORTNAME", "DisplayName"],
     // Exactly the columns the loinc block carries, in this order. Loinc.csv has
     // 40 columns; emitting all of them would be byte-equal to the release, would
     // pass every check here, and would produce an artifact several times the

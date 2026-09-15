@@ -5,9 +5,10 @@
     "source": "loinc",
     "sourceVersion": "2.83",
     "method": "derived",
+    "evidenceTier": "established",
     "citation": "https://loinc.org/",
-    "addedDate": "2026-07-24",
-    "reviewedDate": "2026-07-24"
+    "addedDate": "2026-09-15",
+    "reviewedDate": "2026-09-15"
   },
   "rows": 39277,
   "sha256": "6fc7e644fea197d17261f3ef10dacc8634aa8ac3d3b9ecf203c3d3787904123b"

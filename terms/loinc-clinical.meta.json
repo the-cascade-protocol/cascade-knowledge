@@ -5,10 +5,11 @@
     "source": "loinc",
     "sourceVersion": "2.83",
     "method": "derived",
+    "evidenceTier": "established",
     "citation": "https://loinc.org/",
-    "addedDate": "2026-07-24",
-    "reviewedDate": "2026-07-24"
+    "addedDate": "2026-09-15",
+    "reviewedDate": "2026-09-15"
   },
-  "rows": 25152,
-  "sha256": "e0dcd079d31d5597079444b836a060f092e985ab00d3944618e8914d53193d9c"
+  "rows": 24493,
+  "sha256": "216f763f0ba696996fa2a24e0ad7db28db6853c6dab0e5f686e5b1e4882fc212"
 }

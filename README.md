@@ -42,16 +42,21 @@ something false about what a node is.
 So `terms/` is a second artifact kind alongside `data/`: still one JSON object
 per line, still diffable, still CI-validated, with its own schema
 (`schema/loinc-term.schema.json`) and its own validator. v0 ships two LOINC term
-tables, `terms/loinc-lab.jsonl` and `terms/loinc-clinical.jsonl`.
+tables, `terms/loinc-lab.jsonl` and `terms/loinc-clinical.jsonl`. Both are
+covered by the schema, allowlist and licence validators, on the same terms as
+`data/`.
+
+One real row, copied verbatim from `terms/loinc-lab.jsonl`:
 
 ```json
 {"term":{"system":"LOINC","code":"2093-3",
          "display":"Cholesterol [Mass/volume] in Serum or Plasma",
          "displayField":"LONG_COMMON_NAME"},
  "loinc":{"LONG_COMMON_NAME":"Cholesterol [Mass/volume] in Serum or Plasma",
-          "SHORTNAME":"Cholest SerPl-mCnc","CLASS":"CHEM","CLASSTYPE":"1",
-          "STATUS":"ACTIVE","EXAMPLE_UCUM_UNITS":"mg/dL",
-          "COMMON_TEST_RANK":"61","ConsumerName":"Cholesterol, Blood"},
+          "SHORTNAME":"Cholest SerPl-mCnc","DisplayName":"Cholesterol [Mass/Vol]",
+          "CLASS":"CHEM","CLASSTYPE":"1","STATUS":"ACTIVE",
+          "EXAMPLE_UCUM_UNITS":"mg/dL","COMMON_TEST_RANK":"61",
+          "COMMON_ORDER_RANK":"124","ConsumerName":"Cholesterol, Blood"},
  "cascade":{}}
 ```
 

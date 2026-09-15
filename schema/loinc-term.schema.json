@@ -37,8 +37,7 @@
           "enum": [
             "LONG_COMMON_NAME",
             "SHORTNAME",
-            "DisplayName",
-            "FULLY_SPECIFIED_NAME"
+            "DisplayName"
           ]
         }
       }

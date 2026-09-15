@@ -3,7 +3,7 @@
 
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
@@ -11,6 +11,7 @@ import { SOURCE_VERSIONS, CITATIONS } from "../scripts/lib/provenance.mjs";
 import { serializeTermRow } from "../scripts/lib/canonical.mjs";
 import { TERM_TABLE_BY_NAME, OPEN_CODE_SYSTEMS, FAMILY_BY_NAME } from "../scripts/lib/families.mjs";
 import { validateLoincLicense } from "../scripts/validate/validate-loinc-license.mjs";
+import { FIXTURE_RELEASE } from "./loinc.test.mjs";
 
 const COLUMNS = TERM_TABLE_BY_NAME["loinc-term"].loincColumns;
 
@@ -29,6 +30,17 @@ test("a LOINC Group id ships in its own code system, not as a LOINC code", () =>
   assert.deepEqual(FAMILY_BY_NAME["lab-group"].subjectSystems, ["LOINC-GROUP"]);
   assert.deepEqual(FAMILY_BY_NAME["lab-group"].objectSystems, ["LOINC"]);
   assert.deepEqual(FAMILY_BY_NAME["lab-panel"].subjectSystems, ["LOINC"]);
+});
+
+test("displayField names only fields that EXIST as columns in Loinc.csv", () => {
+  // An enum value the release has no column for cannot be verified: the
+  // byte-equality check would look it up, find undefined, and silently skip the
+  // display comparison, so a row with a completely wrong display would pass.
+  const t = TERM_TABLE_BY_NAME["loinc-term"];
+  assert.deepEqual(t.displayFields, ["LONG_COMMON_NAME", "SHORTNAME", "DisplayName"]);
+  for (const f of t.displayFields) {
+    assert.ok(t.loincColumns.includes(f), `${f} must be carried from the release to be checkable`);
+  }
 });
 
 test("the loinc block carries exactly the 12 pinned columns, never all 40", () => {
@@ -208,5 +220,211 @@ test("a term table whose meta.json hash does not match the file is an integrity 
   } finally {
     rmSync(terms, { recursive: true, force: true });
     rmSync(data, { recursive: true, force: true });
+  }
+});
+
+test("a duplicate term.code is an error, within a table and across tables", () => {
+  const terms = scratch();
+  const data = scratch();
+  try {
+    writeTerms(terms, [GOOD_TERM, { ...GOOD_TERM, loinc: { LONG_COMMON_NAME: "A different display" } }]);
+    const r = validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: "" });
+    assert.equal(r.ok, false);
+    assert.ok(r.errors.some((e) => e.includes("already emitted") && e.includes("one row per code")));
+  } finally {
+    rmSync(terms, { recursive: true, force: true });
+    rmSync(data, { recursive: true, force: true });
+  }
+});
+
+test("an empty terms/ does NOT wave through committed relation rows", () => {
+  // The state this guards is a terms/ that failed to build or was not committed.
+  // Returning ok because there is nothing to compare against would leave every
+  // LOINC reference in the relation families unbacked and unreported.
+  const terms = scratch();
+  const data = scratch();
+  try {
+    writeFileSync(
+      join(data, "lab-panel.jsonl"),
+      JSON.stringify({
+        subject: { system: "LOINC", code: "1-1", display: "A display" },
+        predicate: "has_member",
+        object: { system: "LOINC", code: "2-2", display: "Another" },
+        provenance: {
+          source: "loinc", sourceVersion: "2.83", method: "derived", evidenceTier: "established",
+          citation: "https://loinc.org/", addedDate: "2026-09-15", reviewedDate: "2026-09-15",
+        },
+      }) + "\n",
+    );
+    const r = validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: "" });
+    assert.equal(r.ok, false, "an empty terms/ with committed relation rows must FAIL");
+    assert.ok(r.errors.some((e) => e.includes("no term tables") && e.includes("unbacked")));
+  } finally {
+    rmSync(terms, { recursive: true, force: true });
+    rmSync(data, { recursive: true, force: true });
+  }
+});
+
+test("with neither term tables nor relation families, there is genuinely nothing to check", () => {
+  const terms = scratch();
+  const data = scratch();
+  try {
+    const r = validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: "" });
+    assert.equal(r.ok, true);
+    assert.ok(r.notes.some((n) => n.includes("nothing to check")));
+  } finally {
+    rmSync(terms, { recursive: true, force: true });
+    rmSync(data, { recursive: true, force: true });
+  }
+});
+
+// --- checks 2 and 3, against the synthetic mini-release ---------------------
+//
+// These two are the checks that need a release, and until now they had no
+// automated test at all: every other case passes releaseDir:"" and takes the
+// skip path. The fixture makes them permanent tests rather than a one-time
+// observation in a pull request body.
+
+const FIXTURE_PLAIN = {
+  term: {
+    system: "LOINC",
+    code: "99991-1",
+    display: "Fictional analyte [Mass/volume] in Serum or Plasma",
+    displayField: "LONG_COMMON_NAME",
+  },
+  loinc: {
+    LONG_COMMON_NAME: "Fictional analyte [Mass/volume] in Serum or Plasma",
+    SHORTNAME: "Fict SerPl-mCnc",
+    DisplayName: "Fictional [Mass/Vol]",
+    CLASS: "CHEM",
+    CLASSTYPE: "1",
+    STATUS: "ACTIVE",
+    EXAMPLE_UCUM_UNITS: "mg/dL",
+    COMMON_TEST_RANK: "7",
+    COMMON_ORDER_RANK: "0",
+    ConsumerName: "Fictional test, blood",
+  },
+  cascade: {},
+};
+
+const FIXTURE_NOTICED = {
+  term: {
+    system: "LOINC",
+    code: "99992-9",
+    display: "Fictional panel, extended [Presence] in Blood",
+    displayField: "LONG_COMMON_NAME",
+  },
+  externalCopyrightNotice:
+    'Copyright (c) 2026 Nobody, Inc. The "Fictional" mark is used with permission.',
+  loinc: {
+    LONG_COMMON_NAME: "Fictional panel, extended [Presence] in Blood",
+    SHORTNAME: "Fict pnl Bld",
+    CLASS: "HEM/BC",
+    CLASSTYPE: "1",
+    STATUS: "ACTIVE",
+    COMMON_TEST_RANK: "0",
+    COMMON_ORDER_RANK: "0",
+    EXTERNAL_COPYRIGHT_NOTICE:
+      'Copyright (c) 2026 Nobody, Inc. The "Fictional" mark is used with permission.',
+    EXTERNAL_COPYRIGHT_LINK: "https://example.invalid/notice",
+  },
+  cascade: {},
+};
+
+function againstFixture(rows) {
+  const terms = scratch();
+  const data = scratch();
+  try {
+    writeTerms(terms, rows);
+    return validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: FIXTURE_RELEASE });
+  } finally {
+    rmSync(terms, { recursive: true, force: true });
+    rmSync(data, { recursive: true, force: true });
+  }
+}
+
+test("checks 2 and 3 pass on rows that match the release exactly", () => {
+  const r = againstFixture([FIXTURE_PLAIN, FIXTURE_NOTICED]);
+  assert.deepEqual(r.errors, []);
+  assert.equal(r.ok, true);
+  assert.ok(r.notes.some((n) => n.includes("byte-equality checked against the release")));
+});
+
+test("check 2: dropping a notice the source record carries is caught", () => {
+  const { externalCopyrightNotice, ...stripped } = FIXTURE_NOTICED;
+  const r = againstFixture([stripped]);
+  assert.equal(r.ok, false);
+  assert.ok(r.errors.some((e) => e.includes("EXTERNAL_COPYRIGHT_NOTICE") && e.includes("carries none")));
+});
+
+test("check 2: altering a notice by one character is caught", () => {
+  const r = againstFixture([
+    { ...FIXTURE_NOTICED, externalCopyrightNotice: FIXTURE_NOTICED.externalCopyrightNotice.replace("2026", "2025") },
+  ]);
+  assert.equal(r.ok, false);
+  assert.ok(r.errors.some((e) => e.includes("carries a different one")));
+});
+
+test("check 3: editing a LOINC value is caught", () => {
+  const r = againstFixture([
+    { ...FIXTURE_PLAIN, loinc: { ...FIXTURE_PLAIN.loinc, STATUS: "DEPRECATED" } },
+  ]);
+  assert.equal(r.ok, false);
+  assert.ok(r.errors.some((e) => e.includes("loinc.STATUS") && e.includes("LOINC values are never edited")));
+});
+
+test("check 3: emitting an empty source field as \"\" is caught, not just a wrong value", () => {
+  // The omit-when-empty convention is half the byte-equality contract; without
+  // this direction a row could carry every LOINC key with empty values and pass.
+  const r = againstFixture([
+    { ...FIXTURE_PLAIN, loinc: { ...FIXTURE_PLAIN.loinc, EXTERNAL_COPYRIGHT_LINK: "" } },
+  ]);
+  assert.equal(r.ok, false);
+  assert.ok(r.errors.some((e) => e.includes("EXTERNAL_COPYRIGHT_LINK")));
+});
+
+test("check 3: dropping a non-empty LOINC value is caught", () => {
+  const { ConsumerName, ...withoutConsumer } = FIXTURE_PLAIN.loinc;
+  const r = againstFixture([{ ...FIXTURE_PLAIN, loinc: withoutConsumer }]);
+  assert.equal(r.ok, false);
+  assert.ok(r.errors.some((e) => e.includes("loinc.ConsumerName") && e.includes("missing")));
+});
+
+test("check 3: a display that does not match its own displayField is caught", () => {
+  const r = againstFixture([
+    { ...FIXTURE_PLAIN, term: { ...FIXTURE_PLAIN.term, display: "Something else entirely" } },
+  ]);
+  assert.equal(r.ok, false);
+  assert.ok(r.errors.some((e) => e.includes("term.display is") && e.includes("LONG_COMMON_NAME")));
+});
+
+test("a displayField naming no carried column FAILS rather than skipping the comparison", () => {
+  const r = againstFixture([
+    {
+      ...FIXTURE_PLAIN,
+      term: { ...FIXTURE_PLAIN.term, display: "Wrong", displayField: "FULLY_SPECIFIED_NAME" },
+    },
+  ]);
+  assert.equal(r.ok, false);
+  assert.ok(r.errors.some((e) => e.includes("names no column carried from the release")));
+});
+
+test("the licence validator refuses a release that is not the pinned one", () => {
+  const terms = scratch();
+  const data = scratch();
+  const wrong = join(scratch(), "Loinc_2.84");
+  try {
+    mkdirSync(wrong, { recursive: true });
+    writeTerms(terms, [FIXTURE_PLAIN]);
+    // A release that EXISTS but is the wrong version is the dangerous case: it
+    // would report every term LOINC has since renamed as a Section 2 violation.
+    assert.throws(
+      () => validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: wrong }),
+      /release mismatch/,
+    );
+  } finally {
+    rmSync(terms, { recursive: true, force: true });
+    rmSync(data, { recursive: true, force: true });
+    rmSync(wrong, { recursive: true, force: true });
   }
 });
