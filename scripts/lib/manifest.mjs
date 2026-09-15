@@ -21,6 +21,11 @@ export const FAMILY_PIPELINE = {
   "drug-condition": { pipeline: "drug-condition-medrt", ciRebuildable: false },
   "brand-generic": { pipeline: "rxnorm-prescribable", ciRebuildable: false },
   "ingredient-rollup": { pipeline: "rxnorm-prescribable", ciRebuildable: false },
+  // The LOINC release is gated on a signed-in human accepting the current
+  // license version, so it is absent in CI: checksum-verified there, fully
+  // rebuilt and byte-compared locally and in the scheduled regeneration.
+  "lab-panel": { pipeline: "loinc-terms", ciRebuildable: false },
+  "lab-group": { pipeline: "loinc-terms", ciRebuildable: false },
 };
 
 export function sha256File(path) {

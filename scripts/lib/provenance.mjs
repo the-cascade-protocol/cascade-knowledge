@@ -29,6 +29,7 @@ export const CITATIONS = {
   "med-rt": "https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/MED-RT/index.html",
   "rxnorm-prescribable": "https://www.nlm.nih.gov/research/umls/rxnorm/docs/prescribe.html",
   "cdc-cvx": "https://www2.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx",
+  loinc: "https://loinc.org/",
 };
 
 // Build a provenance object. `source` selects the pinned version and default

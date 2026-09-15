@@ -5,9 +5,11 @@
 //  2. In-process rebuild (CI-safe): CI-rebuildable families are recomputed from
 //     their committed inputs (seeds + pinned CDC snapshot) and byte-compared to
 //     the committed JSONL. Needs no network and no licensed inputs.
-//  3. Full rebuild (local / scheduled): if the MED-RT and RxNorm inputs are
-//     present, their pipelines are re-run in a subprocess writing to a temp dir
-//     and byte-compared. Skipped (reported) when inputs are absent.
+//  3. Full rebuild (local / scheduled): if the MED-RT, RxNorm and LOINC inputs
+//     are present, their pipelines are re-run in a subprocess writing to a temp
+//     dir and byte-compared. Skipped (reported) when inputs are absent. The
+//     LOINC pipeline writes both relation families and the term tables, so its
+//     rebuild redirects KNOWLEDGE_TERMS_DIR as well as KNOWLEDGE_DATA_DIR.
 
 import { execFileSync } from "node:child_process";
 import { mkdtempSync, readFileSync, existsSync, rmSync } from "node:fs";
@@ -18,7 +20,7 @@ import { dirname } from "node:path";
 import { FAMILIES } from "../lib/families.mjs";
 import { serializeJsonl } from "../lib/canonical.mjs";
 import { readManifest, sha256File, FAMILY_PIPELINE } from "../lib/manifest.mjs";
-import { DATA_DIR, SOURCES_DIR, CDC_CVX_FILE, INPUTS } from "../lib/paths.mjs";
+import { DATA_DIR, TERMS_DIR, SOURCES_DIR, CDC_CVX_FILE, INPUTS } from "../lib/paths.mjs";
 import {
   labConditionRows,
   conditionSynonymRows,
@@ -90,14 +92,16 @@ export function validateDeterminism() {
 
   // (3) Full rebuild of licensed-adjacent pipelines when inputs are present.
   const fullChecks = [];
+  const termChecks = [];
   const canMedrt = INPUTS.medrtXml && existsSync(INPUTS.medrtXml);
   const canRxnorm = INPUTS.rxnormPrescribeRrf && existsSync(INPUTS.rxnormPrescribeRrf);
-  if (canMedrt || canRxnorm) {
+  const canLoinc = INPUTS.loincReleaseDir && existsSync(INPUTS.loincReleaseDir);
+  if (canMedrt || canRxnorm || canLoinc) {
     const tmp = mkdtempSync(join(tmpdir(), "ck-determinism-"));
     try {
-      const runInTmp = (script) =>
+      const runInTmp = (script, extraEnv = {}) =>
         execFileSync("node", [join(REPO_ROOT, script)], {
-          env: { ...process.env, KNOWLEDGE_DATA_DIR: tmp },
+          env: { ...process.env, KNOWLEDGE_DATA_DIR: tmp, ...extraEnv },
           encoding: "utf8",
         });
       if (canMedrt) {
@@ -107,6 +111,27 @@ export function validateDeterminism() {
       if (canRxnorm) {
         runInTmp("scripts/build/build-rxnorm-prescribable.mjs");
         fullChecks.push("brand-generic", "ingredient-rollup");
+      }
+      if (canLoinc) {
+        runInTmp("scripts/build/build-loinc-terms.mjs", { KNOWLEDGE_TERMS_DIR: tmp });
+        fullChecks.push("lab-panel", "lab-group");
+        termChecks.push("loinc-lab", "loinc-clinical");
+      }
+      // Term tables live under terms/, not data/, and have no manifest entry:
+      // their integrity reference is the sibling .meta.json hash, so the rebuild
+      // has to byte-compare both the table and its meta.
+      for (const t of termChecks) {
+        for (const ext of ["jsonl", "meta.json"]) {
+          const a = join(tmp, `${t}.${ext}`);
+          const b = join(TERMS_DIR, `${t}.${ext}`);
+          if (!existsSync(a)) {
+            errors.push(`determinism: full rebuild did not produce ${t}.${ext}`);
+          } else if (!existsSync(b)) {
+            errors.push(`determinism: committed ${t}.${ext} is missing`);
+          } else if (sha256File(a) !== sha256File(b)) {
+            errors.push(`determinism: ${t}.${ext} full rebuild != committed`);
+          }
+        }
       }
       for (const fam of fullChecks) {
         const a = join(tmp, `${fam}.jsonl`);
@@ -123,12 +148,14 @@ export function validateDeterminism() {
   }
   if (!canMedrt) notes.push("MED-RT input absent: drug-condition full rebuild skipped (checksum-verified only)");
   if (!canRxnorm) notes.push("RxNorm input absent: brand-generic/ingredient-rollup full rebuild skipped (checksum-verified only)");
+  if (!canLoinc) notes.push("LOINC release absent: lab-panel/lab-group and the terms/ tables full rebuild skipped (checksum-verified only)");
 
   return {
     ok: errors.length === 0,
     checksums: Object.keys(manifest.files).length,
     inProcessRebuilt: rebuilt,
     fullRebuilt: fullChecks,
+    termsRebuilt: termChecks,
     notes,
     errors,
   };

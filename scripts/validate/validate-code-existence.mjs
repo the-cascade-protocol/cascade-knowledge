@@ -4,7 +4,7 @@
 //   LOINC      -> NLM Clinical Table Search Service (loinc_items)
 //   ICD-10-CM  -> NLM Clinical Table Search Service (icd10cm)
 //
-// Systems without a wired open API in v0 (MESH, MED-RT, CVX) are reported as
+// Systems without a wired open API in v0 (MESH, MED-RT, CVX, LOINC-GROUP) are reported as
 // not-checked. CVX codes are already validated against the pinned CDC snapshot
 // at build time.
 //
@@ -83,7 +83,12 @@ const CHECKERS = {
   LOINC: (code) => checkClinicalTable("loinc_items", "LOINC_NUM", code, true),
   "ICD-10-CM": (code) => checkClinicalTable("icd10cm", "code", code, false),
 };
-const NOT_CHECKED = ["MESH", "MED-RT", "CVX"];
+// LOINC-GROUP holds LOINC Group identifiers (LG...). They are not codes in a
+// code system (FHIR models a Group as a ValueSet), and the loinc_items endpoint
+// this file queries contains none of them, so an exact-match lookup on one would
+// report NOT FOUND for a perfectly correct row. Their existence is instead
+// proved against the release's own Group file by validate-loinc-license.mjs.
+const NOT_CHECKED = ["MESH", "MED-RT", "CVX", "LOINC-GROUP"];
 
 function collectCodes() {
   const bySystem = new Map();

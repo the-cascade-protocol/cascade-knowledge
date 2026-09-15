@@ -18,6 +18,10 @@ export const REPO_ROOT = join(HERE, "..", "..");
 // directory (via a subprocess with $KNOWLEDGE_DATA_DIR set) without touching the
 // committed data/ files.
 export const DATA_DIR = process.env.KNOWLEDGE_DATA_DIR || join(REPO_ROOT, "data");
+// TERMS_DIR holds the second artifact kind (per-code term tables, not
+// relations). Overridable for the same reason DATA_DIR is: the determinism
+// validator rebuilds into a temp directory and byte-compares.
+export const TERMS_DIR = process.env.KNOWLEDGE_TERMS_DIR || join(REPO_ROOT, "terms");
 export const SCHEMA_DIR = join(REPO_ROOT, "schema");
 export const SOURCES_DIR = join(REPO_ROOT, "sources");
 export const OVERLAY_DIR = join(REPO_ROOT, "overlay");
@@ -34,6 +38,11 @@ export const INPUTS = {
   rxnormPrescribeRrf: process.env.RXNORM_PRESCRIBE_RRF || "",
   // OAC Consumer Health Vocabulary flat files directory (currently stubbed).
   chvDir: process.env.CHV_DIR || "",
+  // Unpacked LOINC release directory (for example .../Loinc_2.83). Read-only
+  // and never copied into this repository: the main table alone is 84 MB. The
+  // download is gated on a signed-in human accepting the current license
+  // version, so this input is absent in CI and its pipeline skips there.
+  loincReleaseDir: process.env.LOINC_RELEASE_DIR || "",
 };
 
 // Committed input: pinned CDC CVX snapshot.

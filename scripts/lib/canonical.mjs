@@ -81,3 +81,43 @@ export function readJsonl(path) {
   }
   return out;
 }
+
+// --- Term tables (the second artifact kind) --------------------------------
+//
+// A term row is attributes OF one code rather than a relation between two, so
+// it has its own canonical form. Same determinism rules: fixed key order, empty
+// source fields omitted rather than emitted as empty strings (the same
+// convention `code` already follows above, and the one the byte-equality
+// validator checks against), rows sorted before writing.
+
+const TERM_KEYS = ["system", "code", "display", "displayField"];
+
+export function serializeTermRow(row, loincColumns) {
+  const term = {};
+  for (const k of TERM_KEYS) term[k] = row.term[k];
+  const loinc = {};
+  for (const c of loincColumns) {
+    const v = row.loinc?.[c];
+    if (v === undefined || v === null || v === "") continue;
+    loinc[c] = String(v);
+  }
+  const ordered = { term };
+  if (row.externalCopyrightNotice) {
+    ordered.externalCopyrightNotice = row.externalCopyrightNotice;
+  }
+  ordered.loinc = loinc;
+  ordered.cascade = row.cascade || {};
+  return JSON.stringify(ordered);
+}
+
+export function serializeTermJsonl(rows, loincColumns) {
+  const lines = Array.from(new Set(rows.map((r) => serializeTermRow(r, loincColumns))));
+  lines.sort();
+  return lines.length ? lines.join("\n") + "\n" : "";
+}
+
+export function writeTermJsonl(path, rows, loincColumns) {
+  const text = serializeTermJsonl(rows, loincColumns);
+  writeFileSync(path, text);
+  return text ? text.split("\n").filter((l) => l).length : 0;
+}

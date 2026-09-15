@@ -12,6 +12,7 @@ import { run as buildCvxDisease } from "./build/build-cvx-disease.mjs";
 import { run as buildDrugConditionMedrt } from "./build/build-drug-condition-medrt.mjs";
 import { run as buildRxnormPrescribable } from "./build/build-rxnorm-prescribable.mjs";
 import { run as buildChvSynonyms } from "./build/build-chv-synonyms.mjs";
+import { run as buildLoincTerms } from "./build/build-loinc-terms.mjs";
 
 const PIPELINES = [
   { name: "checkup-curated", run: buildCheckupCurated },
@@ -19,6 +20,7 @@ const PIPELINES = [
   { name: "drug-condition-medrt", run: buildDrugConditionMedrt },
   { name: "rxnorm-prescribable", run: buildRxnormPrescribable },
   { name: "chv-synonyms", run: buildChvSynonyms },
+  { name: "loinc-terms", run: buildLoincTerms },
 ];
 
 export async function buildAll() {

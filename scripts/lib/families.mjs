@@ -16,6 +16,11 @@
 // used for free-text lay-language subjects (which carry no code).
 export const OPEN_CODE_SYSTEMS = [
   "LOINC",
+  // A LOINC Group identifier (LG...) is NOT a LOINC code: it names a collection
+  // of codes, which FHIR models as a ValueSet rather than a CodeSystem concept.
+  // It ships under the same LOINC license and under its own system id so that
+  // the code-existence check does not look for an LG id in a code lookup.
+  "LOINC-GROUP",
   "ICD-10-CM",
   "RXNORM",
   "MESH",
@@ -90,6 +95,24 @@ export const FAMILIES = [
     objectCodeRequired: true,
   },
   {
+    name: "lab-panel",
+    title: "LOINC lab panel has a member observation",
+    predicates: ["has_member"],
+    subjectSystems: ["LOINC"],
+    objectSystems: ["LOINC"],
+    subjectCodeRequired: true,
+    objectCodeRequired: true,
+  },
+  {
+    name: "lab-group",
+    title: "LOINC Group groups an observation",
+    predicates: ["groups"],
+    subjectSystems: ["LOINC-GROUP"],
+    objectSystems: ["LOINC"],
+    subjectCodeRequired: true,
+    objectCodeRequired: true,
+  },
+  {
     name: "cvx-disease",
     title: "Vaccine (CVX) prevents a disease",
     predicates: ["prevents"],
@@ -102,4 +125,52 @@ export const FAMILIES = [
 
 export const FAMILY_BY_NAME = Object.fromEntries(
   FAMILIES.map((f) => [f.name, f]),
+);
+
+// The second artifact kind: per-code term tables under terms/, not relations.
+//
+// A term row is attributes OF one code, so it does not fit the relation shape
+// and FAMILIES is deliberately not overloaded to carry it. One schema serves
+// every term table; the tables differ only in which slice of the source they
+// carry. Provenance is file-level (a sibling <name>.meta.json), because one
+// source and one version are uniform across every row and repeating the block
+// per row costs megabytes to say the same thing.
+export const TERM_TABLES = [
+  {
+    name: "loinc-term",
+    title: "LOINC term: one code with its licensed display names and attributes",
+    systems: ["LOINC"],
+    // Which LOINC field term.display was taken from. Section 10(c) of the LOINC
+    // license accepts only these four names; the Consumer Name is not among
+    // them, which is why it lives in the loinc block and never in display.
+    displayFields: [
+      "LONG_COMMON_NAME",
+      "SHORTNAME",
+      "DisplayName",
+      "FULLY_SPECIFIED_NAME",
+    ],
+    // Exactly the columns the loinc block carries, in this order. Loinc.csv has
+    // 40 columns; emitting all of them would be byte-equal to the release, would
+    // pass every check here, and would produce an artifact several times the
+    // intended size. ConsumerName comes from ConsumerName.csv, not Loinc.csv.
+    loincColumns: [
+      "LONG_COMMON_NAME",
+      "SHORTNAME",
+      "DisplayName",
+      "CLASS",
+      "CLASSTYPE",
+      "STATUS",
+      "EXAMPLE_UCUM_UNITS",
+      "COMMON_TEST_RANK",
+      "COMMON_ORDER_RANK",
+      "EXTERNAL_COPYRIGHT_NOTICE",
+      "EXTERNAL_COPYRIGHT_LINK",
+      "ConsumerName",
+    ],
+    files: ["loinc-lab", "loinc-clinical"],
+  },
+];
+
+export const TERM_TABLE_BY_NAME = Object.fromEntries(
+  TERM_TABLES.map((t) => [t.name, t]),
 );
