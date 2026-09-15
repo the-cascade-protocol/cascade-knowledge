@@ -3,5 +3,6 @@
   "checkup-curation": "2026-02",
   "med-rt": "2026.01.05",
   "rxnorm-prescribable": "2026-01-05",
-  "cdc-cvx": "2026-09-02"
+  "cdc-cvx": "2026-09-02",
+  "loinc": "2.83"
 }

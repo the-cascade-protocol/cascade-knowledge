@@ -24,8 +24,21 @@ copy of `LoincLicense_5.8.txt` as shipped in the LOINC 2.83 release, so it is
 the licensor's own text rather than a transcription: **License version 5.8**,
 the version registered users were asked to accept on 2026-09-15.
 
-Affected family: `data/lab-condition.jsonl` (subject codes are LOINC, and each
-subject display is a LOINC Long Common Name).
+Affected artifacts:
+
+- `terms/loinc-lab.jsonl` and `terms/loinc-clinical.jsonl`, the LOINC term
+  tables. Each row carries a LOINC code, a licensed display name, the field that
+  display came from, and a block of LOINC values that are byte-equal to the
+  release.
+- `data/lab-panel.jsonl` (LOINC panel membership) and `data/lab-group.jsonl`
+  (LOINC Group membership; the subject is a Group identifier in the
+  `LOINC-GROUP` system, carrying its Group Name as the license requires for an
+  identifier that is not a LOINC code).
+- `data/lab-condition.jsonl` (subject codes are LOINC, and each subject display
+  is a LOINC Long Common Name).
+
+These are built from the LOINC **2.83** release, pinned as `loinc` in
+`sources/SOURCE_VERSIONS.json`.
 
 Three obligations this repository must keep as LOINC content grows here:
 
@@ -40,6 +53,46 @@ Three obligations this repository must keep as LOINC content grows here:
   has an `EXTERNAL_COPYRIGHT_NOTICE` (survey instruments and their answers, for
   example), that notice must ship with the row or the content must be deleted.
   Inclusion in LOINC is not permission to administer such an instrument.
+
+Section 10(b) offers those two options, and this repository takes **both**,
+notice by notice rather than by category. Every distinct
+`EXTERNAL_COPYRIGHT_NOTICE` in the slice has an explicit, reasoned verdict in
+`sources/loinc-notice-verdicts.json`:
+
+**Only content that is explicitly disallowed is withheld.** A notice is
+`restricted` only when its text requires a licence, requires written permission,
+or limits the purpose of use. Everything else is `permissive`.
+
+- **`permissive`: kept, with the notice attached.** 41 of the 47 notices in
+  2.83, covering 593 rows (8 laboratory and 585 clinical). Two kinds sit here
+  that might look restrictive and are not. A bare reservation of rights ("All
+  rights reserved") with no stated condition on use is not an explicit
+  prohibition. And a condition that shipping the notice verbatim already
+  satisfies (keep the attribution, do not alter the instrument) does not
+  restrict, because Section 2 already forbids editing LOINC values.
+- **`restricted`: deleted.** 6 notices covering 74 clinical rows, each of which
+  explicitly disallows the use: Praktikon B.V. (49 rows, reproduction only with
+  written permission), National POLST (9, non-commercial personal use only), the
+  University of Michigan for FLACC and rFLACC (7, users must obtain a licence),
+  the AAAM Abbreviated Injury Scale (4, requires a licence), HD Nursing's Hester
+  Davis Scale (3, requires a licence), and MedChi's Barthel Index (2, permission
+  required to modify or to use commercially). Complying with those means
+  accepting each owner's terms, which is not something a build pipeline can do
+  on a reader's behalf.
+
+That file is **fail-closed**: the builder and the licence validator both refuse
+any notice text not listed in it verbatim, naming the notice and the codes
+carrying it. A new or reworded notice in the next LOINC release stops the build
+and gets a human verdict rather than defaulting into either bucket.
+
+**A relation row cannot carry a notice.** The family schemas are
+`additionalProperties: false`, so `data/lab-panel.jsonl` has nowhere to put one.
+154 of its rows reference 8 laboratory codes whose term rows do carry a notice:
+`85349-9`, `85624-5`, `85625-2`, `85626-0`, `85904-1`, `85905-8`, `88863-6` and
+`89041-8`. For those, **the notice travels with the term table**
+(`terms/loinc-lab.jsonl`), not with the relation file, and a consumer of the
+relation family alone does not receive it. `scripts/validate/validate-loinc-license.mjs`
+prints that list on every run so it cannot grow unnoticed.
 
 ## ICD-10-CM
 

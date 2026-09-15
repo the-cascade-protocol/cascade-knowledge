@@ -5,12 +5,13 @@
     "checkup-curation": "2026-02",
     "med-rt": "2026.01.05",
     "rxnorm-prescribable": "2026-01-05",
-    "cdc-cvx": "2026-09-02"
+    "cdc-cvx": "2026-09-02",
+    "loinc": "2.83"
   },
   "files": {
     "lab-condition.jsonl": {
       "rows": 251,
-      "sha256": "421b35120fde00fb390439b534aa0b57109dc718a04a318002d51be46232bd4c",
+      "sha256": "7259738bebf646d43f512a51c76095b851ab49976b6b3f8acdf9954d224874b2",
       "pipeline": "checkup-curated",
       "ciRebuildable": true
     },
@@ -42,6 +43,18 @@
       "rows": 28309,
       "sha256": "a7007690f32e5a137f70698a49dfb97707370806cb2ed03839a84f7aabcd3a5c",
       "pipeline": "rxnorm-prescribable",
+      "ciRebuildable": false
+    },
+    "lab-panel.jsonl": {
+      "rows": 21751,
+      "sha256": "dd981fe6f1adae2c235282adf4993a706c372817aaf365da49c0232cd881c7c8",
+      "pipeline": "loinc-terms",
+      "ciRebuildable": false
+    },
+    "lab-group.jsonl": {
+      "rows": 23467,
+      "sha256": "875212f0381538cf11ae6d3d189770d434a579859f88bb47100372565da5b3c4",
+      "pipeline": "loinc-terms",
       "ciRebuildable": false
     },
     "cvx-disease.jsonl": {

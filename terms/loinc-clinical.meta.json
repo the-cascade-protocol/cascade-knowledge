@@ -1,0 +1,15 @@
+{
+  "_comment": "File-level provenance for a term table. sha256 is over the committed JSONL bytes and is the integrity reference for terms/, mirroring data/BUILD_MANIFEST.json.",
+  "file": "loinc-clinical.jsonl",
+  "provenance": {
+    "source": "loinc",
+    "sourceVersion": "2.83",
+    "method": "derived",
+    "evidenceTier": "established",
+    "citation": "https://loinc.org/",
+    "addedDate": "2026-09-15",
+    "reviewedDate": "2026-09-15"
+  },
+  "rows": 25078,
+  "sha256": "d2e53dc40acb0a0bdd7123049a573a292736afecc26f78635263a5b988ad3125"
+}

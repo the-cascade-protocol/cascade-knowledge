@@ -4,7 +4,7 @@
 //   LOINC      -> NLM Clinical Table Search Service (loinc_items)
 //   ICD-10-CM  -> NLM Clinical Table Search Service (icd10cm)
 //
-// Systems without a wired open API in v0 (MESH, MED-RT, CVX) are reported as
+// Systems without a wired open API in v0 (MESH, MED-RT, CVX, LOINC-GROUP) are reported as
 // not-checked. CVX codes are already validated against the pinned CDC snapshot
 // at build time.
 //
@@ -83,7 +83,12 @@ const CHECKERS = {
   LOINC: (code) => checkClinicalTable("loinc_items", "LOINC_NUM", code, true),
   "ICD-10-CM": (code) => checkClinicalTable("icd10cm", "code", code, false),
 };
-const NOT_CHECKED = ["MESH", "MED-RT", "CVX"];
+// LOINC-GROUP holds LOINC Group identifiers (LG...). They are not codes in a
+// code system (FHIR models a Group as a ValueSet), and the loinc_items endpoint
+// this file queries contains none of them, so an exact-match lookup on one would
+// report NOT FOUND for a perfectly correct row. Their existence is instead
+// proved against the release's own Group file by validate-loinc-license.mjs.
+const NOT_CHECKED = ["MESH", "MED-RT", "CVX", "LOINC-GROUP"];
 
 function collectCodes() {
   const bySystem = new Map();
@@ -120,6 +125,17 @@ export async function validateCodeExistence({ full = false, sampleSize = 12 } = 
   for (const [system, codeSet] of bySystem) {
     const checker = CHECKERS[system];
     if (!checker) {
+      // NOT_CHECKED is the declared list of systems with no canonical API. A
+      // system that is neither checked nor declared is an ERROR rather than a
+      // quiet skip, so adding a new code system cannot silently opt itself out
+      // of code validation.
+      if (!NOT_CHECKED.includes(system)) {
+        errors.push(
+          `${system}: no canonical API wired and not declared in NOT_CHECKED, so its ${codeSet.size} codes are silently unverified`,
+        );
+        summary[system] = `${codeSet.size} distinct codes, UNDECLARED and unchecked`;
+        continue;
+      }
       summary[system] = `${codeSet.size} distinct codes, no canonical API wired (not checked)`;
       continue;
     }

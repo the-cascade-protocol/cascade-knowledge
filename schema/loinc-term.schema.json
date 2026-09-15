@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ns.cascadeprotocol.org/knowledge/v0/loinc-term.schema.json",
+  "title": "LOINC term: one code with its licensed display names and attributes",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "term",
+    "loinc",
+    "cascade"
+  ],
+  "properties": {
+    "term": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "code",
+        "display",
+        "displayField"
+      ],
+      "properties": {
+        "system": {
+          "enum": [
+            "LOINC"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display": {
+          "type": "string",
+          "minLength": 1
+        },
+        "displayField": {
+          "enum": [
+            "LONG_COMMON_NAME",
+            "SHORTNAME",
+            "DisplayName"
+          ]
+        }
+      }
+    },
+    "externalCopyrightNotice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "loinc": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "LONG_COMMON_NAME": {
+          "type": "string",
+          "minLength": 1
+        },
+        "SHORTNAME": {
+          "type": "string",
+          "minLength": 1
+        },
+        "DisplayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "CLASS": {
+          "type": "string",
+          "minLength": 1
+        },
+        "CLASSTYPE": {
+          "type": "string",
+          "minLength": 1
+        },
+        "STATUS": {
+          "type": "string",
+          "minLength": 1
+        },
+        "EXAMPLE_UCUM_UNITS": {
+          "type": "string",
+          "minLength": 1
+        },
+        "COMMON_TEST_RANK": {
+          "type": "string",
+          "minLength": 1
+        },
+        "COMMON_ORDER_RANK": {
+          "type": "string",
+          "minLength": 1
+        },
+        "EXTERNAL_COPYRIGHT_NOTICE": {
+          "type": "string",
+          "minLength": 1
+        },
+        "EXTERNAL_COPYRIGHT_LINK": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ConsumerName": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "cascade": {
+      "type": "object"
+    }
+  }
+}

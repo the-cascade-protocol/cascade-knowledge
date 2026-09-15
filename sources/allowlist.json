@@ -20,8 +20,13 @@
       "label": "CDC IIS CVX vaccine code set",
       "method": "derived",
       "license": "Public domain (US Government work)"
+    },
+    "loinc": {
+      "label": "LOINC (Regenstrief Institute) full release",
+      "method": "derived",
+      "license": "Redistributable in commercial and non-commercial use with attribution, under the LOINC license (LICENSE-LOINC.txt, version 5.8). LOINC values are never edited, identifier and display travel together, and third-party content inside LOINC carries its own notice."
     }
   },
-  "openCodeSystems": ["LOINC", "ICD-10-CM", "RXNORM", "MESH", "MED-RT", "CVX", "text"],
+  "openCodeSystems": ["LOINC", "LOINC-GROUP", "ICD-10-CM", "RXNORM", "MESH", "MED-RT", "CVX", "text"],
   "walledCodeSystems": ["SNOMED-CT", "ATC", "CUI", "UMLS", "NDF-RT"]
 }

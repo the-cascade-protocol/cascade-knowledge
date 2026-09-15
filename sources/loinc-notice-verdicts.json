@@ -1,0 +1,300 @@
+{
+  "_comment": [
+    "Reviewed verdicts for every distinct EXTERNAL_COPYRIGHT_NOTICE carried by a LOINC term in this repository slice.",
+    "Section 10(b) of the LOINC license gives two options for third-party content inside LOINC: comply with that third party terms, or delete the content. This file records which option each notice gets, and why.",
+    "THE RULE: a notice is `restricted` ONLY when its text explicitly disallows the use, whether by requiring a licence, by requiring written permission, or by limiting the purpose of use. Everything else is `permissive` and ships with its notice attached. A bare reservation of rights (\"All rights reserved\") with no stated condition is NOT an explicit prohibition and is therefore permissive; so is a condition that shipping the notice verbatim already satisfies (keep the attribution, do not alter the instrument), because this repository never edits LOINC values.",
+    "Only data that is explicitly disallowed is withheld. Ambiguity is not a reason to withhold, and it is not a reason to ship either: a notice with no verdict here stops the build.",
+    "`permissive` rows are emitted with the notice attached. `restricted` rows are withheld entirely.",
+    "THIS FILE IS FAIL-CLOSED. The builder and the licence validator both refuse any notice text that is not listed here verbatim, naming the notice and the codes carrying it. A new or reworded notice in the next LOINC release stops the build and gets a human verdict; it never defaults into either bucket. Matching is on the exact notice string, not a pattern, because a pattern can only recognise the restrictions somebody already thought of.",
+    "Sorted by holder. `notice` is byte-identical to the release EXTERNAL_COPYRIGHT_NOTICE field."
+  ],
+  "_rule": {
+    "restricted": "explicitly disallows the use, whether by requiring a licence, requiring written permission, or limiting the purpose of use",
+    "permissive": "everything else, including a notice that reserves rights without stating any condition on use"
+  },
+  "sourceVersion": "2.83",
+  "verdicts": [
+    {
+      "holder": "Academy of Nutrition and Dietetics (eNCPT)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2020, Nutrition Terminology Reference Manual (eNCPT): Dietetics Language for Nutrition Care. Academy of Nutrition and Dietetics. Used with permission"
+    },
+    {
+      "holder": "Academy of Nutrition and Dietetics (malnutrition screening tools)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© Skipper A, Coltman A, Tomesko J, et al. Position of the Academy of Nutrition and Dietetics: Malnutrition (Undernutrition) Screening Tools for All Adults. J Acad Nutr Diet. Apr 2020;120(4):709-713. doi:10.1016/j.jand.2019.09.011 Used with Permission"
+    },
+    {
+      "holder": "AHI of Indiana",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2012 AHI of Indiana. Used with permission."
+    },
+    {
+      "holder": "American Academy of Sleep Medicine",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "©2019 American Academy of Sleep Medicine. Used with permission."
+    },
+    {
+      "holder": "American College of Physicians",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2006 American College of Physicians. Used with permission."
+    },
+    {
+      "holder": "American Heart Association (1992)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 1992 American Heart Association Used with permission"
+    },
+    {
+      "holder": "American Heart Association (1994)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 1994 American Heart Association Used with permission"
+    },
+    {
+      "holder": "American Heart Association (2013)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2013 American Heart Association Used with permission"
+    },
+    {
+      "holder": "American Spinal Injury Association",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "American Spinal Injury Association: International Standards for Neurological Classification of Spinal Cord Injury, revised 2019; Richmond, VA. Used with permission."
+    },
+    {
+      "holder": "Association for the Advancement of Automotive Medicine (Abbreviated Injury Scale)",
+      "verdict": "restricted",
+      "reason": "Use of the instrument requires a purchased individual or site licence.",
+      "notice": "Copyright © 2008 Association for the Advancement of Automotive Medicine (AAAM). Used with Permission. Use of the Abbreviated Injury Scale (AIS) requires a license. Both individual use and site licenses can be purchased from AAAM."
+    },
+    {
+      "holder": "Barbara Braden and Nancy Bergstrom",
+      "verdict": "permissive",
+      "reason": "Asserts permission, conditioned only on keeping the notice with any copy and not altering the wording or scoring. Shipping the notice verbatim and never editing LOINC values already satisfies both.",
+      "notice": "Copyright © 1988 Barbara Braden and Nancy Bergstrom. Used with permission. It is understood that the name of the instrument and the indication that the copyright belongs to Braden and Bergstrom remain on any copies and that you do not make any changes to the wording or scoring of this tool."
+    },
+    {
+      "holder": "Children's Hospital of Eastern Ontario",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 1989, Children's Hospital of Eastern Ontario. Used with permission."
+    },
+    {
+      "holder": "College of American Pathologists",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2017 College of American Pathologists Used with permission"
+    },
+    {
+      "holder": "Copyright holder not named in the notice (1990)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 1990 Used with permission."
+    },
+    {
+      "holder": "CRE Care",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Portions Copyright © 2013 CRE Care. Used with permission."
+    },
+    {
+      "holder": "Dr. Jeffery Kline",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2004 Dr. Jeffery Kline Used with permission"
+    },
+    {
+      "holder": "Dr. Lynn Webster",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2018 Dr. Lynn Webster. Used with permission."
+    },
+    {
+      "holder": "Dr. Navdeep Tangri (kidney failure risk equation)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © Dr. Navdeep Tangri Used with permission"
+    },
+    {
+      "holder": "Dr. Phillip Wells",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2001 Dr. Phillip Wells. Used with permission."
+    },
+    {
+      "holder": "Dr. William Mansbach",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2012 Dr. William Mansbach. Used with permission."
+    },
+    {
+      "holder": "Dugan, Hall and Trachtenberg",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© Dugan, E., M. Hall, F. Trachtenberg. Development of Abbreviated Measures to Assess Patient Trust in a Physician, a Health Insurer, and the Medical Profession, BMC Health Services Research 2005, 5:64, http://www.biomedcentral.com/1472-6963/5/64 Used with permission"
+    },
+    {
+      "holder": "Eugene McCloskey",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2008 Eugene McCloskey. Used with permission."
+    },
+    {
+      "holder": "EUROSPINE",
+      "verdict": "permissive",
+      "reason": "The holder reserves rights but states no condition on use. Only an explicit prohibition or a stated licence requirement withholds a row, so a bare reservation of rights does not.",
+      "notice": "Copyright © 2020 EUROSPINE. All rights reserved."
+    },
+    {
+      "holder": "Fred Hutchinson Cancer Research Center",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "©2015 Fred Hutchinson Cancer Research Center. Used with permission."
+    },
+    {
+      "holder": "HD Nursing (Hester Davis Scale)",
+      "verdict": "restricted",
+      "reason": "Use of the instrument requires a licence available through the holder.",
+      "notice": "© 2013 HD Nursing. Used with permission. Use of the Hester Davis Scale for Fall Risk Assessment (HDS) requires a license, available through www.hdnursing.com. Used with Permission"
+    },
+    {
+      "holder": "Hellyer, Uhrig and Robinson",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2006 PW Hellyer, SR Uhrig, NG Robinson. Used with permission."
+    },
+    {
+      "holder": "International Association for the Study of Pain",
+      "verdict": "permissive",
+      "reason": "Asserts permission. The only further condition applies to translating the text into another language, which this repository does not do.",
+      "notice": "Copyright © 2011 International Association for the Study of Pain (IASP). Used with permission. Before translating text into a language other than found on the Pediatric Pain Sourcebook (www.painsourcebook.ca), please contact IASP to gain permission."
+    },
+    {
+      "holder": "InterRAI",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2009 InterRAI. Used with permission."
+    },
+    {
+      "holder": "Jeremy Fairbank (Oswestry Disability Index)",
+      "verdict": "permissive",
+      "reason": "The holder reserves rights but states no condition on use. Only an explicit prohibition or a stated licence requirement withholds a row, so a bare reservation of rights does not.",
+      "notice": "ODI © Jeremy Fairbank, 1980. All Rights Reserved."
+    },
+    {
+      "holder": "Lauri Linder",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2019 Lauri Linder. Used with permission."
+    },
+    {
+      "holder": "MedChi, the Maryland State Medical Society (Barthel Index)",
+      "verdict": "restricted",
+      "reason": "Permission is required to modify the instrument or to use it for commercial purposes, which explicitly limits the purpose of use.",
+      "notice": "Barthel Index© MedChi, 1965. All Rights Reserved. The Maryland State Medical Society holds the copyright for the Barthel Index. Mahoney FI, Barthel D. \"Functional evaluation: the Barthel Index.\" Maryland State Med Journal 1965;14:56-61. Used with permission. Permission is required to modify the Barthel Index or to use it for commercial purposes."
+    },
+    {
+      "holder": "Medical Research Council",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Used with the permission of the Medical Research Council"
+    },
+    {
+      "holder": "Nadelson et al. (trust in science and scientists instrument)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "2014 © Nadelson, L., Jorcyk, C., Yang, D., Jarratt Smith, M., Matson, S., Cornell, K., & Husting, V. (2014). I just don't trust them: the development and validation of an assessment instrument to measure trust in science and scientists. School Science and Mathematics, 114(2), 76-86. Used with permission"
+    },
+    {
+      "holder": "National Institutes of Health and Northwestern University",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2006-2016 National Institutes of Health and Northwestern University. Used with permission."
+    },
+    {
+      "holder": "National POLST",
+      "verdict": "restricted",
+      "reason": "Use is limited to non-commercial personal purposes, and commercial or facility use requires a licence from the holder.",
+      "notice": "© 2019 National POLST. The National POLST Form may only be used for non-commercial, personal purposes. Commercial or facility use requires a license from National POLST or an authorized reseller. For use options or to discuss permissions, please visit: https://polst.org/terms/."
+    },
+    {
+      "holder": "National Pressure Ulcer Advisory Panel",
+      "verdict": "permissive",
+      "reason": "Asserts permission, conditioned only on keeping the notice with any copy and not altering the wording or scoring. Shipping the notice verbatim and never editing LOINC values already satisfies both.",
+      "notice": "Copyright © 2016 National Pressure Ulcer Advisory Panel Used with permission. It is understood that the name of the instrument and the indication that the copyright belongs to the National Pressure Ulcer Advisory Panel remain on any copies and that you do not make any changes to the wording or scoring of this tool."
+    },
+    {
+      "holder": "Oncimmune (EarlyCDT)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "EarlyCDT® is a registered trademark of Oncimmune. Used with permission."
+    },
+    {
+      "holder": "Pat Hummel",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "© 2009 Pat Hummel Used with permission."
+    },
+    {
+      "holder": "PeraHealth",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2016 PeraHealth Used with permission"
+    },
+    {
+      "holder": "Praktikon B.V.",
+      "verdict": "restricted",
+      "reason": "Reproduction in any form is permitted only with the holder's written permission, so redistributing the term is itself the conditioned act.",
+      "notice": "© 2015 Praktikon B.V., all rights reserved. Disclosure and/or reproduction in any form, is only permitted with written permission from Praktikon B.V. Used with Permission"
+    },
+    {
+      "holder": "Razmus and Wilson",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2006 Razmus & Wilson. Used with permission."
+    },
+    {
+      "holder": "Societe des Produits Nestle SA (MNA)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright for the MNA®: © Société des Produits Nestlé SA 1994, Revision 2009. Used with permission. Trademark for the MNA®: MNA is a registered mark of Société des Produits Nestlé S.A Used with Permission"
+    },
+    {
+      "holder": "The Regents of the University of California and Emory University",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright © 2016 The Regents of the University of California and Emory University. Used with permission."
+    },
+    {
+      "holder": "The Regents of the University of Michigan (FLACC and rFLACC)",
+      "verdict": "restricted",
+      "reason": "Users must obtain a licence from the University of Michigan Office of Technology Transfer before using the instrument.",
+      "notice": "Copyright © 2019 The Regents of the University of Michigan Users must obtain a license to use the FLACC and rFLACC instruments. The license can be obtained from the University of Michigan Office of Technology Transfer at https://umich.flintbox.com/?embed=true#technologies/45bdf7ff-2a1c-4d5f-89e5- a0f94ce42a35"
+    },
+    {
+      "holder": "Therapeutic Associates, Inc.",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Portions Copyright © 2015 Therapeutic Associates, Inc. Used with permission."
+    },
+    {
+      "holder": "Universite de Montreal (Feline Grimace Scale)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "FELINE GRIMACE SCALE © 2019 UNIVERSITE DE MONTREAL. Used with permission."
+    },
+    {
+      "holder": "World Health Organization",
+      "verdict": "permissive",
+      "reason": "Asserts permission. The remaining text is contact information for obtaining other WHO publications and a liability disclaimer, not a condition on this content.",
+      "notice": "Copyright © 2006 World Health Organization. Used with permission. Publications of the World Health Organization can be obtained from WHO Press, World Health Organization, 20 Avenue Appia, 1211 Geneva 27, Switzerland (tel: +41 22 791 2476; fax: +41 22 791 4857; email: bookorders@who.int). Requests for permission to reproduce or translate WHO publications - whether for sale or for noncommercial distribution - should be addressed to WHO Press, at the above address (fax: +41 22 791 4806; email: permissions@who.int). The designations employed and the presentation of the material in this publication do not imply the expression of any opinion whatsoever on the part of the World Health Organization concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries. Dotted lines on maps represent approximate border lines for which there may not yet be full agreement. The mention of specific companies or of certain manufacturers' products does not imply that they are endorsed or recommended by the World Health Organization in preference to others of a similar nature that are not mentioned. Errors and omissions excepted, the names of proprietary products are distinguished by initial capital letters. All reasonable precautions have been taken by WHO to verify the information contained in this publication. However, the published material is being distributed without warranty of any kind, either express or implied. The responsibility for the interpretation and use of the material lies with the reader. In no event shall the World Health Organization be liable for damages arising from its use."
+    }
+  ]
+}

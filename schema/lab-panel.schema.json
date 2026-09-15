@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ns.cascadeprotocol.org/knowledge/v0/lab-panel.schema.json",
+  "title": "LOINC lab panel has a member observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "predicate",
+    "object",
+    "provenance"
+  ],
+  "properties": {
+    "subject": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "LOINC"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "predicate": {
+      "enum": [
+        "has_member"
+      ]
+    },
+    "object": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "LOINC"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "$ref": "defs.schema.json#/$defs/provenance"
+    }
+  }
+}

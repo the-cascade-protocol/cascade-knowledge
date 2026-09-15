@@ -1,16 +1,21 @@
 // Validator: open-source allowlist proof (the structural UMLS/SNOMED wall).
 //
 // Every committed row must cite a `source` that is on the open allowlist, and
-// every subject/object code system must be an open system and must NOT be a
-// walled system. A single walled code (e.g. SNOMED-CT) anywhere fails the build.
+// every code system must be an open system and must NOT be a walled system. A
+// single walled code (e.g. SNOMED-CT) anywhere fails the build.
+//
+// This covers BOTH artifact kinds. A term row carries its system in term.system
+// and its source in the file-level .meta.json rather than per row, but the wall
+// is the same wall: it is the proof that nothing license-walled is committed,
+// and an artifact kind outside it is an artifact kind with no proof.
 
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { FAMILIES } from "../lib/families.mjs";
+import { FAMILIES, TERM_TABLES } from "../lib/families.mjs";
 import { readJsonl } from "../lib/canonical.mjs";
-import { DATA_DIR, SOURCES_DIR } from "../lib/paths.mjs";
+import { DATA_DIR, TERMS_DIR, SOURCES_DIR } from "../lib/paths.mjs";
 
-export function validateAllowlist(dataDir = DATA_DIR) {
+export function validateAllowlist(dataDir = DATA_DIR, termsDir = TERMS_DIR) {
   const allowlist = JSON.parse(
     readFileSync(join(SOURCES_DIR, "allowlist.json"), "utf8"),
   );
@@ -28,6 +33,27 @@ export function validateAllowlist(dataDir = DATA_DIR) {
       errors.push(`${where}: code system "${sys}" is not on the open allowlist`);
     }
   };
+
+  for (const t of TERM_TABLES) {
+    for (const name of t.files) {
+      const p = join(termsDir, `${name}.jsonl`);
+      if (!existsSync(p)) continue;
+      // File-level provenance: the source is stated once, so it is checked once.
+      const metaPath = join(termsDir, `${name}.meta.json`);
+      if (!existsSync(metaPath)) {
+        errors.push(`${name}.jsonl: no ${name}.meta.json, so the file cites no source at all`);
+      } else {
+        const meta = JSON.parse(readFileSync(metaPath, "utf8"));
+        if (!openSources.has(meta.provenance?.source)) {
+          errors.push(`${name}.meta.json: source "${meta.provenance?.source}" not on the open allowlist`);
+        }
+      }
+      readJsonl(p).forEach((row, i) => {
+        checked++;
+        checkSystem(row.term?.system, `${name}.jsonl:${i + 1} term`);
+      });
+    }
+  }
 
   for (const f of FAMILIES) {
     const dataPath = join(dataDir, `${f.name}.jsonl`);

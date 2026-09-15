@@ -5,7 +5,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { FAMILIES } from "./lib/families.mjs";
+import { FAMILIES, TERM_TABLES } from "./lib/families.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMA_DIR = join(HERE, "..", "schema");
@@ -81,6 +81,47 @@ function familySchema(f) {
   };
 }
 
+// The term table is a different artifact kind, so it gets its own generator
+// rather than being squeezed through familySchema(). Two halves: `term` and
+// `externalCopyrightNotice` are ours to shape, and `loinc` is a fixed column
+// list whose values are byte-equal to the release. additionalProperties:false on
+// the loinc block is what stops a future change quietly widening the 12 pinned
+// columns to all 40 in Loinc.csv.
+function termTableSchema(t) {
+  const loincProps = {};
+  for (const c of t.loincColumns) loincProps[c] = { type: "string", minLength: 1 };
+  return {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: `${BASE_ID}/${t.name}.schema.json`,
+    title: t.title,
+    type: "object",
+    additionalProperties: false,
+    required: ["term", "loinc", "cascade"],
+    properties: {
+      term: {
+        type: "object",
+        additionalProperties: false,
+        required: ["system", "code", "display", "displayField"],
+        properties: {
+          system: { enum: t.systems },
+          code: { type: "string", minLength: 1 },
+          // Section 10(c): the identifier and a licensed display name travel
+          // together, so display can never be empty.
+          display: { type: "string", minLength: 1 },
+          displayField: { enum: t.displayFields },
+        },
+      },
+      externalCopyrightNotice: { type: "string", minLength: 1 },
+      loinc: {
+        type: "object",
+        additionalProperties: false,
+        properties: loincProps,
+      },
+      cascade: { type: "object" },
+    },
+  };
+}
+
 function writeJson(path, obj) {
   writeFileSync(path, JSON.stringify(obj, null, 2) + "\n");
 }
@@ -90,4 +131,9 @@ writeJson(join(SCHEMA_DIR, "defs.schema.json"), defs);
 for (const f of FAMILIES) {
   writeJson(join(SCHEMA_DIR, `${f.name}.schema.json`), familySchema(f));
 }
-console.log(`Wrote ${FAMILIES.length + 1} schema files to schema/`);
+for (const t of TERM_TABLES) {
+  writeJson(join(SCHEMA_DIR, `${t.name}.schema.json`), termTableSchema(t));
+}
+console.log(
+  `Wrote ${FAMILIES.length + TERM_TABLES.length + 1} schema files to schema/`,
+);

@@ -15,14 +15,14 @@
   },
   {
     "loincCode": "10835-7",
-    "loincName": "Lipoprotein (a) [Mass/volume] in Serum or Plasma",
+    "loincName": "Lipoprotein a [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "I25.10",
     "conditionName": "Atherosclerotic heart disease of native coronary artery",
     "relationship": "screens_for"
   },
   {
     "loincCode": "10835-7",
-    "loincName": "Lipoprotein (a) [Mass/volume] in Serum or Plasma",
+    "loincName": "Lipoprotein a [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "I63.9",
     "conditionName": "Cerebral infarction, unspecified",
     "relationship": "screens_for"
@@ -71,14 +71,14 @@
   },
   {
     "loincCode": "13458-5",
-    "loincName": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma",
+    "loincName": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation",
     "conditionIcd10": "E78.1",
     "conditionName": "Pure hyperglyceridemia",
     "relationship": "monitors"
   },
   {
     "loincCode": "13458-5",
-    "loincName": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma",
+    "loincName": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation",
     "conditionIcd10": "E78.5",
     "conditionName": "Hyperlipidemia, unspecified",
     "relationship": "monitors"
@@ -141,14 +141,14 @@
   },
   {
     "loincCode": "16128-1",
-    "loincName": "Hepatitis C virus Ab [Presence] in Serum or Plasma",
+    "loincName": "Hepatitis C virus Ab [Presence] in Serum",
     "conditionIcd10": "B17.1",
     "conditionName": "Acute hepatitis C",
     "relationship": "screens_for"
   },
   {
     "loincCode": "16128-1",
-    "loincName": "Hepatitis C virus Ab [Presence] in Serum or Plasma",
+    "loincName": "Hepatitis C virus Ab [Presence] in Serum",
     "conditionIcd10": "B18.2",
     "conditionName": "Chronic viral hepatitis C",
     "relationship": "screens_for"
@@ -204,14 +204,14 @@
   },
   {
     "loincCode": "17849-1",
-    "loincName": "Reticulocytes/100 erythrocytes in Blood by Automated count",
+    "loincName": "Reticulocytes/Erythrocytes in Blood by Automated count",
     "conditionIcd10": "D59.9",
     "conditionName": "Acquired hemolytic anemia, unspecified",
     "relationship": "monitors"
   },
   {
     "loincCode": "17849-1",
-    "loincName": "Reticulocytes/100 erythrocytes in Blood by Automated count",
+    "loincName": "Reticulocytes/Erythrocytes in Blood by Automated count",
     "conditionIcd10": "D64.9",
     "conditionName": "Anemia, unspecified",
     "relationship": "monitors"
@@ -1093,14 +1093,14 @@
   },
   {
     "loincCode": "3051-0",
-    "loincName": "Triiodothyronine (T3) free [Mass/volume] in Serum or Plasma",
+    "loincName": "Triiodothyronine (T3) Free [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "E03.9",
     "conditionName": "Hypothyroidism, unspecified",
     "relationship": "monitors"
   },
   {
     "loincCode": "3051-0",
-    "loincName": "Triiodothyronine (T3) free [Mass/volume] in Serum or Plasma",
+    "loincName": "Triiodothyronine (T3) Free [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "E05.90",
     "conditionName": "Thyrotoxicosis, unspecified without thyrotoxic crisis or storm",
     "relationship": "monitors"
@@ -1254,14 +1254,14 @@
   },
   {
     "loincCode": "33914-3",
-    "loincName": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma",
+    "loincName": "Glomerular filtration rate [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)/1.73 sq M",
     "conditionIcd10": "N17",
     "conditionName": "Acute kidney failure",
     "relationship": "screens_for"
   },
   {
     "loincCode": "33914-3",
-    "loincName": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma",
+    "loincName": "Glomerular filtration rate [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)/1.73 sq M",
     "conditionIcd10": "N18",
     "conditionName": "Chronic kidney disease",
     "relationship": "diagnoses"
@@ -1296,21 +1296,21 @@
   },
   {
     "loincCode": "4537-7",
-    "loincName": "Erythrocyte sedimentation rate by Westergren method",
+    "loincName": "Erythrocyte [Sedimentation Rate] in Blood by Westergren method",
     "conditionIcd10": "M06.9",
     "conditionName": "Rheumatoid arthritis, unspecified",
     "relationship": "monitors"
   },
   {
     "loincCode": "4537-7",
-    "loincName": "Erythrocyte sedimentation rate by Westergren method",
+    "loincName": "Erythrocyte [Sedimentation Rate] in Blood by Westergren method",
     "conditionIcd10": "M31.6",
     "conditionName": "Other giant cell arteritis",
     "relationship": "screens_for"
   },
   {
     "loincCode": "4537-7",
-    "loincName": "Erythrocyte sedimentation rate by Westergren method",
+    "loincName": "Erythrocyte [Sedimentation Rate] in Blood by Westergren method",
     "conditionIcd10": "M35.3",
     "conditionName": "Polymyalgia rheumatica",
     "relationship": "screens_for"
@@ -1464,35 +1464,35 @@
   },
   {
     "loincCode": "5902-2",
-    "loincName": "Prothrombin time (PT) in Platelet poor plasma by Coagulation assay",
+    "loincName": "Prothrombin time (PT)",
     "conditionIcd10": "D68.9",
     "conditionName": "Coagulation defect, unspecified",
     "relationship": "diagnoses"
   },
   {
     "loincCode": "5902-2",
-    "loincName": "Prothrombin time (PT) in Platelet poor plasma by Coagulation assay",
+    "loincName": "Prothrombin time (PT)",
     "conditionIcd10": "K74.6",
     "conditionName": "Other and unspecified cirrhosis of liver",
     "relationship": "monitors"
   },
   {
     "loincCode": "5902-2",
-    "loincName": "Prothrombin time (PT) in Platelet poor plasma by Coagulation assay",
+    "loincName": "Prothrombin time (PT)",
     "conditionIcd10": "Z79.01",
     "conditionName": "Long term (current) use of anticoagulants",
     "relationship": "monitors"
   },
   {
     "loincCode": "5905-5",
-    "loincName": "Monocytes/100 leukocytes in Blood by Automated count",
+    "loincName": "Monocytes/Leukocytes in Blood by Automated count",
     "conditionIcd10": "A49.9",
     "conditionName": "Bacterial infection, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "5905-5",
-    "loincName": "Monocytes/100 leukocytes in Blood by Automated count",
+    "loincName": "Monocytes/Leukocytes in Blood by Automated count",
     "conditionIcd10": "C93.1",
     "conditionName": "Chronic monocytic leukemia",
     "relationship": "screens_for"
@@ -1569,21 +1569,21 @@
   },
   {
     "loincCode": "713-8",
-    "loincName": "Eosinophils/100 leukocytes in Blood by Automated count",
+    "loincName": "Eosinophils/Leukocytes in Blood by Automated count",
     "conditionIcd10": "B82.9",
     "conditionName": "Intestinal parasitism, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "713-8",
-    "loincName": "Eosinophils/100 leukocytes in Blood by Automated count",
+    "loincName": "Eosinophils/Leukocytes in Blood by Automated count",
     "conditionIcd10": "J45.909",
     "conditionName": "Unspecified asthma, uncomplicated",
     "relationship": "screens_for"
   },
   {
     "loincCode": "713-8",
-    "loincName": "Eosinophils/100 leukocytes in Blood by Automated count",
+    "loincName": "Eosinophils/Leukocytes in Blood by Automated count",
     "conditionIcd10": "L20.9",
     "conditionName": "Atopic dermatitis, unspecified",
     "relationship": "screens_for"
@@ -1611,28 +1611,28 @@
   },
   {
     "loincCode": "736-9",
-    "loincName": "Lymphocytes/100 leukocytes in Blood by Automated count",
+    "loincName": "Lymphocytes/Leukocytes in Blood by Automated count",
     "conditionIcd10": "B34.9",
     "conditionName": "Viral infection, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "736-9",
-    "loincName": "Lymphocytes/100 leukocytes in Blood by Automated count",
+    "loincName": "Lymphocytes/Leukocytes in Blood by Automated count",
     "conditionIcd10": "C91.1",
     "conditionName": "Chronic lymphocytic leukemia of B-cell type",
     "relationship": "screens_for"
   },
   {
     "loincCode": "770-8",
-    "loincName": "Neutrophils/100 leukocytes in Blood by Automated count",
+    "loincName": "Neutrophils/Leukocytes in Blood by Automated count",
     "conditionIcd10": "A49.9",
     "conditionName": "Bacterial infection, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "770-8",
-    "loincName": "Neutrophils/100 leukocytes in Blood by Automated count",
+    "loincName": "Neutrophils/Leukocytes in Blood by Automated count",
     "conditionIcd10": "D70.9",
     "conditionName": "Neutropenia, unspecified",
     "relationship": "diagnoses"
@@ -1674,49 +1674,49 @@
   },
   {
     "loincCode": "786-4",
-    "loincName": "MCHC [Mass/volume] by Automated count",
+    "loincName": "MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count",
     "conditionIcd10": "D50.9",
     "conditionName": "Iron deficiency anemia, unspecified",
     "relationship": "monitors"
   },
   {
     "loincCode": "786-4",
-    "loincName": "MCHC [Mass/volume] by Automated count",
+    "loincName": "MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count",
     "conditionIcd10": "D58.0",
     "conditionName": "Hereditary spherocytosis",
     "relationship": "screens_for"
   },
   {
     "loincCode": "787-2",
-    "loincName": "MCV [Entitic volume] by Automated count",
+    "loincName": "MCV [Entitic mean volume] in Red Blood Cells by Automated count",
     "conditionIcd10": "D50.9",
     "conditionName": "Iron deficiency anemia, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "787-2",
-    "loincName": "MCV [Entitic volume] by Automated count",
+    "loincName": "MCV [Entitic mean volume] in Red Blood Cells by Automated count",
     "conditionIcd10": "D51.9",
     "conditionName": "Vitamin B12 deficiency anemia, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "787-2",
-    "loincName": "MCV [Entitic volume] by Automated count",
+    "loincName": "MCV [Entitic mean volume] in Red Blood Cells by Automated count",
     "conditionIcd10": "D53.1",
     "conditionName": "Other megaloblastic anemias, not elsewhere classified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "788-0",
-    "loincName": "Erythrocyte distribution width [Ratio] by Automated count",
+    "loincName": "Erythrocyte [DistWidth] in Blood by Automated count",
     "conditionIcd10": "D50.9",
     "conditionName": "Iron deficiency anemia, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "788-0",
-    "loincName": "Erythrocyte distribution width [Ratio] by Automated count",
+    "loincName": "Erythrocyte [DistWidth] in Blood by Automated count",
     "conditionIcd10": "D64.9",
     "conditionName": "Anemia, unspecified",
     "relationship": "screens_for"

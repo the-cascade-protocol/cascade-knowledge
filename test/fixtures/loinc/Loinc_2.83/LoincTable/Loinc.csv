@@ -1,0 +1,6 @@
+"LOINC_NUM","LONG_COMMON_NAME","SHORTNAME","DisplayName","CLASS","CLASSTYPE","STATUS","EXAMPLE_UCUM_UNITS","COMMON_TEST_RANK","COMMON_ORDER_RANK","EXTERNAL_COPYRIGHT_NOTICE","EXTERNAL_COPYRIGHT_LINK"
+"99991-1","Fictional analyte [Mass/volume] in Serum or Plasma","Fict SerPl-mCnc","Fictional [Mass/Vol]","CHEM","1","ACTIVE","mg/dL","7","0","",""
+"99992-9","Fictional panel, extended [Presence] in Blood","Fict pnl Bld","","HEM/BC","1","ACTIVE","","0","0","Copyright (c) 2026 Nobody, Inc. The ""Fictional"" mark is used with permission.","https://example.invalid/notice"
+"99993-7","Fictional observation [Interpretation]","","","CHEM","1","DISCOURAGED","","0","0","Copyright (c) 2026 Nobody, Inc.
+All rights reserved.",""
+"99994-5","Fictional clinical note","Fict note","","H&P.HX","2","ACTIVE","","0","0","",""

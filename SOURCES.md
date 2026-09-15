@@ -14,16 +14,27 @@ human-readable companion. Pinned release versions are in
 | `med-rt` | 2026.01.05 | Public domain (US Government work). | https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/MED-RT/index.html |
 | `rxnorm-prescribable` | 2026-01-05 | Redistributable. The RxNorm **Current Prescribable Content** subset is released by NLM without UMLS Metathesaurus restrictions. Verified against the release readme (title "RxNorm 01/05/2026 Current Prescribable Content"; file set `prescribe/rrf/{RXNCONSO,RXNREL,RXNSAT}.RRF`). | https://www.nlm.nih.gov/research/umls/rxnorm/docs/prescribe.html |
 | `cdc-cvx` | retrieved 2026-07-24 (289 codes) | Public domain (US Government work, CDC IIS). | https://www2.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx |
+| `loinc` | 2.83 (August 2026) | Redistributable in commercial and non-commercial use, worldwide, with attribution, under the LOINC license version 5.8 (`LICENSE-LOINC.txt`). Conditional, and the conditions are checked rather than promised: `scripts/validate/validate-loinc-license.mjs` asserts them over the emitted bytes. The Part, Answer, Document Ontology and Radiology Playbook files in the release are NOT read; they carry SNOMED CT, RadLex or UMLS-gated content, or are part-derived and restricted by Section 5. | https://loinc.org/ |
 
-Code systems appearing in committed rows: `LOINC`, `ICD-10-CM`, `RXNORM`,
-`MESH`, `MED-RT`, `CVX`, and `text` (free-text lay subjects). All open.
+Code systems appearing in committed rows: `LOINC`, `LOINC-GROUP`, `ICD-10-CM`,
+`RXNORM`, `MESH`, `MED-RT`, `CVX`, and `text` (free-text lay subjects). All open.
+`LOINC-GROUP` holds LOINC Group identifiers (`LG...`), which are not LOINC codes
+(FHIR models a Group as a ValueSet rather than a CodeSystem concept) and so get
+their own system id.
 
 ### LOINC attribution
 
 LOINC content is redistributable in both commercial and non-commercial use under
 the LOINC license, provided the license and copyright are acknowledged. The
-required notice is reproduced in `LICENSE-NOTICES.md`. Citation:
-https://loinc.org/license/
+required notice is reproduced in `LICENSE-NOTICES.md`, which is also where the
+conditions that govern how LOINC content may grow here are stated. Do not
+restate them anywhere else. Citation: https://loinc.org/license/
+
+The LOINC release is not fetched by the monthly regeneration: its download is
+gated on a signed-in human accepting the current license version. `LOINC release
+watch` notices a new release and opens one issue carrying the upgrade checklist.
+The unpacked release is read in place from `$LOINC_RELEASE_DIR` and is never
+copied into this repository.
 
 ## Phase 1 license triage (Cascade Checkup `clinical_knowledge.sqlite`)
 
