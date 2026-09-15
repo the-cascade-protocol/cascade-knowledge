@@ -107,6 +107,16 @@ Code is licensed under Apache-2.0 (`LICENSE`); data under `data/` is licensed
 under CC-BY-4.0 (`LICENSE-DATA`). Required third-party attribution notices
 (LOINC and others) are in `LICENSE-NOTICES.md`.
 
+This repository redistributes LOINC codes and LOINC display names. The full LOINC
+Copyright Notice and License is `LICENSE-LOINC.txt`, reachable from this page as
+the license requires. The short notice it obliges:
+
+> This material contains content from LOINC (http://loinc.org). LOINC is
+> copyright © Regenstrief Institute, Inc. and the Logical Observation Identifiers
+> Names and Codes (LOINC) Committee and is available at no cost under the license
+> at http://loinc.org/license. LOINC® is a registered United States trademark of
+> Regenstrief Institute, Inc.
+
 ## Status
 
 v0 payload. See `CONTRIBUTING.md` for the contribution contract. Community

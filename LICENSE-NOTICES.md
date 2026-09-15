@@ -6,16 +6,37 @@ addition to `LICENSE-DATA`.
 
 ## LOINC (Regenstrief Institute)
 
-This product includes LOINC codes and Long Common Names. LOINC content is used
-under the LOINC license and must carry the following acknowledgment:
+This product includes LOINC codes and LOINC display names. The LOINC license
+(Section 10) requires the following notice verbatim, and it is reproduced here
+without alteration:
 
-> This material contains content from LOINC (https://loinc.org). LOINC is
-> copyright 1995-2026, Regenstrief Institute, Inc. and the Logical Observation
-> Identifiers Names and Codes (LOINC) Committee and is available at no cost under
-> the license at https://loinc.org/license/. LOINC is a registered United States
-> trademark of Regenstrief Institute, Inc.
+> This material contains content from LOINC (http://loinc.org). LOINC is
+> copyright © Regenstrief Institute, Inc. and the Logical Observation Identifiers
+> Names and Codes (LOINC) Committee and is available at no cost under the license
+> at http://loinc.org/license. LOINC® is a registered United States trademark of
+> Regenstrief Institute, Inc.
 
-Affected family: `data/lab-condition.jsonl` (subject codes are LOINC).
+The full LOINC Copyright Notice and License is vendored in this repository as
+`LICENSE-LOINC.txt`, because the license requires each copy of the Licensed
+Materials to include it and, for Internet distribution, to make it accessible
+from the same page the materials download from.
+
+Affected family: `data/lab-condition.jsonl` (subject codes are LOINC, and each
+subject display is a LOINC Long Common Name).
+
+Three obligations this repository must keep as LOINC content grows here:
+
+- **Identifier and display travel together.** Section 10(c) requires every
+  extracted LOINC value to carry its LOINC identifier and one of the LOINC
+  display names. The canonical row shape satisfies this by construction; a row
+  with a LOINC code and no display is a license defect, not only a data defect.
+- **LOINC values are never edited.** Section 2 forbids changing LOINC field
+  contents. Cascade labels, lay synonyms and groupings belong in added fields
+  alongside the LOINC value, never in place of it.
+- **Third-party content inside LOINC carries its own notice.** Where a LOINC term
+  has an `EXTERNAL_COPYRIGHT_NOTICE` (survey instruments and their answers, for
+  example), that notice must ship with the row or the content must be deleted.
+  Inclusion in LOINC is not permission to administer such an instrument.
 
 ## ICD-10-CM
 
