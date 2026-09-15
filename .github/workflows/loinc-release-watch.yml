@@ -1,0 +1,39 @@
+# Notice when a new LOINC release exists. Does NOT download it: Regenstrief
+# gates the download on a signed-in human accepting the current license version,
+# and a license version change is exactly when a person should read it.
+#
+# LOINC ships roughly twice a year, so this runs weekly and is silent almost
+# every time. It opens one issue per release and assigns it, because an
+# assignment is what actually sends an email.
+name: LOINC release watch
+
+on:
+  schedule:
+    # Mondays, 15:10 UTC. Off the hour: GitHub drops scheduled runs at peak.
+    - cron: "10 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  watch:
+    name: Check for a newer LOINC release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probe upstream and file an issue if there is a new release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional. With them the probe asks LOINC's own FHIR server, which is
+          # authoritative. Without them it falls back to the public tx.fhir.org
+          # mirror, which lags a release and says so in the issue it opens.
+          LOINC_USER: ${{ secrets.LOINC_USER }}
+          LOINC_PASSWORD: ${{ secrets.LOINC_PASSWORD }}
+          # Comma-separated GitHub logins to assign. Assignment is the email.
+          LOINC_WATCH_ASSIGNEES: ${{ vars.LOINC_WATCH_ASSIGNEES }}
+        run: node scripts/watch-loinc-release.mjs
