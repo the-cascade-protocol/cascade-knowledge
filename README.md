@@ -16,7 +16,7 @@ ontology. Every committed row is traceable to an openly redistributable source.
 
 ## What is in v0
 
-Seven relation families, one JSONL file each under `data/`:
+Nine relation families, one JSONL file each under `data/`:
 
 | Family | Relation | Example |
 | --- | --- | --- |
@@ -27,6 +27,48 @@ Seven relation families, one JSONL file each under `data/`:
 | `brand-generic` | a brand name is a `tradename_of` a generic ingredient | RxNorm 1000108 (Xeomin) tradename of botulinum toxin type A |
 | `ingredient-rollup` | a drug product `has_ingredient` | a clinical drug product to its active ingredient |
 | `cvx-disease` | a vaccine (CVX) `prevents` a disease | CVX 03 (MMR) prevents measles |
+| `lab-panel` | a LOINC lab panel `has_member` an observation | LOINC 58410-2 (CBC panel) has member 718-7 (Hemoglobin) |
+| `lab-group` | a LOINC Group `groups` an observation | LG50009-6 (Cholesterol) groups 2093-3 (Cholesterol) |
+
+## The term tables: a second artifact kind
+
+A relation family answers "how do these two codes relate". It cannot answer
+"what is this code", because a display name, a status, a class and an example
+unit are attributes OF one code rather than relations between two. Forcing them
+into a relation shape would make the row redundant (the display already lives
+inside the node), multiply the bytes by one row per attribute, and assert
+something false about what a node is.
+
+So `terms/` is a second artifact kind alongside `data/`: still one JSON object
+per line, still diffable, still CI-validated, with its own schema
+(`schema/loinc-term.schema.json`) and its own validator. v0 ships two LOINC term
+tables, `terms/loinc-lab.jsonl` and `terms/loinc-clinical.jsonl`.
+
+```json
+{"term":{"system":"LOINC","code":"2093-3",
+         "display":"Cholesterol [Mass/volume] in Serum or Plasma",
+         "displayField":"LONG_COMMON_NAME"},
+ "loinc":{"LONG_COMMON_NAME":"Cholesterol [Mass/volume] in Serum or Plasma",
+          "SHORTNAME":"Cholest SerPl-mCnc","CLASS":"CHEM","CLASSTYPE":"1",
+          "STATUS":"ACTIVE","EXAMPLE_UCUM_UNITS":"mg/dL",
+          "COMMON_TEST_RANK":"61","ConsumerName":"Cholesterol, Blood"},
+ "cascade":{}}
+```
+
+Three things about that shape carry their weight:
+
+- **`loinc` and `cascade` are separate blocks.** Everything under `loinc` is
+  byte-equal to the release, so "LOINC values are never edited" is a validator
+  rather than a promise. Anything this project authors goes under `cascade`,
+  which is empty in v0.
+- **`displayField` records which LOINC field the display came from**, because
+  the license accepts only certain display names and cares which one travels.
+- **Provenance is file-level**, in a sibling `<name>.meta.json` carrying the
+  source, the pinned release, the method, the citation, the dates and a content
+  hash over the rows. One source and one version are uniform across every row,
+  and repeating the block tens of thousands of times would cost megabytes to say
+  the same thing. That hash is the integrity reference for `terms/`, the way
+  `data/BUILD_MANIFEST.json` is for `data/`.
 
 ## The row shape
 
@@ -82,6 +124,7 @@ No runtime dependencies. Node 20+.
 
 ```bash
 node scripts/build-all.mjs        # run every pipeline (skips inputs it cannot find)
+                                  # LOINC needs $LOINC_RELEASE_DIR; read in place, never copied
 node scripts/validate-all.mjs     # schema + open-allowlist wall + determinism/integrity
 node scripts/validate/validate-code-existence.mjs --sample 12   # canonical-API check
 node --test                        # unit + integration tests
@@ -114,6 +157,15 @@ their review horizon (candidate quarterly, established annually).
 Code is licensed under Apache-2.0 (`LICENSE`); data under `data/` is licensed
 under CC-BY-4.0 (`LICENSE-DATA`). Required third-party attribution notices
 (LOINC and others) are in `LICENSE-NOTICES.md`.
+
+**`terms/` is not CC-BY-4.0, and neither are the LOINC-derived rows under
+`data/`.** A term table is largely verbatim LOINC Table content, and the LOINC
+license withholds rights that CC-BY would grant: LOINC field contents may not be
+altered (Section 2), a Cascade-authored grouping of LOINC codes is a derivative
+the license speaks to directly (Section 1), and Section 12 limits what a
+redistributor may promise. So `terms/` and the LOINC-derived rows are
+redistributed under `LICENSE-LOINC.txt`, on its terms, and the conditions that
+come with them are stated once in `LICENSE-NOTICES.md`.
 
 This repository redistributes LOINC codes and LOINC display names. The full LOINC
 Copyright Notice and License is `LICENSE-LOINC.txt`, reachable from this page as

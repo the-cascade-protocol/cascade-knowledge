@@ -121,7 +121,7 @@ function issueBody(upstream, pinned, source, lagging) {
     "- [ ] Download the full release and unpack it into the terminology release directory (outside every git checkout).",
     "- [ ] `export LOINC_RELEASE_DIR=/path/to/Loinc_<version>`",
     "- [ ] If the license version changed, replace `LICENSE-LOINC.txt` with the release's own `LoincLicense_<x.y>.txt` (byte-identical copy) and update the version named in `LICENSE-NOTICES.md`.",
-    "- [ ] Rebuild: `node scripts/build-loinc-terms.mjs` (writes `terms/`), then `node scripts/validate-all.mjs`.",
+    "- [ ] Rebuild: `node scripts/build/build-loinc-terms.mjs` (writes `terms/` and the two LOINC relation families), then `node scripts/validate-all.mjs`.",
     "- [ ] Bump `loinc` in `sources/SOURCE_VERSIONS.json` to the new release.",
     "- [ ] Review the diff against the release's own `AccessoryFiles/ChangeSnapshot/` and `Updates/` files, which say what actually changed.",
     "- [ ] Check the status-regression report: any code we ship whose `STATUS` became DEPRECATED or DISCOURAGED needs a decision, not a silent carry-forward.",

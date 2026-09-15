@@ -24,8 +24,21 @@ copy of `LoincLicense_5.8.txt` as shipped in the LOINC 2.83 release, so it is
 the licensor's own text rather than a transcription: **License version 5.8**,
 the version registered users were asked to accept on 2026-09-15.
 
-Affected family: `data/lab-condition.jsonl` (subject codes are LOINC, and each
-subject display is a LOINC Long Common Name).
+Affected artifacts:
+
+- `terms/loinc-lab.jsonl` and `terms/loinc-clinical.jsonl`, the LOINC term
+  tables. Each row carries a LOINC code, a licensed display name, the field that
+  display came from, and a block of LOINC values that are byte-equal to the
+  release.
+- `data/lab-panel.jsonl` (LOINC panel membership) and `data/lab-group.jsonl`
+  (LOINC Group membership; the subject is a Group identifier in the
+  `LOINC-GROUP` system, carrying its Group Name as the license requires for an
+  identifier that is not a LOINC code).
+- `data/lab-condition.jsonl` (subject codes are LOINC, and each subject display
+  is a LOINC Long Common Name).
+
+These are built from the LOINC **2.83** release, pinned as `loinc` in
+`sources/SOURCE_VERSIONS.json`.
 
 Three obligations this repository must keep as LOINC content grows here:
 
@@ -40,6 +53,20 @@ Three obligations this repository must keep as LOINC content grows here:
   has an `EXTERNAL_COPYRIGHT_NOTICE` (survey instruments and their answers, for
   example), that notice must ship with the row or the content must be deleted.
   Inclusion in LOINC is not permission to administer such an instrument.
+
+`scripts/validate/validate-loinc-license.mjs` turns all three into assertions
+over the emitted bytes rather than leaving them as promises, and says so on
+stdout when it cannot reach the release to check the last two.
+
+A fourth obligation constrains what is read rather than what is written: the
+release ships files this repository may not redistribute from, and
+`scripts/lib/loinc.mjs` refuses them by basename. Those are the Part files and
+anything derived from them (restricted by Section 5), the Answer and AnswerList
+files, the Document Ontology, the component hierarchy, the linguistic variants,
+and the RSNA Radiology Playbook. Note that the "Ontology File" the license names
+is a different artifact from the release's `DocumentOntology.csv`, which is why
+the refusal list is explicit rather than pattern-matched against the license
+text.
 
 ## ICD-10-CM
 
