@@ -22,7 +22,12 @@ import { join } from "node:path";
 import { writeJsonl, writeTermJsonl } from "../lib/canonical.mjs";
 import { provenance, sourceDate, SOURCE_VERSIONS, CITATIONS } from "../lib/provenance.mjs";
 import { DATA_DIR, TERMS_DIR, INPUTS, requireInput, InputMissingError } from "../lib/paths.mjs";
-import { forEachCsvRecord, assertReleaseVersion } from "../lib/loinc.mjs";
+import {
+  forEachCsvRecord,
+  assertReleaseVersion,
+  loadNoticeVerdicts,
+  unrecognisedNoticeError,
+} from "../lib/loinc.mjs";
 import { TERM_TABLE_BY_NAME } from "../lib/families.mjs";
 
 const SOURCE = "loinc";
@@ -44,28 +49,18 @@ const CLASSTYPE_CLINICAL = "2";
 
 // Section 10(b) of the LOINC license gives two options for third-party content
 // carried inside LOINC: comply with that third party's terms, or delete the
-// content. Complying means reading and accepting each one, and several of the
-// notices on clinical terms are restrictive on their face rather than a bare
-// acknowledgement: Praktikon B.V. permits reproduction "only with written
-// permission", National POLST permits "non-commercial, personal purposes" only
-// and requires a license for commercial or facility use, and the FLACC and rFLACC
-// instruments, the Abbreviated Injury Scale and the Hester Davis Scale each
-// require a license from their owner. Assessing those instrument by instrument
-// is the survey round's job, where the question "inclusion in LOINC is not
-// permission to administer" gets answered once for all of them.
+// content. Which option a notice gets is not decided here and is not decided by
+// a pattern: it is read from sources/loinc-notice-verdicts.json, where every
+// distinct notice carries an explicit, reasoned human verdict.
 //
-// So this round takes the delete option for the clinical terms, and keeps the
-// laboratory ones, whose three notices (College of American Pathologists, Dr.
-// Navdeep Tangri's KFRE, and Oncimmune's EarlyCDT) are plain "used with
-// permission" acknowledgements carrying no restriction on redistribution.
+// Of the 47 distinct notices in 2.83, 8 are restricted (they condition use on
+// obtaining a licence, or limit the purpose of use) and 39 are permissive. The
+// restricted ones are withheld entirely; the permissive ones ship with their
+// notice attached, verbatim.
 //
-// This is the single predicate that decides it. Reversing the deferral is
-// deleting the `cls === "clinical"` condition; widening it to labs as well is
-// deleting the condition the other way.
-function deferredForExternalCopyright(cls, notice) {
-  if (!notice) return false;
-  return cls === "clinical";
-}
+// A notice with no verdict is a BUILD FAILURE, never a default. See the
+// chokepoint comment in scripts/lib/loinc.mjs for why this is an exact-match
+// table rather than a regex.
 
 // The Category values in GroupLoincTerms.csv that name a laboratory grouping.
 // Their union is 6,610 of the 7,900 groups that have members. The remaining
@@ -183,6 +178,9 @@ export function run() {
   mkdirSync(DATA_DIR, { recursive: true });
   mkdirSync(TERMS_DIR, { recursive: true });
 
+  const noticeVerdicts = loadNoticeVerdicts();
+  const unrecognisedNotices = new Map();
+
   const classTypes = readClassTypes(root);
   const consumerNames = readConsumerNames(root);
   const panels = readPanels(root, classTypes);
@@ -211,7 +209,8 @@ export function run() {
     labStatus: {},
     clinicalSkippedNotActive: 0,
     noticed: { lab: 0, clinical: 0 },
-    deferredForNotice: {},
+    withheldRestrictedNotice: {},
+    withheldByHolder: {},
   };
 
   forEachCsvRecord(releasePath(root, "loincTable"), (get) => {
@@ -261,10 +260,22 @@ export function run() {
       if (v !== "") loinc[c] = v;
     }
     const notice = get("EXTERNAL_COPYRIGHT_NOTICE");
-    if (deferredForExternalCopyright(cls, notice)) {
-      stats.deferredForNotice[cls] = (stats.deferredForNotice[cls] || 0) + 1;
-      longCommonName.delete(code);
-      return;
+    if (notice) {
+      const verdict = noticeVerdicts.get(notice);
+      if (!verdict) {
+        // Collected, not thrown here, so ONE build reports every unruled notice
+        // rather than one per run.
+        if (!unrecognisedNotices.has(notice)) unrecognisedNotices.set(notice, []);
+        unrecognisedNotices.get(notice).push(code);
+        longCommonName.delete(code);
+        return;
+      }
+      if (verdict.verdict === "restricted") {
+        stats.withheldRestrictedNotice[cls] = (stats.withheldRestrictedNotice[cls] || 0) + 1;
+        stats.withheldByHolder[verdict.holder] = (stats.withheldByHolder[verdict.holder] || 0) + 1;
+        longCommonName.delete(code);
+        return;
+      }
     }
     const row = {
       term: { system: "LOINC", code, display: lcn, displayField: DISPLAY_FIELD },
@@ -286,6 +297,9 @@ export function run() {
       clinicalRows.push(row);
     }
   });
+
+  // Fail closed, before a single byte is written.
+  if (unrecognisedNotices.size) throw unrecognisedNoticeError(unrecognisedNotices);
 
   const labCount = writeTermJsonl(join(TERMS_DIR, "loinc-lab.jsonl"), labRows, LOINC_COLUMNS);
   const clinicalCount = writeTermJsonl(

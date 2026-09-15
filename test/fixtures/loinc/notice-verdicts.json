@@ -1,0 +1,26 @@
+{
+  "_comment": [
+    "Notice verdicts for the SYNTHETIC mini-release fixture, not for the real LOINC release.",
+    "Exists so the tests for checks 2 and 3 can exercise a noticed row without adding a fabricated notice to sources/loinc-notice-verdicts.json, which is a document about the real release.",
+    "Same rule and same shape as the real file."
+  ],
+  "_rule": {
+    "restricted": "conditions use on obtaining a licence, or limits the purpose of use",
+    "permissive": "asserts copyright and permission, with no further condition"
+  },
+  "sourceVersion": "2.83",
+  "verdicts": [
+    {
+      "holder": "Nobody, Inc. (fixture)",
+      "verdict": "permissive",
+      "reason": "Asserts copyright and permission to use. No licence requirement and no limit on the purpose of use.",
+      "notice": "Copyright (c) 2026 Nobody, Inc. The \"Fictional\" mark is used with permission."
+    },
+    {
+      "holder": "Nobody, Inc. (fixture, reserved rights)",
+      "verdict": "restricted",
+      "reason": "Reserves all rights and grants no permission at all, so there is no permission under which to redistribute it.",
+      "notice": "Copyright (c) 2026 Nobody, Inc.\nAll rights reserved."
+    }
+  ]
+}

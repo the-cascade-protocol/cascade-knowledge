@@ -34,7 +34,7 @@ import { join } from "node:path";
 import { FAMILIES, TERM_TABLES } from "../lib/families.mjs";
 import { readJsonl } from "../lib/canonical.mjs";
 import { DATA_DIR, TERMS_DIR, INPUTS } from "../lib/paths.mjs";
-import { forEachCsvRecord, assertReleaseVersion } from "../lib/loinc.mjs";
+import { forEachCsvRecord, assertReleaseVersion, loadNoticeVerdicts } from "../lib/loinc.mjs";
 import { SOURCE_VERSIONS } from "../lib/provenance.mjs";
 
 // A LOINC code is digits, a hyphen, and a single check digit. A LOINC Group id
@@ -61,6 +61,9 @@ export function validateLoincLicense({
   termsDir = TERMS_DIR,
   dataDir = DATA_DIR,
   releaseDir = INPUTS.loincReleaseDir,
+  // Overridable only so the synthetic mini-release fixture can carry its own
+  // verdicts instead of putting fabricated notices in the real reviewed file.
+  verdictsPath = undefined,
 } = {}) {
   const errors = [];
   const notes = [];
@@ -174,6 +177,73 @@ export function validateLoincLicense({
         }
       }
     });
+  }
+
+  // --- check 6: every emitted notice has a reviewed verdict, and is permissive
+  //
+  // Release-independent: it compares the emitted rows against
+  // sources/loinc-notice-verdicts.json, so it runs in CI where the release is
+  // absent. Fail-closed both ways: a notice with no verdict is an error, and a
+  // notice a human ruled `restricted` must never appear in emitted output.
+  const verdicts = loadNoticeVerdicts(verdictsPath);
+  const unruled = new Map();
+  for (const [name, { rows }] of rowsByFile) {
+    rows.forEach((row, i) => {
+      const notice = row.externalCopyrightNotice;
+      if (!notice) return;
+      const v = verdicts.get(notice);
+      if (!v) {
+        const key = notice;
+        if (!unruled.has(key)) unruled.set(key, []);
+        unruled.get(key).push(`${name}.jsonl:${i + 1} (${row.term?.code})`);
+        return;
+      }
+      if (v.verdict === "restricted") {
+        errors.push(
+          `${name}.jsonl:${i + 1} (${row.term?.code}): carries a notice ruled "restricted" in sources/loinc-notice-verdicts.json (${v.holder}), which must be withheld, not emitted`,
+        );
+      }
+    });
+  }
+  for (const [notice, where] of unruled) {
+    const shown = where.slice(0, 5).join(", ") + (where.length > 5 ? `, and ${where.length - 5} more` : "");
+    errors.push(
+      `${where.length} emitted row(s) carry a copyright notice with no verdict in sources/loinc-notice-verdicts.json: ${shown}. Notice: ${JSON.stringify(notice.slice(0, 160))}`,
+    );
+  }
+
+  // --- the standing report: which relation rows reference a noticed code -----
+  //
+  // A relation row has nowhere to put a copyright notice (the family schemas are
+  // additionalProperties:false), so where lab-panel references a code whose term
+  // row carries one, the notice travels with the TERM TABLE and not with the
+  // relation file. That is a real property of the artifact, so it is printed on
+  // every run rather than recorded once in a pull request body, and it cannot
+  // grow without somebody seeing the number change.
+  const noticedCodes = new Set();
+  for (const [, { rows }] of rowsByFile) {
+    for (const row of rows) if (row.externalCopyrightNotice) noticedCodes.add(row.term.code);
+  }
+  for (const [fam, rows] of relationRows) {
+    const refs = new Set();
+    let rowCount = 0;
+    for (const row of rows) {
+      let hit = false;
+      for (const node of [row.subject, row.object]) {
+        if (node?.system !== "LOINC" || !noticedCodes.has(node.code)) continue;
+        refs.add(node.code);
+        hit = true;
+      }
+      // Counted once per ROW: some rows carry a noticed code on both sides.
+      if (hit) rowCount++;
+    }
+    if (refs.size === 0) {
+      notes.push(`${fam}: references no code carrying a third-party copyright notice`);
+    } else {
+      notes.push(
+        `${fam}: ${rowCount} row(s) reference ${refs.size} code(s) carrying a third-party copyright notice, whose notice travels on the term row, not here: ${[...refs].sort().join(", ")}`,
+      );
+    }
   }
 
   // --- integrity: each .meta.json hash matches its file --------------------

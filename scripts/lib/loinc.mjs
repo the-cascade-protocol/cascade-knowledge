@@ -17,7 +17,8 @@
 // No network and no wall-clock in this module.
 
 import { readFileSync } from "node:fs";
-import { basename } from "node:path";
+import { basename, join } from "node:path";
+import { SOURCES_DIR } from "./paths.mjs";
 
 // The wall is an ALLOWLIST, not a denylist. Five files out of the release are
 // readable, and everything else is refused, because a denylist only stops the
@@ -210,4 +211,57 @@ export function readCsvColumns(path, columns) {
     out.push(row);
   });
   return out;
+}
+
+
+// --- the notice chokepoint --------------------------------------------------
+//
+// Section 10(b) of the LOINC license gives two options for third-party content
+// carried inside LOINC: comply with that third party's terms, or delete the
+// content. sources/loinc-notice-verdicts.json records which option each distinct
+// notice gets, with a reason, as a document a person can audit.
+//
+// It is FAIL-CLOSED on purpose, and matched on the exact notice string rather
+// than a pattern. A regex over notice text can only recognise the restrictions
+// somebody already thought of: a future release that adds a restrictive notice
+// in wording no pattern anticipated would ship it silently. An exact-match
+// table cannot do that. It can only fail, which is the behaviour worth having.
+
+export const NOTICE_VERDICTS_PATH = join(SOURCES_DIR, "loinc-notice-verdicts.json");
+
+export function loadNoticeVerdicts(path) {
+  path = path || NOTICE_VERDICTS_PATH;
+  const doc = JSON.parse(readFileSync(path, "utf8"));
+  const map = new Map();
+  for (const v of doc.verdicts) {
+    if (v.verdict !== "permissive" && v.verdict !== "restricted") {
+      throw new Error(`loinc-notice-verdicts.json: "${v.holder}" has verdict "${v.verdict}", expected permissive or restricted`);
+    }
+    if (map.has(v.notice)) {
+      throw new Error(`loinc-notice-verdicts.json: duplicate notice text for "${v.holder}"`);
+    }
+    map.set(v.notice, v);
+  }
+  return map;
+}
+
+// Build the error for notices no human has ruled on. Names the notice and the
+// codes carrying it, so the verdict can be written without re-deriving anything.
+export function unrecognisedNoticeError(unrecognised) {
+  const lines = [
+    `${unrecognised.size} LOINC copyright notice(s) in this release are not in sources/loinc-notice-verdicts.json.`,
+    `Every distinct EXTERNAL_COPYRIGHT_NOTICE needs an explicit human verdict of "permissive" or "restricted"`,
+    `before the terms carrying it can be built. Add each one verbatim, with a reason, and rebuild.`,
+    ``,
+  ];
+  for (const [notice, codes] of unrecognised) {
+    const shown = codes.slice(0, 8).join(", ") + (codes.length > 8 ? `, and ${codes.length - 8} more` : "");
+    lines.push(`  ${codes.length} code(s): ${shown}`);
+    lines.push(`  notice: ${JSON.stringify(notice)}`);
+    lines.push(``);
+  }
+  const e = new Error(lines.join("\n"));
+  e.name = "UnrecognisedNoticeError";
+  e.unrecognisedNotice = true;
+  return e;
 }

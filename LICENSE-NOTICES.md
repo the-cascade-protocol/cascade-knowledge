@@ -54,42 +54,39 @@ Three obligations this repository must keep as LOINC content grows here:
   example), that notice must ship with the row or the content must be deleted.
   Inclusion in LOINC is not permission to administer such an instrument.
 
-Section 10(b) offers those two options, and this repository currently takes
-**both**, depending on the content:
+Section 10(b) offers those two options, and this repository takes **both**,
+notice by notice rather than by category. Every distinct
+`EXTERNAL_COPYRIGHT_NOTICE` in the slice has an explicit, reasoned verdict in
+`sources/loinc-notice-verdicts.json`:
 
-- **Kept, with the notice.** The 8 laboratory terms carrying a notice are
-  shipped in `terms/loinc-lab.jsonl` with that notice reproduced verbatim, and
-  the 154 `lab-panel` rows referencing them are kept. Their three notices
-  (College of American Pathologists, Dr. Navdeep Tangri's KFRE, and Oncimmune's
-  EarlyCDT) are plain "used with permission" acknowledgements that place no
-  restriction on redistribution.
-- **Deleted, pending the survey round.** The 659 ACTIVE clinical terms carrying
-  a notice are **not** shipped. Several of those notices are restrictive on
-  their face rather than a bare acknowledgement: Praktikon B.V. permits
-  reproduction "only with written permission", National POLST permits
-  "non-commercial, personal purposes" only and requires a licence for commercial
-  or facility use, and the FLACC and rFLACC instruments, the Abbreviated Injury
-  Scale and the Hester Davis Scale each require a licence from their owner.
-  Complying with those means assessing each instrument against its owner's
-  terms, which is the survey round's work, where the same question has to be
-  answered for the 6,684 survey terms anyway. Until then this repository takes
-  the delete option rather than shipping content on terms it has not read. The
-  decision is one predicate, `deferredForExternalCopyright`, in
-  `scripts/build/build-loinc-terms.mjs`.
+- **`permissive`: kept, with the notice attached.** 39 of the 47 notices in
+  2.83, covering 583 rows (8 laboratory and 575 clinical). These assert
+  copyright and permission with no further condition. A condition that shipping
+  the notice verbatim already satisfies (keep the attribution, do not alter the
+  instrument) does not make a notice restricted, because Section 2 already
+  forbids editing LOINC values.
+- **`restricted`: deleted.** 8 notices covering 84 clinical rows, which
+  condition use on obtaining a licence or limit the purpose of use: Praktikon
+  B.V. (49 rows), National POLST (9), EUROSPINE (9), the University of Michigan
+  for FLACC and rFLACC (7), the AAAM Abbreviated Injury Scale (4), HD Nursing's
+  Hester Davis Scale (3), MedChi's Barthel Index (2), and Jeremy Fairbank's
+  Oswestry Disability Index (1). Complying with those means accepting each
+  owner's terms, which is not something a build pipeline can do on a reader's
+  behalf.
 
-`scripts/validate/validate-loinc-license.mjs` turns all three into assertions
-over the emitted bytes rather than leaving them as promises, and says so on
-stdout when it cannot reach the release to check the last two.
+That file is **fail-closed**: the builder and the licence validator both refuse
+any notice text not listed in it verbatim, naming the notice and the codes
+carrying it. A new or reworded notice in the next LOINC release stops the build
+and gets a human verdict rather than defaulting into either bucket.
 
-A fourth obligation constrains what is read rather than what is written: the
-release ships files this repository may not redistribute from, and
-`scripts/lib/loinc.mjs` refuses them by basename. Those are the Part files and
-anything derived from them (restricted by Section 5), the Answer and AnswerList
-files, the Document Ontology, the component hierarchy, the linguistic variants,
-and the RSNA Radiology Playbook. Note that the "Ontology File" the license names
-is a different artifact from the release's `DocumentOntology.csv`, which is why
-the refusal list is explicit rather than pattern-matched against the license
-text.
+**A relation row cannot carry a notice.** The family schemas are
+`additionalProperties: false`, so `data/lab-panel.jsonl` has nowhere to put one.
+154 of its rows reference 8 laboratory codes whose term rows do carry a notice:
+`85349-9`, `85624-5`, `85625-2`, `85626-0`, `85904-1`, `85905-8`, `88863-6` and
+`89041-8`. For those, **the notice travels with the term table**
+(`terms/loinc-lab.jsonl`), not with the relation file, and a consumer of the
+relation family alone does not receive it. `scripts/validate/validate-loinc-license.mjs`
+prints that list on every run so it cannot grow unnoticed.
 
 ## ICD-10-CM
 

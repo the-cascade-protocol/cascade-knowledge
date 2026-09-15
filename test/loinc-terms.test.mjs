@@ -11,6 +11,9 @@ import { SOURCE_VERSIONS, CITATIONS } from "../scripts/lib/provenance.mjs";
 import { serializeTermRow } from "../scripts/lib/canonical.mjs";
 import { TERM_TABLE_BY_NAME, OPEN_CODE_SYSTEMS, FAMILY_BY_NAME } from "../scripts/lib/families.mjs";
 import { validateLoincLicense } from "../scripts/validate/validate-loinc-license.mjs";
+import { loadNoticeVerdicts } from "../scripts/lib/loinc.mjs";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 import { FIXTURE_RELEASE } from "./loinc.test.mjs";
 
 const COLUMNS = TERM_TABLE_BY_NAME["loinc-term"].loincColumns;
@@ -331,12 +334,22 @@ const FIXTURE_NOTICED = {
   cascade: {},
 };
 
+const FIXTURE_VERDICTS = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "fixtures", "loinc", "notice-verdicts.json",
+);
+
 function againstFixture(rows) {
   const terms = scratch();
   const data = scratch();
   try {
     writeTerms(terms, rows);
-    return validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: FIXTURE_RELEASE });
+    return validateLoincLicense({
+      termsDir: terms,
+      dataDir: data,
+      releaseDir: FIXTURE_RELEASE,
+      verdictsPath: FIXTURE_VERDICTS,
+    });
   } finally {
     rmSync(terms, { recursive: true, force: true });
     rmSync(data, { recursive: true, force: true });
@@ -427,4 +440,65 @@ test("the licence validator refuses a release that is not the pinned one", () =>
     rmSync(data, { recursive: true, force: true });
     rmSync(wrong, { recursive: true, force: true });
   }
+});
+
+// --- the notice chokepoint --------------------------------------------------
+
+test("every notice verdict is one of the two allowed values, and none is duplicated", () => {
+  const v = loadNoticeVerdicts();
+  assert.ok(v.size > 0);
+  for (const e of v.values()) {
+    assert.ok(["permissive", "restricted"].includes(e.verdict));
+    assert.ok(e.holder && e.holder.length > 0, "every verdict names a holder");
+    assert.ok(e.reason && e.reason.length > 0, "every verdict carries a reason a person can audit");
+  }
+});
+
+test("a notice with no human verdict FAILS rather than defaulting into either bucket", () => {
+  // The whole point of an exact-match table over a regex: a notice nobody has
+  // ruled on cannot be guessed at, in either direction.
+  const terms = scratch();
+  const data = scratch();
+  try {
+    writeTerms(terms, [
+      {
+        ...GOOD_TERM,
+        externalCopyrightNotice: "Copyright (c) 2027 An Instrument Vendor Invented Next Release. Terms apply.",
+      },
+    ]);
+    const r = validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: "" });
+    assert.equal(r.ok, false);
+    assert.ok(r.errors.some((e) => e.includes("no verdict in sources/loinc-notice-verdicts.json")));
+    assert.ok(r.errors.some((e) => e.includes("An Instrument Vendor Invented Next Release")));
+  } finally {
+    rmSync(terms, { recursive: true, force: true });
+    rmSync(data, { recursive: true, force: true });
+  }
+});
+
+test("a notice ruled restricted must never appear in emitted output", () => {
+  const v = loadNoticeVerdicts();
+  const restricted = [...v.values()].find((e) => e.verdict === "restricted");
+  assert.ok(restricted, "the fixture for this test is the real verdict file");
+  const terms = scratch();
+  const data = scratch();
+  try {
+    writeTerms(terms, [{ ...GOOD_TERM, externalCopyrightNotice: restricted.notice }]);
+    const r = validateLoincLicense({ termsDir: terms, dataDir: data, releaseDir: "" });
+    assert.equal(r.ok, false);
+    assert.ok(r.errors.some((e) => e.includes('ruled "restricted"') && e.includes("withheld, not emitted")));
+  } finally {
+    rmSync(terms, { recursive: true, force: true });
+    rmSync(data, { recursive: true, force: true });
+  }
+});
+
+test("the licence validator reports which relation rows reference a noticed code", () => {
+  // Printed on every run, because a relation row has nowhere to carry a notice
+  // and that exposure must not be able to grow silently.
+  const r = validateLoincLicense({ releaseDir: "" });
+  assert.ok(
+    r.notes.some((n) => n.startsWith("lab-panel:") && n.includes("copyright notice")),
+    "lab-panel's noticed-code exposure must be reported every run",
+  );
 });
