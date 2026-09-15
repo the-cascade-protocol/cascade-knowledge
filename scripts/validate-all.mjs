@@ -6,6 +6,7 @@
 import { validateSchema } from "./validate/validate-schema.mjs";
 import { validateAllowlist } from "./validate/validate-allowlist.mjs";
 import { validateDeterminism } from "./validate/validate-determinism.mjs";
+import { validateLoincLicense } from "./validate/validate-loinc-license.mjs";
 
 function report(label, r, summary) {
   const status = r.ok ? "PASS" : "FAIL";
@@ -23,10 +24,14 @@ const det = validateDeterminism();
 report(
   "determinism",
   det,
-  `${det.checksums} checksums, ${det.inProcessRebuilt} in-process rebuilds, full [${det.fullRebuilt.join(", ")}]`,
+  `${det.checksums} checksums, ${det.inProcessRebuilt} in-process rebuilds, full [${det.fullRebuilt.join(", ")}], terms [${(det.termsRebuilt || []).join(", ")}]`,
 );
 for (const n of det.notes) console.log("    note: " + n);
 
-const ok = schema.ok && allow.ok && det.ok;
+const loinc = validateLoincLicense();
+report("loinc-license", loinc, `${loinc.checked} rows checked`);
+for (const n of loinc.notes) console.log("    note: " + n);
+
+const ok = schema.ok && allow.ok && det.ok && loinc.ok;
 console.log(ok ? "\nALL CORE VALIDATORS PASSED" : "\nVALIDATION FAILED");
 process.exit(ok ? 0 : 1);

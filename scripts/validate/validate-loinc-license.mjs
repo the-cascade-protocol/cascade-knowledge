@@ -1,0 +1,287 @@
+// Validator: the LOINC license obligations, checked rather than promised.
+//
+// The LOINC license is permissive but conditional, and the conditions are
+// exactly the kind a data pipeline erodes silently. This validator turns five
+// of them into assertions over the emitted bytes:
+//
+//   1. Section 10(c): a LOINC identifier and a LICENSED display name travel
+//      together, and the row records which display field it came from. A
+//      Consumer Name is not on the licensed list, so a row carrying one and no
+//      licensed display is a failure, not a warning.
+//   2. Third-party content inside LOINC keeps its own notice: every row whose
+//      source record carries an EXTERNAL_COPYRIGHT_NOTICE carries it verbatim.
+//   3. Section 2: LOINC values are never edited. Every value under a row's
+//      `loinc` block, and every LOINC display in the two relation families, is
+//      byte-equal to the release.
+//   4. Only LOINC codes (and LOINC Group ids in the LOINC-GROUP system) ship.
+//      An LP, LA or LL identifier is Part, Answer or AnswerList content, which
+//      is restricted, so its presence is observable from the output alone.
+//   5. A relation row may only reference a LOINC code an emitted term table
+//      carries, because a relation row has nowhere to put a notice.
+//
+// Plus an integrity check: each term table's .meta.json content hash matches
+// the file, which is what terms/ has in place of data/BUILD_MANIFEST.json.
+//
+// Checks 2 and 3 need the release. When $LOINC_RELEASE_DIR is absent they SKIP
+// AND SAY SO on stdout: a validator that silently passes because it could not
+// look is the failure this repository is trying not to have.
+//
+// No network anywhere in here.
+
+import { readFileSync, existsSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { join } from "node:path";
+import { FAMILIES, TERM_TABLES } from "../lib/families.mjs";
+import { readJsonl } from "../lib/canonical.mjs";
+import { DATA_DIR, TERMS_DIR, INPUTS } from "../lib/paths.mjs";
+import { forEachCsvRecord } from "../lib/loinc.mjs";
+
+// A LOINC code is digits, a hyphen, and a single check digit. A LOINC Group id
+// is that with an LG prefix. Part (LP), Answer (LA) and AnswerList (LL)
+// identifiers match neither, which is the point.
+const LOINC_CODE = /^\d+-\d$/;
+const LOINC_GROUP_ID = /^LG\d+-\d$/;
+
+// The relation families built from the LOINC release.
+const LOINC_FAMILIES = ["lab-panel", "lab-group"];
+
+function termFiles(termsDir) {
+  const out = [];
+  for (const t of TERM_TABLES) {
+    for (const name of t.files) {
+      const p = join(termsDir, `${name}.jsonl`);
+      if (existsSync(p)) out.push({ table: t, name, path: p });
+    }
+  }
+  return out;
+}
+
+export function validateLoincLicense({
+  termsDir = TERMS_DIR,
+  dataDir = DATA_DIR,
+  releaseDir = INPUTS.loincReleaseDir,
+} = {}) {
+  const errors = [];
+  const notes = [];
+  let checked = 0;
+
+  const files = termFiles(termsDir);
+  if (files.length === 0) {
+    notes.push("no term tables present: nothing to check");
+    return { ok: true, checked: 0, notes, errors };
+  }
+
+  // Load every term row once. Keyed by code for checks 3 and 5.
+  const terms = new Map();
+  const rowsByFile = new Map();
+  for (const f of files) {
+    const rows = readJsonl(f.path);
+    rowsByFile.set(f.name, { rows, table: f.table });
+    rows.forEach((row, i) => {
+      const where = `${f.name}.jsonl:${i + 1}`;
+      const code = row.term?.code;
+      if (code) terms.set(code, { row, where });
+    });
+  }
+
+  // --- check 1: identifier + licensed display travel together --------------
+  for (const [name, { rows, table }] of rowsByFile) {
+    const allowed = new Set(table.displayFields);
+    rows.forEach((row, i) => {
+      checked++;
+      const where = `${name}.jsonl:${i + 1}`;
+      const code = row.term?.code;
+      if (!code) {
+        errors.push(`${where}: no term.code`);
+        return;
+      }
+      if (!row.term?.display) {
+        errors.push(`${where} (${code}): no term.display, so no licensed display name travels with the code`);
+      }
+      if (!allowed.has(row.term?.displayField)) {
+        errors.push(
+          `${where} (${code}): term.displayField "${row.term?.displayField}" is not one of the display names the LOINC license accepts (${[...allowed].join(", ")})`,
+        );
+      }
+      // A Consumer Name is explicitly NOT a licensed display name.
+      if (row.loinc?.ConsumerName && !row.term?.display) {
+        errors.push(`${where} (${code}): carries a ConsumerName but no licensed display name`);
+      }
+    });
+  }
+
+  // --- check 4: only LOINC codes and LOINC Group ids ship ------------------
+  for (const [name, { rows }] of rowsByFile) {
+    rows.forEach((row, i) => {
+      const code = row.term?.code;
+      if (code && !LOINC_CODE.test(code)) {
+        errors.push(`${name}.jsonl:${i + 1}: "${code}" is not a LOINC code (Part/Answer/AnswerList identifiers are restricted content)`);
+      }
+    });
+  }
+  const relationRows = new Map();
+  for (const fam of LOINC_FAMILIES) {
+    const p = join(dataDir, `${fam}.jsonl`);
+    if (!existsSync(p)) continue;
+    const rows = readJsonl(p);
+    relationRows.set(fam, rows);
+    rows.forEach((row, i) => {
+      checked++;
+      const where = `${fam}.jsonl:${i + 1}`;
+      for (const [side, node] of [["subject", row.subject], ["object", row.object]]) {
+        if (!node?.code) continue;
+        const ok = node.system === "LOINC-GROUP" ? LOINC_GROUP_ID.test(node.code) : LOINC_CODE.test(node.code);
+        if (!ok) {
+          errors.push(`${where} ${side}: "${node.code}" is not a valid code in system ${node.system}`);
+        }
+      }
+    });
+  }
+
+  // --- check 5: relation rows reference only emitted term codes ------------
+  for (const [fam, rows] of relationRows) {
+    rows.forEach((row, i) => {
+      const where = `${fam}.jsonl:${i + 1}`;
+      for (const [side, node] of [["subject", row.subject], ["object", row.object]]) {
+        if (node?.system !== "LOINC") continue;
+        if (!terms.has(node.code)) {
+          errors.push(
+            `${where} ${side}: LOINC ${node.code} is referenced but is not in any emitted term table, so nothing carries its display or any notice it needs`,
+          );
+        }
+      }
+    });
+  }
+
+  // --- integrity: each .meta.json hash matches its file --------------------
+  for (const f of files) {
+    const metaPath = join(termsDir, `${f.name}.meta.json`);
+    if (!existsSync(metaPath)) {
+      errors.push(`${f.name}: no ${f.name}.meta.json, so the term table carries no file-level provenance`);
+      continue;
+    }
+    const meta = JSON.parse(readFileSync(metaPath, "utf8"));
+    const sha = createHash("sha256").update(readFileSync(f.path)).digest("hex");
+    if (sha !== meta.sha256) {
+      errors.push(`${f.name}.jsonl: sha256 ${sha} != ${f.name}.meta.json ${meta.sha256}`);
+    }
+    const rows = rowsByFile.get(f.name).rows.length;
+    if (meta.rows !== rows) {
+      errors.push(`${f.name}.jsonl: ${rows} rows != ${f.name}.meta.json rows ${meta.rows}`);
+    }
+  }
+
+  // --- checks 2 and 3: need the release ------------------------------------
+  if (!releaseDir || !existsSync(releaseDir)) {
+    notes.push(
+      "LOINC release absent ($LOINC_RELEASE_DIR): the external-copyright-notice check and the byte-equality check against the release were SKIPPED, not passed",
+    );
+    return { ok: errors.length === 0, checked, notes, errors };
+  }
+
+  const table = TERM_TABLES[0];
+  const sourceColumns = table.loincColumns.filter((c) => c !== "ConsumerName");
+  const source = new Map();
+  forEachCsvRecord(join(releaseDir, "LoincTable", "Loinc.csv"), (get) => {
+    const code = get("LOINC_NUM");
+    if (!code || !terms.has(code)) return;
+    const rec = {};
+    for (const c of sourceColumns) rec[c] = get(c);
+    source.set(code, rec);
+  });
+  const consumerNames = new Map();
+  forEachCsvRecord(join(releaseDir, "AccessoryFiles", "ConsumerName", "ConsumerName.csv"), (get) => {
+    const code = get("LoincNumber");
+    if (code && terms.has(code)) consumerNames.set(code, get("ConsumerName"));
+  });
+
+  for (const [code, { row, where }] of terms) {
+    const rec = source.get(code);
+    if (!rec) {
+      errors.push(`${where}: LOINC ${code} is not in the ${releaseDirLabel(releaseDir)} release table`);
+      continue;
+    }
+    // check 2: a notice in the source record must ship with the row, verbatim.
+    const notice = rec.EXTERNAL_COPYRIGHT_NOTICE;
+    if (notice && row.externalCopyrightNotice !== notice) {
+      errors.push(
+        `${where} (${code}): source record carries an EXTERNAL_COPYRIGHT_NOTICE, and the row ${row.externalCopyrightNotice ? "carries a different one" : "carries none"}`,
+      );
+    }
+    if (!notice && row.externalCopyrightNotice) {
+      errors.push(`${where} (${code}): row carries an externalCopyrightNotice the source record does not have`);
+    }
+    // check 3: every loinc value byte-equal to the release, both directions.
+    // An empty source field is omitted, never emitted as an empty string.
+    for (const c of table.loincColumns) {
+      const want = c === "ConsumerName" ? consumerNames.get(code) || "" : rec[c];
+      const got = row.loinc?.[c];
+      if (want === "") {
+        if (got !== undefined) {
+          errors.push(`${where} (${code}): loinc.${c} is "${got}" but the source field is empty (empty fields are omitted)`);
+        }
+        continue;
+      }
+      if (got === undefined) {
+        errors.push(`${where} (${code}): loinc.${c} is missing but the source record has "${want}"`);
+      } else if (got !== want) {
+        errors.push(`${where} (${code}): loinc.${c} is "${got}" but the release says "${want}" (LOINC values are never edited)`);
+      }
+    }
+    // The display itself is a LOINC value and is checked the same way.
+    const wantDisplay = rec[row.term?.displayField];
+    if (wantDisplay !== undefined && row.term?.display !== wantDisplay) {
+      errors.push(`${where} (${code}): term.display is "${row.term?.display}" but ${row.term?.displayField} in the release is "${wantDisplay}"`);
+    }
+  }
+
+  // check 3, continued: the LOINC displays carried by the relation families.
+  for (const [fam, rows] of relationRows) {
+    rows.forEach((row, i) => {
+      const where = `${fam}.jsonl:${i + 1}`;
+      for (const [side, node] of [["subject", row.subject], ["object", row.object]]) {
+        if (node?.system !== "LOINC") continue;
+        const want = source.get(node.code)?.LONG_COMMON_NAME;
+        if (want === undefined) continue; // check 5 already reported this code
+        if (node.display !== want) {
+          errors.push(`${where} ${side} (${node.code}): display is "${node.display}" but LONG_COMMON_NAME in the release is "${want}"`);
+        }
+      }
+    });
+  }
+
+  // The Group Name is the licensed string that must travel with a Group id.
+  const groupNames = new Map();
+  forEachCsvRecord(join(releaseDir, "AccessoryFiles", "GroupFile", "Group.csv"), (get) => {
+    const id = get("GroupId");
+    if (id) groupNames.set(id, get("Group"));
+  });
+  for (const [fam, rows] of relationRows) {
+    rows.forEach((row, i) => {
+      for (const [side, node] of [["subject", row.subject], ["object", row.object]]) {
+        if (node?.system !== "LOINC-GROUP") continue;
+        const want = groupNames.get(node.code);
+        if (want === undefined) {
+          errors.push(`${fam}.jsonl:${i + 1} ${side}: ${node.code} is not in the release Group file`);
+        } else if (node.display !== want) {
+          errors.push(`${fam}.jsonl:${i + 1} ${side} (${node.code}): display is "${node.display}" but the release Group Name is "${want}"`);
+        }
+      }
+    });
+  }
+
+  notes.push(`byte-equality checked against the release for ${terms.size} term rows and every LOINC display in ${relationRows.size} relation families`);
+  return { ok: errors.length === 0, checked, notes, errors };
+}
+
+function releaseDirLabel(dir) {
+  return String(dir).split("/").filter(Boolean).pop() || dir;
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const r = validateLoincLicense();
+  console.log(`loinc-license: checked ${r.checked} rows, ${r.errors.length} violations`);
+  for (const n of r.notes) console.log("  note: " + n);
+  for (const e of r.errors.slice(0, 50)) console.log("  " + e);
+  process.exit(r.ok ? 0 : 1);
+}
