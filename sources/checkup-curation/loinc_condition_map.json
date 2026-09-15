@@ -56,6 +56,20 @@
     "relationship": "screens_for"
   },
   {
+    "loincCode": "12710-0",
+    "loincName": "Hemoglobin pattern [Interpretation] in Blood",
+    "conditionIcd10": "D56.9",
+    "conditionName": "Thalassemia, unspecified",
+    "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "12710-0",
+    "loincName": "Hemoglobin pattern [Interpretation] in Blood",
+    "conditionIcd10": "D57.1",
+    "conditionName": "Sickle-cell disease without crisis",
+    "relationship": "diagnoses"
+  },
+  {
     "loincCode": "13458-5",
     "loincName": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "E78.1",
@@ -469,6 +483,20 @@
     "relationship": "monitors"
   },
   {
+    "loincCode": "20448-7",
+    "loincName": "Insulin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "20448-7",
+    "loincName": "Insulin [Units/volume] in Serum or Plasma",
+    "conditionIcd10": "E16.1",
+    "conditionName": "Other hypoglycemia",
+    "relationship": "screens_for"
+  },
+  {
     "loincCode": "2075-0",
     "loincName": "Chloride [Moles/volume] in Serum or Plasma",
     "conditionIcd10": "E86.0",
@@ -715,30 +743,16 @@
   },
   {
     "loincCode": "2350-7",
-    "loincName": "Glucose [Mass/volume] in Urine by Test strip",
+    "loincName": "Glucose [Mass/volume] in Urine",
     "conditionIcd10": "E11",
     "conditionName": "Type 2 diabetes mellitus",
     "relationship": "screens_for"
   },
   {
     "loincCode": "2350-7",
-    "loincName": "Glucose [Mass/volume] in Urine by Test strip",
+    "loincName": "Glucose [Mass/volume] in Urine",
     "conditionIcd10": "N18",
     "conditionName": "Chronic kidney disease",
-    "relationship": "screens_for"
-  },
-  {
-    "loincCode": "2484-4",
-    "loincName": "Insulin [Units/volume] in Serum or Plasma",
-    "conditionIcd10": "E11",
-    "conditionName": "Type 2 diabetes mellitus",
-    "relationship": "monitors"
-  },
-  {
-    "loincCode": "2484-4",
-    "loincName": "Insulin [Units/volume] in Serum or Plasma",
-    "conditionIcd10": "E16.1",
-    "conditionName": "Other hypoglycemia",
     "relationship": "screens_for"
   },
   {
@@ -841,14 +855,14 @@
   },
   {
     "loincCode": "2756-5",
-    "loincName": "pH of Urine by Test strip",
+    "loincName": "pH of Urine",
     "conditionIcd10": "E87.2",
     "conditionName": "Acidosis",
     "relationship": "screens_for"
   },
   {
     "loincCode": "2756-5",
-    "loincName": "pH of Urine by Test strip",
+    "loincName": "pH of Urine",
     "conditionIcd10": "N20.0",
     "conditionName": "Calculus of kidney",
     "relationship": "screens_for"
@@ -946,21 +960,21 @@
   },
   {
     "loincCode": "2888-6",
-    "loincName": "Protein [Mass/volume] in Urine by Test strip",
+    "loincName": "Protein [Mass/volume] in Urine",
     "conditionIcd10": "N04",
     "conditionName": "Nephrotic syndrome",
     "relationship": "screens_for"
   },
   {
     "loincCode": "2888-6",
-    "loincName": "Protein [Mass/volume] in Urine by Test strip",
+    "loincName": "Protein [Mass/volume] in Urine",
     "conditionIcd10": "N18",
     "conditionName": "Chronic kidney disease",
     "relationship": "screens_for"
   },
   {
     "loincCode": "2888-6",
-    "loincName": "Protein [Mass/volume] in Urine by Test strip",
+    "loincName": "Protein [Mass/volume] in Urine",
     "conditionIcd10": "O14.9",
     "conditionName": "Unspecified pre-eclampsia",
     "relationship": "screens_for"
@@ -988,14 +1002,14 @@
   },
   {
     "loincCode": "2965-2",
-    "loincName": "Specific gravity of Urine by Test strip",
+    "loincName": "Specific gravity of Urine",
     "conditionIcd10": "E23.2",
     "conditionName": "Diabetes insipidus",
     "relationship": "screens_for"
   },
   {
     "loincCode": "2965-2",
-    "loincName": "Specific gravity of Urine by Test strip",
+    "loincName": "Specific gravity of Urine",
     "conditionIcd10": "E86.0",
     "conditionName": "Dehydration",
     "relationship": "screens_for"
@@ -1163,21 +1177,21 @@
   },
   {
     "loincCode": "3173-2",
-    "loincName": "aPTT in Platelet poor plasma by Coagulation assay",
+    "loincName": "aPTT in Blood by Coagulation assay",
     "conditionIcd10": "D68.0",
     "conditionName": "Von Willebrand disease",
     "relationship": "screens_for"
   },
   {
     "loincCode": "3173-2",
-    "loincName": "aPTT in Platelet poor plasma by Coagulation assay",
+    "loincName": "aPTT in Blood by Coagulation assay",
     "conditionIcd10": "D68.9",
     "conditionName": "Coagulation defect, unspecified",
     "relationship": "diagnoses"
   },
   {
     "loincCode": "3173-2",
-    "loincName": "aPTT in Platelet poor plasma by Coagulation assay",
+    "loincName": "aPTT in Blood by Coagulation assay",
     "conditionIcd10": "Z79.01",
     "conditionName": "Long term (current) use of anticoagulants",
     "relationship": "monitors"
@@ -1209,6 +1223,20 @@
     "conditionIcd10": "I50.9",
     "conditionName": "Heart failure, unspecified",
     "relationship": "diagnoses"
+  },
+  {
+    "loincCode": "33805-3",
+    "loincName": "Fructosamine [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E10",
+    "conditionName": "Type 1 diabetes mellitus",
+    "relationship": "monitors"
+  },
+  {
+    "loincCode": "33805-3",
+    "loincName": "Fructosamine [Mass/volume] in Serum or Plasma",
+    "conditionIcd10": "E11",
+    "conditionName": "Type 2 diabetes mellitus",
+    "relationship": "monitors"
   },
   {
     "loincCode": "33863-2",
@@ -1348,34 +1376,6 @@
     "loincName": "Hemoglobin A1c/Hemoglobin.total in Blood",
     "conditionIcd10": "R73.03",
     "conditionName": "Prediabetes",
-    "relationship": "diagnoses"
-  },
-  {
-    "loincCode": "4549-2",
-    "loincName": "Fructosamine [Mass/volume] in Serum or Plasma",
-    "conditionIcd10": "E10",
-    "conditionName": "Type 1 diabetes mellitus",
-    "relationship": "monitors"
-  },
-  {
-    "loincCode": "4549-2",
-    "loincName": "Fructosamine [Mass/volume] in Serum or Plasma",
-    "conditionIcd10": "E11",
-    "conditionName": "Type 2 diabetes mellitus",
-    "relationship": "monitors"
-  },
-  {
-    "loincCode": "4576-5",
-    "loincName": "Hemoglobin pattern [interpretation] in Blood",
-    "conditionIcd10": "D56.9",
-    "conditionName": "Thalassemia, unspecified",
-    "relationship": "diagnoses"
-  },
-  {
-    "loincCode": "4576-5",
-    "loincName": "Hemoglobin pattern [interpretation] in Blood",
-    "conditionIcd10": "D57.1",
-    "conditionName": "Sickle-cell disease without crisis",
     "relationship": "diagnoses"
   },
   {
@@ -1737,14 +1737,14 @@
   },
   {
     "loincCode": "8061-4",
-    "loincName": "Antinuclear Ab [Units/volume] in Serum",
+    "loincName": "Nuclear Ab [Presence] in Serum",
     "conditionIcd10": "M32.9",
     "conditionName": "Systemic lupus erythematosus, unspecified",
     "relationship": "screens_for"
   },
   {
     "loincCode": "8061-4",
-    "loincName": "Antinuclear Ab [Units/volume] in Serum",
+    "loincName": "Nuclear Ab [Presence] in Serum",
     "conditionIcd10": "M35.9",
     "conditionName": "Systemic involvement of connective tissue, unspecified",
     "relationship": "screens_for"
