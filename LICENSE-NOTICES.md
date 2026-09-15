@@ -59,20 +59,26 @@ notice by notice rather than by category. Every distinct
 `EXTERNAL_COPYRIGHT_NOTICE` in the slice has an explicit, reasoned verdict in
 `sources/loinc-notice-verdicts.json`:
 
-- **`permissive`: kept, with the notice attached.** 39 of the 47 notices in
-  2.83, covering 583 rows (8 laboratory and 575 clinical). These assert
-  copyright and permission with no further condition. A condition that shipping
-  the notice verbatim already satisfies (keep the attribution, do not alter the
-  instrument) does not make a notice restricted, because Section 2 already
-  forbids editing LOINC values.
-- **`restricted`: deleted.** 8 notices covering 84 clinical rows, which
-  condition use on obtaining a licence or limit the purpose of use: Praktikon
-  B.V. (49 rows), National POLST (9), EUROSPINE (9), the University of Michigan
-  for FLACC and rFLACC (7), the AAAM Abbreviated Injury Scale (4), HD Nursing's
-  Hester Davis Scale (3), MedChi's Barthel Index (2), and Jeremy Fairbank's
-  Oswestry Disability Index (1). Complying with those means accepting each
-  owner's terms, which is not something a build pipeline can do on a reader's
-  behalf.
+**Only content that is explicitly disallowed is withheld.** A notice is
+`restricted` only when its text requires a licence, requires written permission,
+or limits the purpose of use. Everything else is `permissive`.
+
+- **`permissive`: kept, with the notice attached.** 41 of the 47 notices in
+  2.83, covering 593 rows (8 laboratory and 585 clinical). Two kinds sit here
+  that might look restrictive and are not. A bare reservation of rights ("All
+  rights reserved") with no stated condition on use is not an explicit
+  prohibition. And a condition that shipping the notice verbatim already
+  satisfies (keep the attribution, do not alter the instrument) does not
+  restrict, because Section 2 already forbids editing LOINC values.
+- **`restricted`: deleted.** 6 notices covering 74 clinical rows, each of which
+  explicitly disallows the use: Praktikon B.V. (49 rows, reproduction only with
+  written permission), National POLST (9, non-commercial personal use only), the
+  University of Michigan for FLACC and rFLACC (7, users must obtain a licence),
+  the AAAM Abbreviated Injury Scale (4, requires a licence), HD Nursing's Hester
+  Davis Scale (3, requires a licence), and MedChi's Barthel Index (2, permission
+  required to modify or to use commercially). Complying with those means
+  accepting each owner's terms, which is not something a build pipeline can do
+  on a reader's behalf.
 
 That file is **fail-closed**: the builder and the licence validator both refuse
 any notice text not listed in it verbatim, naming the notice and the codes

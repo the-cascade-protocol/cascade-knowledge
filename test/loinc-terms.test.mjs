@@ -3,7 +3,7 @@
 
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
@@ -501,4 +501,35 @@ test("the licence validator reports which relation rows reference a noticed code
     r.notes.some((n) => n.startsWith("lab-panel:") && n.includes("copyright notice")),
     "lab-panel's noticed-code exposure must be reported every run",
   );
+});
+
+test("the ratified notice ruling for 2.83 is pinned, so it cannot be flipped silently", () => {
+  // These six were ruled restricted by a person, against the rule stated in the
+  // file: a notice is restricted ONLY when its text explicitly disallows the
+  // use. Changing this set is a decision, so it has to change this test too.
+  const v = loadNoticeVerdicts();
+  const restricted = [...v.values()].filter((e) => e.verdict === "restricted").map((e) => e.holder).sort();
+  assert.deepEqual(restricted, [
+    "Association for the Advancement of Automotive Medicine (Abbreviated Injury Scale)",
+    "HD Nursing (Hester Davis Scale)",
+    "MedChi, the Maryland State Medical Society (Barthel Index)",
+    "National POLST",
+    "Praktikon B.V.",
+    "The Regents of the University of Michigan (FLACC and rFLACC)",
+  ]);
+  assert.equal(v.size, 47, "2.83 carries 47 distinct notices across the slice");
+});
+
+test("the rule stated in the verdict file is the rule the verdicts were made under", () => {
+  // A reader of that file must not be able to derive a different verdict than
+  // the one recorded next to each notice. The bar is explicit prohibition, so
+  // the rule text has to say so rather than the older, broader wording.
+  const doc = JSON.parse(
+    readFileSync(new URL("../sources/loinc-notice-verdicts.json", import.meta.url), "utf8"),
+  );
+  assert.match(doc._rule.restricted, /explicitly disallows the use/);
+  assert.match(doc._rule.permissive, /reserves rights without stating any condition/);
+  const header = doc._comment.join(" ");
+  assert.match(header, /bare reservation of rights/);
+  assert.match(header, /explicitly disallowed/);
 });

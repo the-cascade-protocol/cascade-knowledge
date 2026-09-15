@@ -53,8 +53,11 @@ const CLASSTYPE_CLINICAL = "2";
 // a pattern: it is read from sources/loinc-notice-verdicts.json, where every
 // distinct notice carries an explicit, reasoned human verdict.
 //
-// Of the 47 distinct notices in 2.83, 8 are restricted (they condition use on
-// obtaining a licence, or limit the purpose of use) and 39 are permissive. The
+// Only data that is EXPLICITLY disallowed is withheld: a notice is restricted
+// only when its text requires a licence, requires written permission, or limits
+// the purpose of use. A bare "All rights reserved" with no stated condition is
+// not an explicit prohibition and ships with its notice attached. Of the 47
+// distinct notices in 2.83, 6 are restricted and 41 are permissive. The
 // restricted ones are withheld entirely; the permissive ones ship with their
 // notice attached, verbatim.
 //

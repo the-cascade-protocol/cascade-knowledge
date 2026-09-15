@@ -1,15 +1,16 @@
 {
   "_comment": [
-    "Reviewed verdicts for every distinct EXTERNAL_COPYRIGHT_NOTICE carried by a LOINC term in this repository's slice.",
-    "Section 10(b) of the LOINC license gives two options for third-party content inside LOINC: comply with that third party's terms, or delete the content. This file records which option each notice gets, and why.",
-    "THE RULE: a notice is `restricted` when its text conditions use on obtaining a licence, or limits the purpose of use. It is `permissive` when it asserts copyright and permission with no further condition. A condition that shipping the notice verbatim already satisfies (keep the attribution, do not alter the instrument) does not make a notice restricted, because this repository never edits LOINC values.",
+    "Reviewed verdicts for every distinct EXTERNAL_COPYRIGHT_NOTICE carried by a LOINC term in this repository slice.",
+    "Section 10(b) of the LOINC license gives two options for third-party content inside LOINC: comply with that third party terms, or delete the content. This file records which option each notice gets, and why.",
+    "THE RULE: a notice is `restricted` ONLY when its text explicitly disallows the use, whether by requiring a licence, by requiring written permission, or by limiting the purpose of use. Everything else is `permissive` and ships with its notice attached. A bare reservation of rights (\"All rights reserved\") with no stated condition is NOT an explicit prohibition and is therefore permissive; so is a condition that shipping the notice verbatim already satisfies (keep the attribution, do not alter the instrument), because this repository never edits LOINC values.",
+    "Only data that is explicitly disallowed is withheld. Ambiguity is not a reason to withhold, and it is not a reason to ship either: a notice with no verdict here stops the build.",
     "`permissive` rows are emitted with the notice attached. `restricted` rows are withheld entirely.",
     "THIS FILE IS FAIL-CLOSED. The builder and the licence validator both refuse any notice text that is not listed here verbatim, naming the notice and the codes carrying it. A new or reworded notice in the next LOINC release stops the build and gets a human verdict; it never defaults into either bucket. Matching is on the exact notice string, not a pattern, because a pattern can only recognise the restrictions somebody already thought of.",
-    "Sorted by holder. `notice` is byte-identical to the release's EXTERNAL_COPYRIGHT_NOTICE field."
+    "Sorted by holder. `notice` is byte-identical to the release EXTERNAL_COPYRIGHT_NOTICE field."
   ],
   "_rule": {
-    "restricted": "conditions use on obtaining a licence, or limits the purpose of use",
-    "permissive": "asserts copyright and permission, with no further condition"
+    "restricted": "explicitly disallows the use, whether by requiring a licence, requiring written permission, or limiting the purpose of use",
+    "permissive": "everything else, including a notice that reserves rights without stating any condition on use"
   },
   "sourceVersion": "2.83",
   "verdicts": [
@@ -147,8 +148,8 @@
     },
     {
       "holder": "EUROSPINE",
-      "verdict": "restricted",
-      "reason": "Reserves all rights and grants no permission at all, so there is no permission under which to redistribute it. NOT in the coordinator's list of five; flagged in the pull request.",
+      "verdict": "permissive",
+      "reason": "The holder reserves rights but states no condition on use. Only an explicit prohibition or a stated licence requirement withholds a row, so a bare reservation of rights does not.",
       "notice": "Copyright © 2020 EUROSPINE. All rights reserved."
     },
     {
@@ -183,8 +184,8 @@
     },
     {
       "holder": "Jeremy Fairbank (Oswestry Disability Index)",
-      "verdict": "restricted",
-      "reason": "Reserves all rights and grants no permission at all, so there is no permission under which to redistribute it. NOT in the coordinator's list of five; flagged in the pull request.",
+      "verdict": "permissive",
+      "reason": "The holder reserves rights but states no condition on use. Only an explicit prohibition or a stated licence requirement withholds a row, so a bare reservation of rights does not.",
       "notice": "ODI © Jeremy Fairbank, 1980. All Rights Reserved."
     },
     {
@@ -196,7 +197,7 @@
     {
       "holder": "MedChi, the Maryland State Medical Society (Barthel Index)",
       "verdict": "restricted",
-      "reason": "Permission is required to modify the instrument or to use it for commercial purposes, which is a limit on the purpose of use. NOT in the coordinator's list of five; flagged in the pull request.",
+      "reason": "Permission is required to modify the instrument or to use it for commercial purposes, which explicitly limits the purpose of use.",
       "notice": "Barthel Index© MedChi, 1965. All Rights Reserved. The Maryland State Medical Society holds the copyright for the Barthel Index. Mahoney FI, Barthel D. \"Functional evaluation: the Barthel Index.\" Maryland State Med Journal 1965;14:56-61. Used with permission. Permission is required to modify the Barthel Index or to use it for commercial purposes."
     },
     {
