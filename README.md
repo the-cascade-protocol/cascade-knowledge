@@ -98,7 +98,15 @@ snapshot and the curated seeds are committed, so those pipelines rebuild anywher
 keep the data current: a monthly regeneration that re-pulls open releases and
 opens a PR with the diff, and a monthly code-liveness audit that revalidates
 every committed code against the canonical APIs and flags retired or remapped
-codes. Nothing self-merges. `scripts/review-sweep.mjs` lists curated rows past
+codes. Nothing self-merges.
+
+**LOINC is the exception, and deliberately so.** Its download is gated on a
+signed-in human accepting the current license version, so the monthly
+regeneration cannot and should not fetch it. `LOINC release watch` runs weekly
+and only *notices*: when a newer release exists it opens one issue carrying the
+upgrade checklist. LOINC ships roughly twice a year, so that watcher is silent
+almost every week. The rebuild itself reads the unpacked release from
+`LOINC_RELEASE_DIR`, like every other licensed-adjacent input here. `scripts/review-sweep.mjs` lists curated rows past
 their review horizon (candidate quarterly, established annually).
 
 ## License
