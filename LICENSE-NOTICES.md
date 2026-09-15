@@ -19,7 +19,10 @@ without alteration:
 The full LOINC Copyright Notice and License is vendored in this repository as
 `LICENSE-LOINC.txt`, because the license requires each copy of the Licensed
 Materials to include it and, for Internet distribution, to make it accessible
-from the same page the materials download from.
+from the same page the materials download from. That file is a byte-identical
+copy of `LoincLicense_5.8.txt` as shipped in the LOINC 2.83 release, so it is
+the licensor's own text rather than a transcription: **License version 5.8**,
+the version registered users were asked to accept on 2026-09-15.
 
 Affected family: `data/lab-condition.jsonl` (subject codes are LOINC, and each
 subject display is a LOINC Long Common Name).
