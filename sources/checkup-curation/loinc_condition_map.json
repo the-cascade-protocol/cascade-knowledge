@@ -428,21 +428,21 @@
   },
   {
     "loincCode": "1989-3",
-    "loincName": "Vitamin D, 25-Hydroxy [Mass/volume] in Serum or Plasma",
+    "loincName": "25-hydroxyvitamin D3 [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "E55.9",
     "conditionName": "Vitamin D deficiency, unspecified",
     "relationship": "diagnoses"
   },
   {
     "loincCode": "1989-3",
-    "loincName": "Vitamin D, 25-Hydroxy [Mass/volume] in Serum or Plasma",
+    "loincName": "25-hydroxyvitamin D3 [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "E83.52",
     "conditionName": "Hypercalcemia",
     "relationship": "monitors"
   },
   {
     "loincCode": "1989-3",
-    "loincName": "Vitamin D, 25-Hydroxy [Mass/volume] in Serum or Plasma",
+    "loincName": "25-hydroxyvitamin D3 [Mass/volume] in Serum or Plasma",
     "conditionIcd10": "M81.0",
     "conditionName": "Age-related osteoporosis without current pathological fracture",
     "relationship": "screens_for"
