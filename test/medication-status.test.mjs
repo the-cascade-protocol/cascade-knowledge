@@ -54,7 +54,7 @@ test("the classes are the published table (pinned so a reclassification is a vis
     "entered-in-error": "entered-in-error",
     intended: "unknown",
     "not-taken": "stopped",
-    "on-hold": "unknown",
+    "on-hold": "paused",
     stopped: "stopped",
     unknown: "unknown",
   });
@@ -125,4 +125,87 @@ test("both families rebuild byte-for-byte from the committed inputs", () => {
   const b = serializeJsonl(medicationStatusSynonymRows(readSeed("medication_status_synonyms"), fhir));
   assert.equal(a, readFileSync(join(REPO, "data", "medication-status-lifecycle.jsonl"), "utf8"));
   assert.equal(b, readFileSync(join(REPO, "data", "medication-status-synonym.jsonl"), "utf8"));
+});
+
+// ---- the matching contract, run over the committed rows ---------------------
+//
+// A reference implementation of the README contract (steps 1-6), so the pinned
+// expectations below exercise the DATA: a row added, removed or retargeted that
+// flips any of these inputs turns this test red here and in each consumer's
+// mirror of the same table.
+
+const PRECEDENCE = ["entered-in-error", "stopped", "paused", "unknown", "active"];
+const compact = (k) => k.replace(/ /g, "");
+const absentClass = lifecycle.find((r) => r.subject.system === "FHIR-DATA-ABSENT-REASON").object.code;
+const codeByKey = new Map([...classOf.keys()].map((c) => [compact(statusKey(c)), c]));
+const synonymByKey = new Map(
+  synonyms.filter((r) => r.predicate === "synonym_of").map((r) => [compact(statusKey(r.subject.display)), r.object.code]),
+);
+const fragmentRows = synonyms
+  .filter((r) => r.predicate === "fragment_of")
+  .map((r) => ({ key: statusKey(r.subject.display), code: r.object.code }));
+
+function classify(raw) {
+  const key = raw == null ? "" : statusKey(raw);
+  if (key === "") return absentClass;
+  const c = compact(key);
+  if (codeByKey.has(c)) return classOf.get(codeByKey.get(c));
+  if (synonymByKey.has(c)) return classOf.get(synonymByKey.get(c));
+  let best;
+  for (const f of fragmentRows) {
+    if (!key.includes(f.key)) continue;
+    const cls = classOf.get(f.code);
+    if (best === undefined || PRECEDENCE.indexOf(cls) < PRECEDENCE.indexOf(best)) best = cls;
+  }
+  return best ?? "unknown";
+}
+
+// Mirrored verbatim in cascade-cli tests/medication-status.test.ts and
+// cascade-workbench packages/contracts/src/medicationStatus.test.ts.
+export const PINNED_EXPECTATIONS = [
+  ["inactive", "stopped"],
+  ["not active", "stopped"],
+  ["activated", "unknown"],
+  ["on hold", "paused"],
+  ["hold on", "unknown"],
+  ["continued off", "stopped"],
+  ["past due", "unknown"],
+  ["prior auth pending", "unknown"],
+  ["prior to admission", "unknown"],
+  ["on hold pending prior auth", "paused"],
+  ["Stopped?", "stopped"],
+  ["STOPPED", "stopped"],
+  [" stopped ", "stopped"],
+  ["d/c", "stopped"],
+  ["dc'd", "stopped"],
+  ["discontinued 2024", "stopped"],
+  ["active - on hold", "paused"],
+  ["", "unknown"],
+  ["   ", "unknown"],
+  ["null", "unknown"],
+  ["unknown", "unknown"],
+  ["not currently taking", "stopped"],
+  ["never started", "stopped"],
+  ["not started yet", "stopped"],
+  // Out of scope under the precedence (README): a negated hold reads as stopped.
+  ["no longer on hold", "stopped"],
+  ["not taking", "stopped"],
+  ["no longer active", "stopped"],
+  ["expired", "stopped"],
+  ["history of", "stopped"],
+  ["active", "active"],
+  ["currently taking", "active"],
+  ["entered-in-error", "entered-in-error"],
+];
+
+test("pinned expectations: the matching contract over the committed rows", () => {
+  const got = PINNED_EXPECTATIONS.map(([input]) => [input, classify(input)]);
+  assert.deepEqual(got, PINNED_EXPECTATIONS);
+  assert.equal(classify(null), "unknown");
+  assert.equal(classify(undefined), "unknown");
+});
+
+test("no bare fragment that inverts meaning in another phrase ('prior', 'past')", () => {
+  const keys = new Set(fragmentRows.map((f) => f.key));
+  for (const bare of ["prior", "past"]) assert.ok(!keys.has(bare), bare);
 });

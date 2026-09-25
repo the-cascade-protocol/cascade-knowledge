@@ -32,9 +32,9 @@ export const OPEN_CODE_SYSTEMS = [
   "FHIR-MEDICATIONREQUEST-STATUS",
   "FHIR-MEDICATIONSTATEMENT-STATUS",
   "FHIR-DATA-ABSENT-REASON",
-  // The four lifecycle classes of medication-status-lifecycle. Not a
+  // The five lifecycle classes of medication-status-lifecycle. Not a
   // terminology: a closed label set whose members the family schema enumerates
-  // (objectCodes below), so a fifth class cannot be committed by accident.
+  // (objectCodes below), so a sixth class cannot be committed by accident.
   "CASCADE-MED-LIFECYCLE",
   "text",
 ];
@@ -134,12 +134,12 @@ export const FAMILIES = [
   {
     // "Is this medication still being taken?" One row per FHIR R4 status code
     // (MedicationRequest.status and MedicationStatement.status, both required
-    // bindings) mapping it to one of four lifecycle classes, plus one row for an
+    // bindings) mapping it to one of five lifecycle classes, plus one row for an
     // ABSENT status, keyed on FHIR data-absent-reason "unknown": both status
     // elements are 1..1 in FHIR, so a record that carries none is a record
     // whose status is not known, never an implied "active".
     name: "medication-status-lifecycle",
-    title: "Medication status code has a lifecycle class (active / stopped / unknown / entered-in-error)",
+    title: "Medication status code has a lifecycle class (active / stopped / paused / unknown / entered-in-error)",
     predicates: ["has_lifecycle"],
     subjectSystems: [
       "FHIR-MEDICATIONREQUEST-STATUS",
@@ -147,7 +147,7 @@ export const FAMILIES = [
       "FHIR-DATA-ABSENT-REASON",
     ],
     objectSystems: ["CASCADE-MED-LIFECYCLE"],
-    objectCodes: ["active", "stopped", "unknown", "entered-in-error"],
+    objectCodes: ["active", "stopped", "paused", "unknown", "entered-in-error"],
     subjectCodeRequired: true,
     objectCodeRequired: true,
   },

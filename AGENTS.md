@@ -6,7 +6,7 @@ An open, versioned, provenance-per-row clinical knowledge crosswalk: flat JSONL 
 
 - `CONTRIBUTING.md` -- the row contract, the license wall, determinism, and what must be green. **Read it before writing a single row.**
 - `SOURCES.md` -- every source, its license verdict and its canonical URL.
-- `README.md` -- what the seven relation families are and what v0 contains.
+- `README.md` -- what the eleven relation families are and what v0 contains.
 
 This repository has no `CLAUDE.md`; `CONTRIBUTING.md` is the contract and this file is the orientation.
 
