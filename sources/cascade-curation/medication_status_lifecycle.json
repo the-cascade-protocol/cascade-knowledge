@@ -1,0 +1,28 @@
+{
+  "_comment": "Curated lifecycle class for every FHIR R4 medication status code, answering one question: is this medication still being taken? The codes and their displays are NOT authored here: they come from the pinned FHIR R4 CodeSystem snapshots in sources/hl7-fhir-r4/, and the build fails if a FHIR code has no entry below or an entry names a code FHIR does not define. A code that appears in both MedicationRequest.status and MedicationStatement.status (active, on-hold, completed, entered-in-error, stopped, unknown) has ONE entry, so the two value sets cannot disagree about it.",
+  "classes": {
+    "active": "The source states the medication is being taken now.",
+    "stopped": "The source states the medication is not being taken: it ended, was withdrawn before use, or was never taken.",
+    "paused": "The source states the medication is temporarily halted and expected to continue. Not being taken today, but not ended either.",
+    "unknown": "The source states neither: the status is absent, unknown, or describes an order or intention that has not started. Not evidence either way.",
+    "entered-in-error": "The record itself is repudiated. Not a statement about the medication at all; a consumer drops it rather than reading it as stopped."
+  },
+  "statusCodes": {
+    "active": { "class": "active", "why": "FHIR: the medication is being taken, or the order is in force." },
+    "completed": { "class": "stopped", "why": "FHIR: the course of therapy is finished. On a MedicationRequest this means the order ran out; an unpaired completed order therefore reads as stopped." },
+    "stopped": { "class": "stopped", "why": "FHIR: the medication was stopped before the intended course ended." },
+    "cancelled": { "class": "stopped", "why": "FHIR MedicationRequest: withdrawn before any administration occurred, so not being taken." },
+    "not-taken": { "class": "stopped", "why": "FHIR MedicationStatement: the medication was not consumed by the patient." },
+    "on-hold": { "class": "paused", "why": "FHIR: temporarily halted and expected to continue. Neither current nor ended; forcing it into either would be an adjudication the source did not make, so it has a class of its own." },
+    "draft": { "class": "unknown", "why": "FHIR MedicationRequest: an order not yet actionable, so nothing is being taken under it yet, but nothing has ended either." },
+    "intended": { "class": "unknown", "why": "FHIR MedicationStatement: may be taken in the future. Not started, not ended." },
+    "unknown": { "class": "unknown", "why": "FHIR: the authoring system does not know the status." },
+    "entered-in-error": { "class": "entered-in-error", "why": "FHIR: the record was entered in error and should not be read as a statement about the patient." }
+  },
+  "absent": {
+    "system": "FHIR-DATA-ABSENT-REASON",
+    "code": "unknown",
+    "class": "unknown",
+    "why": "MedicationRequest.status and MedicationStatement.status are both 1..1 (required) in FHIR R4, so a record that carries no status is one whose status is expected to exist but is not known, which is exactly FHIR data-absent-reason 'unknown'. Absence is not a statement that the medication is being taken."
+  }
+}

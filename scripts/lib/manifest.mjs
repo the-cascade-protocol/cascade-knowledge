@@ -26,6 +26,9 @@ export const FAMILY_PIPELINE = {
   // rebuilt and byte-compared locally and in the scheduled regeneration.
   "lab-panel": { pipeline: "loinc-terms", ciRebuildable: false },
   "lab-group": { pipeline: "loinc-terms", ciRebuildable: false },
+  // Pinned FHIR R4 CodeSystem snapshots + curated seeds, all committed.
+  "medication-status-lifecycle": { pipeline: "medication-status", ciRebuildable: true },
+  "medication-status-synonym": { pipeline: "medication-status", ciRebuildable: true },
 };
 
 export function sha256File(path) {

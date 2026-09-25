@@ -4,5 +4,7 @@
   "med-rt": "2026.01.05",
   "rxnorm-prescribable": "2026-01-05",
   "cdc-cvx": "2026-09-02",
-  "loinc": "2.83"
+  "loinc": "2.83",
+  "hl7-fhir-r4": "4.0.1",
+  "cascade-curation": "2026-09"
 }

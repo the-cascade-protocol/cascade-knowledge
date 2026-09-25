@@ -3,6 +3,7 @@
 //   RXNORM     -> NLM RxNav (status endpoint; also reports retired/remapped)
 //   LOINC      -> NLM Clinical Table Search Service (loinc_items)
 //   ICD-10-CM  -> NLM Clinical Table Search Service (icd10cm)
+//   FHIR-*     -> the canonical FHIR R4 CodeSystem resource on hl7.org
 //
 // Systems without a wired open API in v0 (MESH, MED-RT, CVX, LOINC-GROUP) are reported as
 // not-checked. CVX codes are already validated against the pinned CDC snapshot
@@ -78,7 +79,36 @@ async function checkClinicalTable(apiPath, searchField, code, requireExact) {
   return { state: "exists" };
 }
 
+// FHIR R4 code systems: the canonical CodeSystem resource on hl7.org, fetched
+// once per system and walked (nested concepts included). Every code of these
+// small systems is checked, not a sample, because the whole system is one fetch.
+const FHIR_CODESYSTEM_URLS = {
+  "FHIR-MEDICATIONREQUEST-STATUS": "https://hl7.org/fhir/R4/codesystem-medicationrequest-status.json",
+  "FHIR-MEDICATIONSTATEMENT-STATUS": "https://hl7.org/fhir/R4/codesystem-medication-statement-status.json",
+  "FHIR-DATA-ABSENT-REASON": "https://hl7.org/fhir/R4/codesystem-data-absent-reason.json",
+};
+const fhirCodeCache = new Map();
+async function checkFhir(system, code) {
+  if (!fhirCodeCache.has(system)) {
+    const cs = await getJson(FHIR_CODESYSTEM_URLS[system]);
+    if (cs._status === 404) throw new Error("CodeSystem 404");
+    const codes = new Set();
+    const walk = (cc) => {
+      for (const c of cc || []) {
+        codes.add(c.code);
+        walk(c.concept);
+      }
+    };
+    walk(cs.concept);
+    fhirCodeCache.set(system, codes);
+  }
+  return fhirCodeCache.get(system).has(code) ? { state: "exists" } : { state: "not-found" };
+}
+
 const CHECKERS = {
+  ...Object.fromEntries(
+    Object.keys(FHIR_CODESYSTEM_URLS).map((s) => [s, (code) => checkFhir(s, code)]),
+  ),
   RXNORM: (code) => checkRxnorm(code),
   LOINC: (code) => checkClinicalTable("loinc_items", "LOINC_NUM", code, true),
   "ICD-10-CM": (code) => checkClinicalTable("icd10cm", "code", code, false),
@@ -88,7 +118,11 @@ const CHECKERS = {
 // this file queries contains none of them, so an exact-match lookup on one would
 // report NOT FOUND for a perfectly correct row. Their existence is instead
 // proved against the release's own Group file by validate-loinc-license.mjs.
-const NOT_CHECKED = ["MESH", "MED-RT", "CVX", "LOINC-GROUP"];
+//
+// CASCADE-MED-LIFECYCLE is a closed label set this repository defines, not a
+// terminology: there is no external API to ask, and its four codes are already
+// enumerated by the family schema, so a fifth cannot validate.
+const NOT_CHECKED = ["MESH", "MED-RT", "CVX", "LOINC-GROUP", "CASCADE-MED-LIFECYCLE"];
 
 function collectCodes() {
   const bySystem = new Map();

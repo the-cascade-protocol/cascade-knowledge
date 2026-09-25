@@ -6,7 +6,9 @@
     "med-rt": "2026.01.05",
     "rxnorm-prescribable": "2026-01-05",
     "cdc-cvx": "2026-09-02",
-    "loinc": "2.83"
+    "loinc": "2.83",
+    "hl7-fhir-r4": "4.0.1",
+    "cascade-curation": "2026-09"
   },
   "files": {
     "lab-condition.jsonl": {
@@ -61,6 +63,18 @@
       "rows": 80,
       "sha256": "83d33488b3aa7a4e9e3cf63a034466e6520e7e1ebc064dbd084c16a4b5faf253",
       "pipeline": "cvx-disease",
+      "ciRebuildable": true
+    },
+    "medication-status-lifecycle.jsonl": {
+      "rows": 17,
+      "sha256": "abdb1504d95e23b10217ded0eb6fd7549553c5ab6567dce613306aee85f3f152",
+      "pipeline": "medication-status",
+      "ciRebuildable": true
+    },
+    "medication-status-synonym.jsonl": {
+      "rows": 51,
+      "sha256": "d7e70c9a78ec79da0e789a52350431346e13d5599e452f9a82b3f6b2fdea6842",
+      "pipeline": "medication-status",
       "ciRebuildable": true
     }
   }

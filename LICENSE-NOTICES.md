@@ -135,3 +135,15 @@ and is a U.S. Government work in the public domain. Reference:
 https://www2.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx
 
 Affected family: `data/cvx-disease.jsonl`.
+
+## HL7 FHIR R4
+
+The `medication-status-lifecycle` and `medication-status-synonym` families carry
+codes and display names from three FHIR R4 (4.0.1) code systems:
+`http://hl7.org/fhir/CodeSystem/medicationrequest-status`,
+`http://hl7.org/fhir/CodeSystem/medication-statement-status` and
+`http://terminology.hl7.org/CodeSystem/data-absent-reason`. FHIR is published by
+HL7 International under Creative Commons "No Rights Reserved" (CC0), so no notice
+is required; this acknowledgement is given anyway. FHIR® is a registered
+trademark of Health Level Seven International.
+https://hl7.org/fhir/R4/license.html

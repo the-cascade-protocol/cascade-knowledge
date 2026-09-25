@@ -16,7 +16,7 @@ ontology. Every committed row is traceable to an openly redistributable source.
 
 ## What is in v0
 
-Nine relation families, one JSONL file each under `data/`:
+Eleven relation families, one JSONL file each under `data/`:
 
 | Family | Relation | Example |
 | --- | --- | --- |
@@ -29,6 +29,69 @@ Nine relation families, one JSONL file each under `data/`:
 | `cvx-disease` | a vaccine (CVX) `prevents` a disease | CVX 03 (MMR) prevents measles |
 | `lab-panel` | a LOINC lab panel `has_member` an observation | LOINC 58410-2 (CBC panel) has member 718-7 (Hemoglobin) |
 | `lab-group` | a LOINC Group `groups` an observation | LG50009-6 (Cholesterol) groups 2093-3 (Cholesterol) |
+| `medication-status-lifecycle` | a FHIR medication status code `has_lifecycle` class | FHIR MedicationStatement `not-taken` has lifecycle `stopped` |
+| `medication-status-synonym` | a free-text status is a `synonym_of` / contains a `fragment_of` a FHIR status code | "discontinued" is a synonym of FHIR `stopped` |
+
+## Medication status: one answer to "is this still being taken?"
+
+`medication-status-lifecycle` classifies every FHIR R4 `MedicationRequest.status`
+and `MedicationStatement.status` code into one of five lifecycle classes:
+
+| Class | Meaning | Codes |
+| --- | --- | --- |
+| `active` | the source says it is being taken | active |
+| `stopped` | the source says it is not being taken (ended, withdrawn, never taken) | completed, stopped, cancelled, not-taken |
+| `paused` | temporarily halted, expected to continue | on-hold |
+| `unknown` | the source says neither | draft, intended, unknown, and an absent status |
+| `entered-in-error` | the record is repudiated; drop it, do not read it as stopped | entered-in-error |
+
+Five is the smallest set the consumers need: `unknown` is separate from
+`stopped` because an absent status is not evidence that a medication ended;
+`paused` is separate from both because FHIR `on-hold` says the medication is
+halted for now and expected to continue, which is neither current nor ended nor
+unknown; and `entered-in-error` is separate from all of them because a
+repudiated record is not a statement about the medication at all.
+
+`completed` on a MedicationRequest means the order ran out, not that anyone
+decided to stop the medication. The table reads it as `stopped` all the same,
+so a completed order with no newer order or statement to pair with shows as
+stopped; a consumer that pairs orders with statements should let the newer
+record decide.
+
+**An absent status is a row, not a rule in code.** Both FHIR status elements are
+1..1, so a record without one has a status that is expected but not known: FHIR
+data-absent-reason `unknown`, which the table maps to class `unknown`.
+
+`medication-status-synonym` maps non-canonical strings (legacy emitter spellings
+such as `discontinued` and `inactive`, and the free text an extraction model
+emits) to the FHIR code they mean. A synonym never carries a class of its own;
+its class is its target code's row. The matching contract every consumer
+implements, in order:
+
+1. Normalize: lower-case, every run of non-alphanumerics to one space, trim. Two
+   keys also match when they agree with spaces removed (`not taken` = `nottaken`).
+2. Blank or absent: the data-absent-reason `unknown` row.
+3. The key equals a FHIR status code: that code's class.
+4. The key equals a `synonym_of` subject: its target code's class.
+5. The key contains one or more `fragment_of` subjects (a plain substring test
+   on the normalized key): the most conservative class among them, in the order
+   `entered-in-error`, `stopped`, `paused`, `unknown`, `active` (so "no longer
+   taking" is stopped, not active).
+6. Anything else: `unknown`, reported as unmatched.
+
+Negation is handled by rows, not by code: a negated phrase such as `not active`,
+`not currently`, `never started` or `not started` is its own `fragment_of` row
+targeting `not-taken`, and wins over the bare `active` / `current` / `started`
+fragment it contains because `stopped` precedes `active`. Bare words that mean
+something else in other phrases are not rows: `prior` and `past` would read
+"prior auth pending" and "past due" as stopped, so only phrases such as
+`prior med`, `past med` and `in the past` are listed.
+
+**Out of scope: a negated hold.** "no longer on hold" contains both `no longer`
+(stopped) and `on hold` (paused), and the precedence makes it `stopped`. That is
+wrong (it means the medication has resumed), and no ordering fixes it without
+breaking "no longer taking". A status like that needs a reader, not a phrase
+table; the table does not try.
 
 ## The term tables: a second artifact kind
 
