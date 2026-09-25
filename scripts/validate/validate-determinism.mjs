@@ -28,6 +28,12 @@ import {
   cvxDiseaseRows,
 } from "../lib/checkup-rows.mjs";
 import { parseCvx } from "../lib/cvx.mjs";
+import {
+  loadFhirIndex,
+  readSeed as readStatusSeed,
+  medicationStatusLifecycleRows,
+  medicationStatusSynonymRows,
+} from "../lib/medication-status.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(HERE, "..", "..");
@@ -51,6 +57,14 @@ function recomputeFamilyBytes(name) {
       const { rows } = cvxDiseaseRows(readSeed("cvx_disease_map"), idx);
       return serializeJsonl(rows);
     }
+    case "medication-status-lifecycle":
+      return serializeJsonl(
+        medicationStatusLifecycleRows(readStatusSeed("medication_status_lifecycle"), loadFhirIndex()),
+      );
+    case "medication-status-synonym":
+      return serializeJsonl(
+        medicationStatusSynonymRows(readStatusSeed("medication_status_synonyms"), loadFhirIndex()),
+      );
     default:
       return null;
   }

@@ -25,8 +25,18 @@
       "label": "LOINC (Regenstrief Institute) full release",
       "method": "derived",
       "license": "Redistributable in commercial and non-commercial use with attribution, under the LOINC license (LICENSE-LOINC.txt, version 5.8). LOINC values are never edited, identifier and display travel together, and third-party content inside LOINC carries its own notice."
+    },
+    "hl7-fhir-r4": {
+      "label": "HL7 FHIR R4 (4.0.1) code systems: MedicationRequest.status, MedicationStatement.status, data-absent-reason",
+      "method": "curated",
+      "license": "CC0 1.0 (FHIR is published under Creative Commons 'No Rights Reserved', https://hl7.org/fhir/R4/license.html)"
+    },
+    "cascade-curation": {
+      "label": "Cascade Protocol curation over open code systems (status synonyms observed in emitters and extraction output)",
+      "method": "curated",
+      "license": "CC-BY-4.0 (this project's own curation over open code systems)"
     }
   },
-  "openCodeSystems": ["LOINC", "LOINC-GROUP", "ICD-10-CM", "RXNORM", "MESH", "MED-RT", "CVX", "text"],
+  "openCodeSystems": ["LOINC", "LOINC-GROUP", "ICD-10-CM", "RXNORM", "MESH", "MED-RT", "CVX", "FHIR-MEDICATIONREQUEST-STATUS", "FHIR-MEDICATIONSTATEMENT-STATUS", "FHIR-DATA-ABSENT-REASON", "CASCADE-MED-LIFECYCLE", "text"],
   "walledCodeSystems": ["SNOMED-CT", "ATC", "CUI", "UMLS", "NDF-RT"]
 }

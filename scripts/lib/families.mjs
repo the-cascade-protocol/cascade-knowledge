@@ -26,6 +26,16 @@ export const OPEN_CODE_SYSTEMS = [
   "MESH",
   "MED-RT",
   "CVX",
+  // FHIR R4 code systems (CC0). Each is the system of one required status
+  // binding; the codes are checked against the pinned CodeSystem snapshots in
+  // sources/hl7-fhir-r4/ at build time and against hl7.org by code-existence.
+  "FHIR-MEDICATIONREQUEST-STATUS",
+  "FHIR-MEDICATIONSTATEMENT-STATUS",
+  "FHIR-DATA-ABSENT-REASON",
+  // The four lifecycle classes of medication-status-lifecycle. Not a
+  // terminology: a closed label set whose members the family schema enumerates
+  // (objectCodes below), so a fifth class cannot be committed by accident.
+  "CASCADE-MED-LIFECYCLE",
   "text",
 ];
 
@@ -119,6 +129,42 @@ export const FAMILIES = [
     subjectSystems: ["CVX"],
     objectSystems: ["ICD-10-CM"],
     subjectCodeRequired: true,
+    objectCodeRequired: true,
+  },
+  {
+    // "Is this medication still being taken?" One row per FHIR R4 status code
+    // (MedicationRequest.status and MedicationStatement.status, both required
+    // bindings) mapping it to one of four lifecycle classes, plus one row for an
+    // ABSENT status, keyed on FHIR data-absent-reason "unknown": both status
+    // elements are 1..1 in FHIR, so a record that carries none is a record
+    // whose status is not known, never an implied "active".
+    name: "medication-status-lifecycle",
+    title: "Medication status code has a lifecycle class (active / stopped / unknown / entered-in-error)",
+    predicates: ["has_lifecycle"],
+    subjectSystems: [
+      "FHIR-MEDICATIONREQUEST-STATUS",
+      "FHIR-MEDICATIONSTATEMENT-STATUS",
+      "FHIR-DATA-ABSENT-REASON",
+    ],
+    objectSystems: ["CASCADE-MED-LIFECYCLE"],
+    objectCodes: ["active", "stopped", "unknown", "entered-in-error"],
+    subjectCodeRequired: true,
+    objectCodeRequired: true,
+  },
+  {
+    // Non-canonical status strings that real sources and extractors emit
+    // ("discontinued", "d/c", "held", "no longer taking"), each mapped to the
+    // FHIR status code it means. Its lifecycle class is then the canonical
+    // code's row in medication-status-lifecycle, so a synonym can never carry a
+    // class of its own. Two predicates, because two match modes: synonym_of is
+    // a whole-string match and fragment_of a contained-phrase match, both over
+    // the normalized key (lower-case, non-alphanumerics to single spaces).
+    name: "medication-status-synonym",
+    title: "Free-text medication status is a synonym of (or contains a phrase meaning) a FHIR status code",
+    predicates: ["synonym_of", "fragment_of"],
+    subjectSystems: ["text"],
+    objectSystems: ["FHIR-MEDICATIONREQUEST-STATUS", "FHIR-MEDICATIONSTATEMENT-STATUS"],
+    subjectCodeRequired: false,
     objectCodeRequired: true,
   },
 ];

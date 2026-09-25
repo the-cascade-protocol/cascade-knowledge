@@ -51,14 +51,19 @@ const defs = {
   },
 };
 
-function nodeSchema(systems, codeRequired) {
+// `codes`, when a family declares one, closes the node's code set: used for a
+// label set the family itself defines (the lifecycle classes), where an open
+// string would let a typo become a new class.
+function nodeSchema(systems, codeRequired, codes) {
+  const properties = { system: { enum: systems } };
+  if (codes) properties.code = { enum: codes };
   return {
     allOf: [
       { $ref: "defs.schema.json#/$defs/node" },
       {
         type: "object",
         required: codeRequired ? ["system", "code", "display"] : ["system", "display"],
-        properties: { system: { enum: systems } },
+        properties,
       },
     ],
   };
@@ -73,9 +78,9 @@ function familySchema(f) {
     additionalProperties: false,
     required: ["subject", "predicate", "object", "provenance"],
     properties: {
-      subject: nodeSchema(f.subjectSystems, f.subjectCodeRequired),
+      subject: nodeSchema(f.subjectSystems, f.subjectCodeRequired, f.subjectCodes),
       predicate: { enum: f.predicates },
-      object: nodeSchema(f.objectSystems, f.objectCodeRequired),
+      object: nodeSchema(f.objectSystems, f.objectCodeRequired, f.objectCodes),
       provenance: { $ref: "defs.schema.json#/$defs/provenance" },
     },
   };

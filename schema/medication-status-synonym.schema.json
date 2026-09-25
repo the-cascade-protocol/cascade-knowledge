@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ns.cascadeprotocol.org/knowledge/v0/medication-status-synonym.schema.json",
+  "title": "Free-text medication status is a synonym of (or contains a phrase meaning) a FHIR status code",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "predicate",
+    "object",
+    "provenance"
+  ],
+  "properties": {
+    "subject": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "text"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "predicate": {
+      "enum": [
+        "synonym_of",
+        "fragment_of"
+      ]
+    },
+    "object": {
+      "allOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/node"
+        },
+        {
+          "type": "object",
+          "required": [
+            "system",
+            "code",
+            "display"
+          ],
+          "properties": {
+            "system": {
+              "enum": [
+                "FHIR-MEDICATIONREQUEST-STATUS",
+                "FHIR-MEDICATIONSTATEMENT-STATUS"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "$ref": "defs.schema.json#/$defs/provenance"
+    }
+  }
+}

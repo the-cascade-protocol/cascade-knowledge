@@ -16,7 +16,7 @@ ontology. Every committed row is traceable to an openly redistributable source.
 
 ## What is in v0
 
-Nine relation families, one JSONL file each under `data/`:
+Eleven relation families, one JSONL file each under `data/`:
 
 | Family | Relation | Example |
 | --- | --- | --- |
@@ -29,6 +29,45 @@ Nine relation families, one JSONL file each under `data/`:
 | `cvx-disease` | a vaccine (CVX) `prevents` a disease | CVX 03 (MMR) prevents measles |
 | `lab-panel` | a LOINC lab panel `has_member` an observation | LOINC 58410-2 (CBC panel) has member 718-7 (Hemoglobin) |
 | `lab-group` | a LOINC Group `groups` an observation | LG50009-6 (Cholesterol) groups 2093-3 (Cholesterol) |
+| `medication-status-lifecycle` | a FHIR medication status code `has_lifecycle` class | FHIR MedicationStatement `not-taken` has lifecycle `stopped` |
+| `medication-status-synonym` | a free-text status is a `synonym_of` / contains a `fragment_of` a FHIR status code | "discontinued" is a synonym of FHIR `stopped` |
+
+## Medication status: one answer to "is this still being taken?"
+
+`medication-status-lifecycle` classifies every FHIR R4 `MedicationRequest.status`
+and `MedicationStatement.status` code into one of four lifecycle classes:
+
+| Class | Meaning | Codes |
+| --- | --- | --- |
+| `active` | the source says it is being taken | active |
+| `stopped` | the source says it is not being taken (ended, withdrawn, never taken) | completed, stopped, cancelled, not-taken |
+| `unknown` | the source says neither | on-hold, draft, intended, unknown, and an absent status |
+| `entered-in-error` | the record is repudiated; drop it, do not read it as stopped | entered-in-error |
+
+Four is the smallest set the consumers need: `unknown` is separate from
+`stopped` because an absent or paused status is not evidence that a medication
+ended, and `entered-in-error` is separate from both because a repudiated record
+is not a statement about the medication at all.
+
+**An absent status is a row, not a rule in code.** Both FHIR status elements are
+1..1, so a record without one has a status that is expected but not known: FHIR
+data-absent-reason `unknown`, which the table maps to class `unknown`.
+
+`medication-status-synonym` maps non-canonical strings (legacy emitter spellings
+such as `discontinued` and `inactive`, and the free text an extraction model
+emits) to the FHIR code they mean. A synonym never carries a class of its own;
+its class is its target code's row. The matching contract every consumer
+implements, in order:
+
+1. Normalize: lower-case, every run of non-alphanumerics to one space, trim. Two
+   keys also match when they agree with spaces removed (`not taken` = `nottaken`).
+2. Blank or absent: the data-absent-reason `unknown` row.
+3. The key equals a FHIR status code: that code's class.
+4. The key equals a `synonym_of` subject: its target code's class.
+5. The key contains one or more `fragment_of` subjects: the most conservative
+   class among them, in the order `entered-in-error`, `stopped`, `unknown`,
+   `active` (so "no longer taking" is stopped, not active).
+6. Anything else: `unknown`, reported as unmatched.
 
 ## The term tables: a second artifact kind
 

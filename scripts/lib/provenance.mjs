@@ -21,6 +21,8 @@ export const BUILD_DATE = "2026-07-24";
 // keeps every already-committed family byte-identical.
 export const SOURCE_DATES = {
   loinc: "2026-09-15",
+  "hl7-fhir-r4": "2026-09-24",
+  "cascade-curation": "2026-09-24",
 };
 
 export function sourceDate(source) {
@@ -44,6 +46,14 @@ export const CITATIONS = {
   "rxnorm-prescribable": "https://www.nlm.nih.gov/research/umls/rxnorm/docs/prescribe.html",
   "cdc-cvx": "https://www2.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx",
   loinc: "https://loinc.org/",
+  // Keyed by the row's FHIR code system: each row cites the value set page of
+  // the required binding its code belongs to.
+  "hl7-fhir-r4": {
+    "FHIR-MEDICATIONREQUEST-STATUS": "https://hl7.org/fhir/R4/valueset-medicationrequest-status.html",
+    "FHIR-MEDICATIONSTATEMENT-STATUS": "https://hl7.org/fhir/R4/valueset-medication-statement-status.html",
+    "FHIR-DATA-ABSENT-REASON": "https://hl7.org/fhir/R4/codesystem-data-absent-reason.html",
+    default: "https://hl7.org/fhir/R4/",
+  },
 };
 
 // Build a provenance object. `source` selects the pinned version and default
