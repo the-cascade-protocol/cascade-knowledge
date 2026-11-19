@@ -2,8 +2,8 @@
   "_comment": "Pinned source release versions. Mirrors the VOCAB_VERSIONS discipline: every emitted row carries the version of the release it was built from. Bumping a version here and re-running the pipeline is what the scheduled regeneration workflow does.",
   "checkup-curation": "2026-02",
   "med-rt": "2026.01.05",
-  "rxnorm-prescribable": "2026-01-05",
-  "cdc-cvx": "2026-09-02",
+  "rxnorm-prescribable": "2026-11-02",
+  "cdc-cvx": "2026-11-19",
   "loinc": "2.83",
   "hl7-fhir-r4": "4.0.1",
   "cascade-curation": "2026-09"
