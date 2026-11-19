@@ -6,12 +6,19 @@
 // Prints the directory holding RXNCONSO.RRF and RXNREL.RRF (the value for
 // $RXNORM_PRESCRIBE_RRF) on stdout, and nothing else on stdout.
 //
-// THE WALL, CHECKED HERE RATHER THAN ASSUMED: the prescribable subset carries
-// only SAB=RXNORM atoms. The full RxNorm release carries other sources (First
-// Databank, Micromedex and more) that are not ours to redistribute. So every
-// RXNCONSO row is read and the run FAILS on any SAB other than RXNORM, before
-// any pipeline sees the files. A wrong download stops the build; it can never
-// quietly become committed data.
+// THE WALL, CHECKED HERE RATHER THAN ASSUMED. The prescribable subset carries
+// SAB=RXNORM atoms plus atoms from two unrestricted sources, MTHSPL (FDA
+// Structured Product Labels) and MTHCMSFRF (the CMS Formulary Reference File);
+// observed in the release of 2026-11. The full RxNorm release carries further
+// sources (First Databank, Micromedex, Gold Standard and more) that are not
+// ours to redistribute. So every RXNCONSO row is read and the run FAILS on any
+// SAB outside PRESCRIBABLE_SABS, before any pipeline sees the files. A wrong
+// download stops the build; it can never quietly become committed data. A
+// source NLM newly adds to the subset also stops the build, on purpose: it
+// gets a human look and a line here, never a default.
+//
+// The builders still read ONLY SAB=RXNORM rows (each filters on it literally);
+// this list says which files are acceptable to open, not which rows are used.
 //
 // With --update-versions, the release date from the release's own readme
 // ("RxNorm 01/05/2026 Current Prescribable Content", or a file name ending in
@@ -23,6 +30,14 @@ import { readdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
 import { join, dirname, basename } from "node:path";
 import { SOURCES_DIR } from "./lib/paths.mjs";
 import { rrfRows, CONSO } from "./lib/rrf.mjs";
+
+/** Every SAB the prescribable RXNCONSO is allowed to carry. See above. */
+export const PRESCRIBABLE_SABS = new Set(["RXNORM", "MTHSPL", "MTHCMSFRF"]);
+
+/** The SABs outside {@link PRESCRIBABLE_SABS}, sorted. Empty means acceptable. */
+export function foreignSabs(sabs) {
+  return [...sabs].filter((s) => !PRESCRIBABLE_SABS.has(s)).sort();
+}
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir).sort()) {
@@ -64,14 +79,15 @@ async function main() {
     const sab = f[CONSO.SAB];
     sabs.set(sab, (sabs.get(sab) || 0) + 1);
   }
-  const other = [...sabs.keys()].filter((s) => s !== "RXNORM");
+  const other = foreignSabs(sabs.keys());
   if (other.length > 0) {
     throw new Error(
-      `RXNCONSO.RRF carries non-RXNORM sources (${other.sort().join(", ")}). ` +
-        `This is not the prescribable subset; refusing to build from it.`,
+      `RXNCONSO.RRF carries sources outside the prescribable subset (${other.join(", ")}). ` +
+        `Refusing to build from it.`,
     );
   }
-  console.error(`RXNCONSO.RRF: ${sabs.get("RXNORM") || 0} rows, all SAB=RXNORM`);
+  const counts = [...sabs.entries()].sort(([a], [b]) => (a < b ? -1 : 1)).map(([k, v]) => `${k}=${v}`);
+  console.error(`RXNCONSO.RRF: ${counts.join(", ")} (only SAB=RXNORM rows are built from)`);
 
   if (process.argv.includes("--update-versions")) {
     const readmes = files.filter((f) => /readme/i.test(basename(f)));

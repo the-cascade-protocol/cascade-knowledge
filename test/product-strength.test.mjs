@@ -11,7 +11,7 @@ import {
   parsePrefix,
   splitProductName,
 } from "../scripts/lib/product-strength.mjs";
-import { releaseDateFrom, pickRrfDir } from "../scripts/prepare-rxnorm-prescribable.mjs";
+import { releaseDateFrom, pickRrfDir, foreignSabs } from "../scripts/prepare-rxnorm-prescribable.mjs";
 import { validateSchema } from "../scripts/validate/validate-schema.mjs";
 import { validateAllowlist } from "../scripts/validate/validate-allowlist.mjs";
 
@@ -181,25 +181,36 @@ test("pickRrfDir prefers the prescribe/rrf directory when several exist", () => 
   assert.throws(() => pickRrfDir([]));
 });
 
-test("prepare refuses a release whose RXNCONSO carries a non-RXNORM source", () => {
-  // The fabricated fixture deliberately carries one MTHSPL atom.
+test("foreignSabs accepts the prescribable sources and names anything else", () => {
+  assert.deepEqual(foreignSabs(["RXNORM", "MTHSPL", "MTHCMSFRF"]), []);
+  assert.deepEqual(foreignSabs(["RXNORM", "MMSL", "GS", "MTHSPL"]), ["GS", "MMSL"]);
+});
+
+test("prepare refuses a release whose RXNCONSO carries a restricted source", () => {
   const script = join(REPO, "scripts/prepare-rxnorm-prescribable.mjs");
-  assert.throws(
-    () => execFileSync("node", [script, FIX], { encoding: "utf8", stdio: "pipe" }),
-    (e) => /non-RXNORM sources \(MTHSPL\)/.test(String(e.stderr)),
-  );
-  // The same files with the foreign atom removed pass, and the RRF dir prints.
-  const clean = mkdtempSync(join(tmpdir(), "ck-prep-"));
+  const dir = mkdtempSync(join(tmpdir(), "ck-prep-"));
   try {
-    const rrf = join(clean, "prescribe", "rrf");
+    const rrf = join(dir, "prescribe", "rrf");
     mkdirSync(rrf, { recursive: true });
-    const conso = readFileSync(join(FIX, "RXNCONSO.RRF"), "utf8")
-      .split("\n").filter((l) => !l.includes("|MTHSPL|")).join("\n");
-    writeFileSync(join(rrf, "RXNCONSO.RRF"), conso);
+    const conso = readFileSync(join(FIX, "RXNCONSO.RRF"), "utf8");
     writeFileSync(join(rrf, "RXNREL.RRF"), readFileSync(join(FIX, "RXNREL.RRF")));
-    const out = execFileSync("node", [script, clean], { encoding: "utf8", stdio: "pipe" });
+
+    // The fixture as committed (RXNORM plus one MTHSPL atom) is acceptable,
+    // and the RRF directory is the only thing printed on stdout.
+    writeFileSync(join(rrf, "RXNCONSO.RRF"), conso);
+    const out = execFileSync("node", [script, dir], { encoding: "utf8", stdio: "pipe" });
     assert.equal(out.trim(), rrf);
+
+    // One atom from a restricted source (a fabricated MMSL row) stops it.
+    writeFileSync(
+      join(rrf, "RXNCONSO.RRF"),
+      conso + "9000099|ENG|||||Y|A99||||MMSL|SCD|9000099|faketamol 1 MG Oral Tablet||N|\n",
+    );
+    assert.throws(
+      () => execFileSync("node", [script, dir], { encoding: "utf8", stdio: "pipe" }),
+      (e) => /outside the prescribable subset \(MMSL\)/.test(String(e.stderr)),
+    );
   } finally {
-    rmSync(clean, { recursive: true, force: true });
+    rmSync(dir, { recursive: true, force: true });
   }
 });
