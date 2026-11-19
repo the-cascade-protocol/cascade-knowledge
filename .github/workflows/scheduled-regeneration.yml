@@ -31,6 +31,23 @@ jobs:
           UMLS_API_KEY: ${{ secrets.UMLS_API_KEY }}
         run: node scripts/fetch-sources.mjs --update-versions
 
+      # RxNorm Current Prescribable Content: NLM publishes it with no UMLS
+      # license and no login, so it is fetched on every run. It is unpacked
+      # under RUNNER_TEMP, outside the checkout, so no release file can be
+      # committed. The prepare step reads every RXNCONSO row and FAILS on any
+      # SAB other than RXNORM (the full release is not ours to redistribute),
+      # pins the release date, and exports RXNORM_PRESCRIBE_RRF for the build.
+      - name: Fetch RxNorm prescribable (public, SAB=RXNORM only)
+        env:
+          RXNORM_PRESCRIBE_URL: ${{ secrets.RXNORM_PRESCRIBE_URL }}
+        run: |
+          url="${RXNORM_PRESCRIBE_URL:-https://download.nlm.nih.gov/rxnorm/RxNorm_full_prescribe_current.zip}"
+          mkdir -p "$RUNNER_TEMP/rxnorm"
+          curl -fsSL --retry 3 "$url" -o "$RUNNER_TEMP/rxnorm-prescribe.zip"
+          unzip -q "$RUNNER_TEMP/rxnorm-prescribe.zip" -d "$RUNNER_TEMP/rxnorm"
+          rrf="$(node scripts/prepare-rxnorm-prescribable.mjs "$RUNNER_TEMP/rxnorm" --update-versions)"
+          echo "RXNORM_PRESCRIBE_RRF=$rrf" >> "$GITHUB_ENV"
+
       - name: Rebuild all pipelines (skips families whose inputs are absent)
         run: node scripts/build-all.mjs
 

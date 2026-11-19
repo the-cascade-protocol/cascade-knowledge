@@ -5,7 +5,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { FAMILIES } from "./families.mjs";
+import { FAMILIES, PRODUCT_STRENGTH } from "./families.mjs";
 import { DATA_DIR } from "./paths.mjs";
 import { SOURCE_VERSIONS } from "./provenance.mjs";
 
@@ -29,6 +29,9 @@ export const FAMILY_PIPELINE = {
   // Pinned FHIR R4 CodeSystem snapshots + curated seeds, all committed.
   "medication-status-lifecycle": { pipeline: "medication-status", ciRebuildable: true },
   "medication-status-synonym": { pipeline: "medication-status", ciRebuildable: true },
+  // Built by the same RxNorm prescribable pass as brand-generic and
+  // ingredient-rollup, so it shares their inputs and their CI status.
+  "product-strength": { pipeline: "rxnorm-prescribable", ciRebuildable: false },
 };
 
 export function sha256File(path) {
@@ -43,7 +46,7 @@ function countLines(path) {
 
 export function computeManifest() {
   const files = {};
-  for (const f of FAMILIES) {
+  for (const f of [...FAMILIES, PRODUCT_STRENGTH]) {
     const p = join(DATA_DIR, `${f.name}.jsonl`);
     if (!existsSync(p)) continue;
     const meta = FAMILY_PIPELINE[f.name] || { pipeline: "unknown", ciRebuildable: false };

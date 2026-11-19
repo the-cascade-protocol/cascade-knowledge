@@ -2,3 +2,23 @@
 9000010|ENG|||||Y|A2||||RXNORM|BN|9000010|Faketol||N|
 9000020|ENG|||||Y|A3||||RXNORM|SCD|9000020|faketamol 100 MG Oral Tablet||N|
 9000030|ENG|||||Y|A4||||RXNORM|IN|9000030|obsoletamol||O|
+9000002|ENG|||||Y|A5||||RXNORM|IN|9000002|bogusolol||N|
+9000003|ENG|||||Y|A6||||RXNORM|PIN|9000003|bogusolol succinate||N|
+9000004|ENG|||||Y|A7||||RXNORM|IN|9000004|placebide||N|
+9000040|ENG|||||Y|A8||||RXNORM|DF|9000040|Oral Tablet||N|
+9000041|ENG|||||Y|A9||||RXNORM|DF|9000041|Oral Solution||N|
+9000042|ENG|||||Y|A10||||RXNORM|DF|9000042|Extended Release Oral Tablet||N|
+9000043|ENG|||||Y|A11||||RXNORM|DF|9000043|Injectable Solution||N|
+9000050|ENG|||||Y|A12||||RXNORM|SCDC|9000050|faketamol 100 MG||N|
+9000051|ENG|||||Y|A13||||RXNORM|SCDC|9000051|bogusolol succinate 25 MG||N|
+9000052|ENG|||||Y|A14||||RXNORM|SCDC|9000052|placebide 0.5 MG/ML||N|
+9000053|ENG|||||Y|A15||||RXNORM|SCDC|9000053|faketamol 32 MG/ML||N|
+9000054|ENG|||||Y|A16||||RXNORM|SCDC|9000054|placebide 40 MG/ML||N|
+9000021|ENG|||||Y|A17||||RXNORM|SCD|9000021|24 HR bogusolol succinate 25 MG Extended Release Oral Tablet||N|
+9000022|ENG|||||Y|A18||||RXNORM|SCD|9000022|faketamol 32 MG/ML / placebide 0.5 MG/ML Oral Solution||N|
+9000023|ENG|||||Y|A19||||RXNORM|SCD|9000023|0.4 ML placebide 40 MG/ML Injectable Solution||N|
+9000024|ENG|||||Y|A20||||RXNORM|SCD|9000024|mysterium 10 MG Oral Tablet||N|
+9000025|ENG|||||Y|A21||||MTHSPL|SCD|9000025|faketamol 999 MG Oral Tablet||N|
+9000026|ENG|||||Y|A22||||RXNORM|SCD|9000026|faketamol 100 MG Oral Capsule||N|
+9000060|ENG|||||Y|A23||||RXNORM|SBD|9000060|faketamol 100 MG Oral Tablet [Faketol]||N|
+9000061|ENG|||||Y|A24||||RXNORM|SBD|9000061|faketamol 100 MG Chewable Tablet [Faketol]||N|

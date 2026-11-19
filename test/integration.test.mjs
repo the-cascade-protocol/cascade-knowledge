@@ -28,9 +28,11 @@ test("RxNorm prescribable build classifies brand/generic and ingredient by TTY (
     assert.equal(bg.length, 1, "one brand->generic (obsolete + non-RXNORM rows excluded)");
     assert.equal(bg[0].subject.code, "9000010"); // brand
     assert.equal(bg[0].object.code, "9000001"); // generic ingredient
-    assert.equal(ir.length, 1);
-    assert.equal(ir[0].subject.code, "9000020"); // product
-    assert.equal(ir[0].object.code, "9000001"); // ingredient
+    // The SCD's own ingredient_of row, plus one has_ingredient row for each of
+    // the five clinical drug components the product-strength fixture adds.
+    assert.equal(ir.length, 6);
+    const scd = ir.find((r) => r.subject.code === "9000020");
+    assert.equal(scd.object.code, "9000001"); // product -> ingredient
   } finally {
     rmSync(out, { recursive: true, force: true });
   }

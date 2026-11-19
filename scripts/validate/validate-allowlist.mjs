@@ -11,7 +11,7 @@
 
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { FAMILIES, TERM_TABLES } from "../lib/families.mjs";
+import { FAMILIES, TERM_TABLES, PRODUCT_STRENGTH } from "../lib/families.mjs";
 import { readJsonl } from "../lib/canonical.mjs";
 import { DATA_DIR, TERMS_DIR, SOURCES_DIR } from "../lib/paths.mjs";
 
@@ -67,6 +67,28 @@ export function validateAllowlist(dataDir = DATA_DIR, termsDir = TERMS_DIR) {
       }
       checkSystem(row.subject?.system, where + " subject");
       checkSystem(row.object?.system, where + " object");
+    });
+  }
+  // product-strength: per-row provenance like a family, but many nodes per
+  // row. Every node that carries a system is checked, so a walled code cannot
+  // ride in on a component, a brand or a dose form either.
+  const psPath = join(dataDir, `${PRODUCT_STRENGTH.name}.jsonl`);
+  if (existsSync(psPath)) {
+    readJsonl(psPath).forEach((row, i) => {
+      checked++;
+      const where = `${PRODUCT_STRENGTH.name}.jsonl:${i + 1}`;
+      if (!openSources.has(row.provenance?.source)) {
+        errors.push(`${where}: source "${row.provenance?.source}" not on the open allowlist`);
+      }
+      checkSystem(row.product?.system, where + " product");
+      if (row.clinicalDrug) checkSystem(row.clinicalDrug.system, where + " clinicalDrug");
+      if (row.brand) checkSystem(row.brand.system, where + " brand");
+      checkSystem(row.doseForm?.system, where + " doseForm");
+      (row.components || []).forEach((c, j) => {
+        for (const k of ["component", "ingredient", "preciseIngredient"]) {
+          if (c[k]) checkSystem(c[k].system, `${where} components[${j}].${k}`);
+        }
+      });
     });
   }
   return { ok: errors.length === 0, checked, errors };

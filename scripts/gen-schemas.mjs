@@ -5,7 +5,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { FAMILIES, TERM_TABLES } from "./lib/families.mjs";
+import { FAMILIES, TERM_TABLES, PRODUCT_STRENGTH } from "./lib/families.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMA_DIR = join(HERE, "..", "schema");
@@ -127,6 +127,88 @@ function termTableSchema(t) {
   };
 }
 
+// The product-strength record. Every RxNorm node is code-required: a strength
+// row with no product code, or an ingredient with no RxCUI, says nothing anyone
+// can join on. `product` is not the shared node, because it also carries the
+// term type, and the shared node is closed (additionalProperties:false).
+function productStrengthSchema(p) {
+  const rxnormNode = {
+    type: "object",
+    additionalProperties: false,
+    required: ["system", "code", "display"],
+    properties: {
+      system: { enum: p.systems },
+      code: { type: "string", pattern: "^\\d+$" },
+      display: { type: "string", minLength: 1 },
+    },
+  };
+  const measure = (units) => ({
+    type: "object",
+    additionalProperties: false,
+    required: ["value", "unit"],
+    properties: {
+      value: { type: "string", pattern: p.decimalPattern },
+      unit: units ? { enum: units } : { type: "string", minLength: 1 },
+    },
+  });
+  return {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: `${BASE_ID}/${p.name}.schema.json`,
+    title: p.title,
+    type: "object",
+    additionalProperties: false,
+    required: ["product", "components", "doseForm", "provenance"],
+    properties: {
+      product: {
+        type: "object",
+        additionalProperties: false,
+        required: ["system", "code", "display", "tty"],
+        properties: {
+          ...rxnormNode.properties,
+          tty: { enum: p.ttys },
+        },
+      },
+      // SBD rows only: the clinical drug (SCD) this branded drug is a tradename
+      // of, and the brand name (BN) when RxNorm links one.
+      clinicalDrug: rxnormNode,
+      brand: rxnormNode,
+      // One per active ingredient, in the order the product name lists them.
+      components: {
+        type: "array",
+        minItems: 1,
+        items: {
+          type: "object",
+          additionalProperties: false,
+          required: ["component", "ingredient", "strength"],
+          properties: {
+            // The clinical drug component (SCDC), e.g. "sertraline 50 MG".
+            component: rxnormNode,
+            // The ingredient (IN) the component names.
+            ingredient: rxnormNode,
+            // The precise ingredient (PIN, a salt or ester) when RxNorm states
+            // the strength against one, e.g. metoprolol succinate.
+            preciseIngredient: rxnormNode,
+            strength: measure(),
+          },
+        },
+      },
+      // The dose form (DF). `code` is optional only because a release could in
+      // principle omit the DF atom; the form text itself is never omitted.
+      doseForm: {
+        type: "object",
+        additionalProperties: false,
+        required: ["system", "display"],
+        properties: rxnormNode.properties,
+      },
+      // A quantified product's leading quantity, e.g. "0.4 ML" of a syringe.
+      quantity: measure(),
+      // An extended-release product's release period, e.g. "24 HR".
+      releasePeriod: measure(["HR"]),
+      provenance: { $ref: "defs.schema.json#/$defs/provenance" },
+    },
+  };
+}
+
 function writeJson(path, obj) {
   writeFileSync(path, JSON.stringify(obj, null, 2) + "\n");
 }
@@ -139,6 +221,7 @@ for (const f of FAMILIES) {
 for (const t of TERM_TABLES) {
   writeJson(join(SCHEMA_DIR, `${t.name}.schema.json`), termTableSchema(t));
 }
+writeJson(join(SCHEMA_DIR, `${PRODUCT_STRENGTH.name}.schema.json`), productStrengthSchema(PRODUCT_STRENGTH));
 console.log(
-  `Wrote ${FAMILIES.length + TERM_TABLES.length + 1} schema files to schema/`,
+  `Wrote ${FAMILIES.length + TERM_TABLES.length + 2} schema files to schema/`,
 );

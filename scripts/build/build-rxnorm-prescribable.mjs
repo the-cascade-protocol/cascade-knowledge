@@ -12,12 +12,18 @@
 // generic; for ingredient relationships the IN/PIN/MIN end is the ingredient
 // and the SCD/SBD/... end is the product.
 
-import { mkdirSync, existsSync } from "node:fs";
+import { mkdirSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { writeJsonl } from "../lib/canonical.mjs";
 import { provenance } from "../lib/provenance.mjs";
 import { DATA_DIR, INPUTS, requireInput } from "../lib/paths.mjs";
 import { rrfRows, CONSO, REL } from "../lib/rrf.mjs";
+import {
+  createRelationIndex,
+  indexRelation,
+  productStrengthRows,
+  serializeProductStrengthJsonl,
+} from "../lib/product-strength.mjs";
 
 // TTY handling. Lower index = higher priority when choosing a concept's
 // representative term type / name.
@@ -92,6 +98,10 @@ export async function run() {
 
   const brandGeneric = [];
   const ingredientRollup = [];
+  // product-strength reads the same filtered relation rows, classified by the
+  // term types of both ends (see scripts/lib/product-strength.mjs).
+  const strengthIndex = createRelationIndex();
+  const ttyOf = (rxcui) => concepts.get(rxcui)?.tty;
 
   for await (const f of rrfRows(relPath)) {
     if (f[REL.SAB] !== "RXNORM") continue;
@@ -99,6 +109,9 @@ export async function run() {
     // rows explicitly suppressed (Y) or obsolete (O).
     if (f[REL.SUPPRESS] === "Y" || f[REL.SUPPRESS] === "O") continue;
     const rela = f[REL.RELA];
+    if (f[REL.RXCUI1] && f[REL.RXCUI2] && f[REL.RXCUI1] !== f[REL.RXCUI2]) {
+      indexRelation(strengthIndex, rela, f[REL.RXCUI1], f[REL.RXCUI2], ttyOf);
+    }
     const isTradename = TRADENAME_RELA.has(rela);
     const isIngredient = INGREDIENT_RELA.has(rela);
     if (!isTradename && !isIngredient) continue;
@@ -140,7 +153,20 @@ export async function run() {
 
   const bgCount = writeJsonl(join(DATA_DIR, "brand-generic.jsonl"), brandGeneric);
   const irCount = writeJsonl(join(DATA_DIR, "ingredient-rollup.jsonl"), ingredientRollup);
-  return { "brand-generic": bgCount, "ingredient-rollup": irCount };
+
+  const strength = productStrengthRows(concepts, strengthIndex, prov);
+  const psText = serializeProductStrengthJsonl(strength.rows);
+  writeFileSync(join(DATA_DIR, "product-strength.jsonl"), psText);
+  const psCount = psText ? psText.split("\n").filter((l) => l).length : 0;
+  return {
+    "brand-generic": bgCount,
+    "ingredient-rollup": irCount,
+    "product-strength": psCount,
+    // Products left out, by reason. Reported, never silently dropped.
+    "product-strength-skipped": Object.fromEntries(
+      Object.entries(strength.skipped).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)),
+    ),
+  };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
