@@ -68,7 +68,9 @@ the app database.
   sibling full `rrf/` release is UMLS-restricted and is never read. The
   scheduled regeneration fetches the prescribable release from NLM (public, no
   login) and `scripts/prepare-rxnorm-prescribable.mjs` fails the run if its
-  `RXNCONSO.RRF` carries any SAB other than `RXNORM`.
+  `RXNCONSO.RRF` carries any SAB outside the subset's own three (`RXNORM`,
+  plus the unrestricted `MTHSPL` and `MTHCMSFRF`). The builders read only
+  `SAB=RXNORM` rows.
 - **MED-RT** -> `drug-condition` (18,111: 15,360 `may_treat` + 2,751
   `may_prevent`). Parsed fresh from the Core XML. Associations whose drug or
   disease side is SNOMED CT are dropped structurally.

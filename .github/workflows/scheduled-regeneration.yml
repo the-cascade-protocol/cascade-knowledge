@@ -35,9 +35,10 @@ jobs:
       # license and no login, so it is fetched on every run. It is unpacked
       # under RUNNER_TEMP, outside the checkout, so no release file can be
       # committed. The prepare step reads every RXNCONSO row and FAILS on any
-      # SAB other than RXNORM (the full release is not ours to redistribute),
+      # SAB outside the subset's own (RXNORM, MTHSPL, MTHCMSFRF; the full
+      # release's other sources are not ours to redistribute),
       # pins the release date, and exports RXNORM_PRESCRIBE_RRF for the build.
-      - name: Fetch RxNorm prescribable (public, SAB=RXNORM only)
+      - name: Fetch RxNorm prescribable (public; builds read SAB=RXNORM only)
         env:
           RXNORM_PRESCRIBE_URL: ${{ secrets.RXNORM_PRESCRIBE_URL }}
         run: |
