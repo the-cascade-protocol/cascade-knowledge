@@ -63,8 +63,12 @@ the app database.
 ## Regenerated bulk (Phase 2)
 
 - **RxNorm prescribable** -> `brand-generic` (6,220) and `ingredient-rollup`
-  (28,309). Built only from the `prescribe/rrf/` subset. The sibling full
-  `rrf/` release is UMLS-restricted and is never read.
+  (28,309), and `product-strength` (one row per SCD and SBD: ingredients,
+  strengths, dose form). Built only from the `prescribe/rrf/` subset. The
+  sibling full `rrf/` release is UMLS-restricted and is never read. The
+  scheduled regeneration fetches the prescribable release from NLM (public, no
+  login) and `scripts/prepare-rxnorm-prescribable.mjs` fails the run if its
+  `RXNCONSO.RRF` carries any SAB other than `RXNORM`.
 - **MED-RT** -> `drug-condition` (18,111: 15,360 `may_treat` + 2,751
   `may_prevent`). Parsed fresh from the Core XML. Associations whose drug or
   disease side is SNOMED CT are dropped structurally.

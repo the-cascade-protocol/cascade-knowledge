@@ -221,3 +221,25 @@ export const TERM_TABLES = [
 export const TERM_TABLE_BY_NAME = Object.fromEntries(
   TERM_TABLES.map((t) => [t.name, t]),
 );
+
+// The third artifact kind: one record per RxNorm clinical drug (SCD) or branded
+// drug (SBD), carrying what that product IS made of: each active ingredient
+// with its strength, the dose form, and, for a branded drug, the clinical drug
+// it is a tradename of.
+//
+// Not a relation (it has no single object) and not a LOINC term table (it has
+// no licensed display-field contract), so it gets its own shape rather than
+// overloading either. It lives in data/ like the families, so the manifest
+// checksums it and every row carries its own provenance block, which is what
+// the allowlist validator checks. One RxNorm product is one row.
+export const PRODUCT_STRENGTH = {
+  name: "product-strength",
+  title: "RxNorm clinical or branded drug with its ingredients, strengths and dose form",
+  systems: ["RXNORM"],
+  // SCD = semantic clinical drug, SBD = semantic branded drug. Packs (GPCK,
+  // BPCK) are out: a pack is several products, not one strength and form.
+  ttys: ["SCD", "SBD"],
+  // A strength or quantity value exactly as RxNorm writes it in the name: a
+  // plain decimal string, never a float, so "0.09" survives byte for byte.
+  decimalPattern: "^\\d+(\\.\\d+)?$",
+};

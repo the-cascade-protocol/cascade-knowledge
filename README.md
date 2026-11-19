@@ -32,6 +32,19 @@ Eleven relation families, one JSONL file each under `data/`:
 | `medication-status-lifecycle` | a FHIR medication status code `has_lifecycle` class | FHIR MedicationStatement `not-taken` has lifecycle `stopped` |
 | `medication-status-synonym` | a free-text status is a `synonym_of` / contains a `fragment_of` a FHIR status code | "discontinued" is a synonym of FHIR `stopped` |
 
+Plus one record file, also under `data/`, that is not a relation:
+
+| File | One row is | Example |
+| --- | --- | --- |
+| `product-strength` | an RxNorm clinical drug (SCD) or branded drug (SBD) with each ingredient's RxCUI and strength, its dose form, and for an SBD the SCD it is a tradename of | SCD "faketamol 100 MG Oral Tablet": ingredient faketamol, strength `{"value":"100","unit":"MG"}`, dose form Oral Tablet |
+
+Strength values are decimal strings exactly as RxNorm writes them ("0.09"),
+never floats. Every field is read from RxNorm structure (`consists_of`,
+`has_ingredient`, `has_precise_ingredient`, `has_dose_form`, `tradename_of`)
+and the product name must read back from it exactly; a product whose name and
+structure disagree is left out and counted in the build summary, not guessed.
+Schema: `schema/product-strength.schema.json`.
+
 ## Medication status: one answer to "is this still being taken?"
 
 `medication-status-lifecycle` classifies every FHIR R4 `MedicationRequest.status`

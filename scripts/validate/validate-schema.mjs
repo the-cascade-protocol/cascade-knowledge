@@ -7,7 +7,7 @@
 
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { FAMILIES, TERM_TABLES } from "../lib/families.mjs";
+import { FAMILIES, TERM_TABLES, PRODUCT_STRENGTH } from "../lib/families.mjs";
 import { readJsonl } from "../lib/canonical.mjs";
 import { validate } from "../lib/schema-validator.mjs";
 import { DATA_DIR, TERMS_DIR, SCHEMA_DIR } from "../lib/paths.mjs";
@@ -28,7 +28,8 @@ export function validateSchema(dataDir = DATA_DIR, termsDir = TERMS_DIR) {
       });
     }
   }
-  for (const f of FAMILIES) {
+  // The product-strength records: same data/ directory, their own schema.
+  for (const f of [...FAMILIES, PRODUCT_STRENGTH]) {
     const dataPath = join(dataDir, `${f.name}.jsonl`);
     if (!existsSync(dataPath)) continue;
     const schemaPath = join(SCHEMA_DIR, `${f.name}.schema.json`);

@@ -124,7 +124,7 @@ export function validateDeterminism() {
       }
       if (canRxnorm) {
         runInTmp("scripts/build/build-rxnorm-prescribable.mjs");
-        fullChecks.push("brand-generic", "ingredient-rollup");
+        fullChecks.push("brand-generic", "ingredient-rollup", "product-strength");
       }
       if (canLoinc) {
         runInTmp("scripts/build/build-loinc-terms.mjs", { KNOWLEDGE_TERMS_DIR: tmp });
@@ -161,7 +161,7 @@ export function validateDeterminism() {
     }
   }
   if (!canMedrt) notes.push("MED-RT input absent: drug-condition full rebuild skipped (checksum-verified only)");
-  if (!canRxnorm) notes.push("RxNorm input absent: brand-generic/ingredient-rollup full rebuild skipped (checksum-verified only)");
+  if (!canRxnorm) notes.push("RxNorm input absent: brand-generic/ingredient-rollup/product-strength full rebuild skipped (checksum-verified only)");
   if (!canLoinc) notes.push("LOINC release absent: lab-panel/lab-group and the terms/ tables full rebuild skipped (checksum-verified only)");
 
   return {
